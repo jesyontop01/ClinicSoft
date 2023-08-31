@@ -17,8 +17,8 @@ namespace ClinicSoft.Security
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public bool IsActive { get; set; }
-        public RbacPermission Permission { get; set; }
-        public RbacRole Role { get; set; }
+        public RbacPermission? Permission { get; set; }
+        public RbacRole? Role { get; set; }
     }
 
     public class UserRoleMap
@@ -33,8 +33,8 @@ namespace ClinicSoft.Security
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public bool IsActive { get; set; }
-        public RbacUser User { get; set; }
-        public RbacRole Role { get; set; }
+        public RbacUser? User { get; set; }
+        public RbacRole? Role { get; set; }
 
     }
 

@@ -12,11 +12,11 @@ namespace ClinicSoft.ServerModel
     {
         [Key]
         public int DepartmentId { get; set; }
-        public string DepartmentCode { get; set; }
-        public string DepartmentName { get; set; }
-        public string Description { get; set; }
+        public string? DepartmentCode { get; set; }
+        public string? DepartmentName { get; set; }
+        public string? Description { get; set; }
         public int? DepartmentHead { get; set; }
-        public string NoticeText { get; set; }
+        public string? NoticeText { get; set; }
         public bool IsActive { get; set; }
         public bool IsAppointmentApplicable { get; set; }
         public int? CreatedBy { get; set; }
@@ -24,15 +24,16 @@ namespace ClinicSoft.ServerModel
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public int? ParentDepartmentId { get; set; }
-        public string RoomNumber { get; set; }
+        public string? RoomNumber { get; set; }
 
         [NotMapped]
-        public List<BillItemPrice> ServiceItemsList { get; set; }
+        public List<BillItemPrice>? ServiceItemsList { get; set; }
 
 
         [NotMapped]
         //combination of firstname and last name for search purpose, it's not mapped with the database.
-        public string ParentDepartmentName { get; set; }
+        public string? ParentDepartmentName { get; set; }
+        public virtual ICollection<EmployeeModel>? EmpEmployees { get; set; }
 
     }
 }

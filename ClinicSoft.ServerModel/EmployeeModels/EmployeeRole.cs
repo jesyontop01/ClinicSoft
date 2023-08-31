@@ -19,6 +19,7 @@ namespace ClinicSoft.ServerModel
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public bool? IsActive { get; set; }
+        public virtual ICollection<EmployeeModel> EmpEmployees { get; set; }
 
     }
 }

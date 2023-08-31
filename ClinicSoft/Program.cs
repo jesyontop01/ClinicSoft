@@ -24,28 +24,46 @@ using ClinicSoft.Core.Caching;
 using ClinicSoft.Security;
 using Microsoft.AspNetCore.Mvc.Razor;
 using ClinicSoft.DalLayer.Models;
+using Microsoft.AspNetCore.Hosting;
+using ClinicSoft.Utilities;
+using ClinicSoft.Security.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
+IWebHostEnvironment env = builder.Environment;
+
 // Load configuration from your appsettings.json or other configuration sources
-builder.Configuration.AddJsonFile("appsettings.json");
-
+//builder.Configuration.AddJsonFile("appsettings.json");
+ConfigurationManager configuration = (ConfigurationManager)builder.Configuration
+.SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 builder.Services.Configure<MyConfiguration>(builder.Configuration.GetSection("MyConfiguration"));
-//string connString = builder.Configuration["Connectionstring"];
-var connStringss = builder.Configuration.GetSection("MyConfiguration");
+var connection = builder.Configuration.GetSection("Connectionstringss");
+//var connectionString = new ConnectionString(connection);
+//builder.Services.AddSingleton(connectionString);
 
-builder.Services.AddSingleton(connStringss);
+
+//builder.Services.Configure<MyConfiguration>(builder.Configuration.GetSection("MyConfiguration"));
+//string connString = builder.Configuration["Connectionstring"];
+//var connStringss = builder.Configuration.GetSection("MyConfiguration");
+
+//builder.Services.AddSingleton(connStringss);
 
 int cacheExpMins = Convert.ToInt32(builder.Configuration["CacheExpirationMinutes"]);
-builder.Services.AddDbContext<RbacDbContext>(options => options.UseSqlServer(connStringss.ToString()));
+//builder.Services.AddDbContext<RbacDbContext>(options => options.UseSqlServer(connStringss.Value));
 builder.Services.AddDbContext<ClinicSoftContext>(options =>
                             options.UseSqlServer(builder.Configuration.GetConnectionString("" +
                             "DefaultConnection")));
 builder.Services.AddDbContext<SystemAdminDbContext>(options =>
                             options.UseSqlServer(builder.Configuration.GetConnectionString("" +
                             "ConnectionStringAdmin")));
+string connStr = builder.Configuration["Connectionstring1"];
 //add cache as singleton since there should be one global object of it.. ConnectionStringAdmin
-builder.Services.AddSingleton<DanpheCache>(new DanpheCache(connStringss.ToString(), cacheExpMins));
-builder.Services.AddSingleton<RBAC>(new RBAC(connStringss.ToString(), cacheExpMins));
+//builder.Services.AddSingleton<DanpheCache>(new DanpheCache(connection.GetConnectionString("Connectionstringss"), cacheExpMins));
+builder.Services.AddSingleton<DanpheCache>(new DanpheCache(connStr, cacheExpMins));
+builder.Services.AddSingleton<RBAC>(new RBAC(connStr, cacheExpMins));
+//builder.Services.AddSingleton<RBAC>(new RBAC(connection.GetConnectionString("Connectionstringss"), cacheExpMins));
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<HotelAppContext>(options =>
@@ -140,19 +158,15 @@ string connStrs = builder.Configuration["Connectionstring"];
 
 //var myAppSettings = builder.Configuration.Get<MyConfiguration>();
 //myAppSettings.Connectionstring = connStrs;
-string connStr = builder.Configuration["Connectionstring"];
+
 SqlConnectionStringBuilder connStringBuilder = new SqlConnectionStringBuilder(connStr);
 //myAppSettings.Connectionstring = connStringBuilder.ConnectionString.ToString();
 //string encPassword = connStringBuilder.Password;
 //builder.Services.AddSingleton(myAppSettings.Connectionstring);
-var app = builder.Build();
-string contentRootPaths = app.Services.GetService<IWebHostEnvironment>().ContentRootPath;
 
-var builders = new ConfigurationBuilder()
-              .SetBasePath(contentRootPaths)
-              .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-              .AddJsonFile($"appsettings.{app.Environment.EnvironmentName}.json", optional: true)
-              .AddEnvironmentVariables();
+var app = builder.Build();
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ClinicSoft.DalLayer.Models
 {
-    public partial class RbacUser
+    public partial class RbacUser : ICloneable
     {
         public RbacUser()
         {
@@ -25,5 +26,19 @@ namespace ClinicSoft.DalLayer.Models
 
         public virtual EmpEmployee? Employee { get; set; }
         public virtual ICollection<RbacMapUserRole> RbacMapUserRoles { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+        //public RbacUser()
+        //{
+        //    Roles = new List<RbacRole>();
+        //}
+
+        //public object Clone()
+        //{
+        //    return this.MemberwiseClone();
+        //}
     }
 }

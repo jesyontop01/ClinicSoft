@@ -43,13 +43,17 @@ namespace ClinicSoft.DalLayer
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
 
-            optionsBuilder
-                .UseLazyLoadingProxies().UseChangeTrackingProxies(false)
-                .UseSqlServer(connStr);
+            if (!optionsBuilder.IsConfigured)
+            {
+                //var connectionString = connStr;
+                optionsBuilder.UseSqlServer(connStr);
+            }
+            //optionsBuilder
+            //    .UseLazyLoadingProxies().UseChangeTrackingProxies(false)
+            //    .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+            //base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

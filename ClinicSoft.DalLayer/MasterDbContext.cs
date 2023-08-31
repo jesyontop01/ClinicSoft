@@ -30,7 +30,7 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+                //.UseLazyLoadingProxies()
                 .UseSqlServer(connStr);
 
             base.OnConfiguring(optionsBuilder);

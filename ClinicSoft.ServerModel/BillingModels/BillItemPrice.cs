@@ -14,22 +14,22 @@ namespace ClinicSoft.ServerModel
         public int BillItemPriceId { get; set; }
         public int ServiceDepartmentId { get; set; }
         public int ItemId { get; set; }
-        public string ItemName { get; set; }
-        public string ProcedureCode { get; set; }
+        public string? ItemName { get; set; }
+        public string? ProcedureCode { get; set; }
         public double? Price { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public int? ModifiedBy { get; set; }
         public bool? IsActive { get; set; }
-        public string IntegrationName { get; set; }
+        public string? IntegrationName { get; set; }
 
         public bool? TaxApplicable { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public bool? DiscountApplicable { get; set; }
 
         public bool? IsDoctorMandatory { get; set; } //yub 24th sept '18
-        public string ItemCode { get; set; } //yub 24th sept '18
+        public string? ItemCode { get; set; } //yub 24th sept '18
 
         public int? DisplaySeq { get; set; }//sud: 26July'18
 
@@ -54,17 +54,17 @@ namespace ClinicSoft.ServerModel
 
         public bool? IsOT { get; set; }
         public bool? IsProc { get; set; }
-        public string Category { get; set; }
+        public string? Category { get; set; }
 
         public bool? AllowMultipleQty { get; set; } //pratik 18th oct '19
-        public string DefaultDoctorList { get; set; }
+        public string? DefaultDoctorList { get; set; }
         public bool? IsValidForReporting { get; set; }//pratik:7Aug2020
         public bool? IsZeroPriceAllowed { get; set; }//pratik:28Jan'21
         public bool? IsErLabApplicable { get; set; }//pratik:9Feb'21
 
 
         [NotMapped]
-        public string ServiceDepartmentName { get; set; }
+        public string? ServiceDepartmentName { get; set; }
 
     }
 }

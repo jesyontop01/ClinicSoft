@@ -5,6 +5,10 @@ using System.Linq;
 using ClinicSoft.ServerModel;
 using Audit.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using Audit.Core;
+using ClinicSoft.Security.Helpers;
 
 namespace ClinicSoft.Security
 {
@@ -16,27 +20,29 @@ namespace ClinicSoft.Security
         //    this.Configuration.LazyLoadingEnabled = true;
         //    this.Configuration.ProxyCreationEnabled = false;
         //}
-        public RbacDbContext()
-        {
+        //public RbacDbContext()
+        //{
                 
-        }
+        //}
+        private readonly ConnectionString _configuration;
+
         private readonly string connStr = null;
         public RbacDbContext(string conn)
         {
             connStr = conn;
         }
-        public RbacDbContext(DbContextOptions<RbacDbContext> options) : base(options)
+        public RbacDbContext(DbContextOptions<RbacDbContext> options, ConnectionString configuration) : base(options)
         {
+            _configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //if (!optionsBuilder.IsConfigured)
-            //{
-            //    optionsBuilder.UseSqlServer("Server=cyborg;Database=DanpheEMR_OS;User Id=sa;Password=ghost;Persist Security Info=True;");
-
-            //    //optionsBuilder.UseSqlServer(connStr);
-            //}
+            if (!optionsBuilder.IsConfigured)
+            {
+                //var connectionString = connStr;
+                optionsBuilder.UseSqlServer(connStr);
+            }
         }
         public DbSet<RbacApplication> Applications { get; set; }
         public DbSet<RbacPermission> Permissions { get; set; }
@@ -46,7 +52,7 @@ namespace ClinicSoft.Security
         public DbSet<UserRoleMap> UserRoleMaps { get; set; }
         public DbSet<RolePermissionMap> RolePermissionMaps { get; set; }
         public DbSet<DanpheRoute> Routes { get; set; }
-        public DbSet<EmployeeModel> Employees { get; set; }
+        public DbSet<EmployeeModel> Employees { get; set; } = null!;
         public DbSet<PHRMStoreModel> Store { get; set; }
         public DbSet<StoreVerificationMapModel> StoreVerificationMapModel { get; set; }
 
@@ -60,11 +66,135 @@ namespace ClinicSoft.Security
             //modelBuilder.Entity<RbacUser>().ToTable("RBAC_User");
             modelBuilder.Entity<RbacUser>().ToTable("RBAC_User");
             modelBuilder.Entity<UserRoleMap>().ToTable("RBAC_MAP_UserRole");
-            modelBuilder.Entity<EmployeeModel>().ToTable("EMP_Employee");
+            //modelBuilder.Entity<EmployeeModel>().ToTable("EMP_Employee");
             modelBuilder.Entity<PHRMStoreModel>().ToTable("PHRM_MST_Store");
             modelBuilder.Entity<StoreVerificationMapModel>().ToTable("MST_MAP_StoreVerification");
 
+            modelBuilder.Entity<EmployeeModel>(entity =>
+            {
+                entity.HasKey(e => e.EmployeeId)
+                    .HasName("PK__EMP_Employee");
 
+                entity.ToTable("EMP_Employee");
+
+                entity.Property(e => e.BloodGroup)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ContactAddress)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ContactNumber)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
+
+                entity.Property(e => e.DateOfJoining).HasColumnType("datetime");
+
+                entity.Property(e => e.DriverLicenseNo).HasMaxLength(40);
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FirstName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.FullName)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Gender)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.HealthProfessionalCertificationNo).HasMaxLength(40);
+
+                entity.Property(e => e.ImageFullPath)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ImageName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IsActive)
+                    .IsRequired()
+                    .HasDefaultValueSql("((1))");
+
+                entity.Property(e => e.LabSignature).HasMaxLength(500);
+
+                entity.Property(e => e.LastName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LongSignature).HasMaxLength(1000);
+
+                entity.Property(e => e.LPNo)
+                    .HasMaxLength(50)
+                    .HasColumnName("LPNo");
+
+                entity.Property(e => e.MedCertificationNo)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.MiddleName)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.NursingCertificationNo).HasMaxLength(40);
+
+                entity.Property(e => e.OfficeHour)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PANNumber)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("PANNumber");
+
+                entity.Property(e => e.Phone).HasMaxLength(50);
+
+                entity.Property(e => e.RadiologySignature).HasMaxLength(500);
+
+                entity.Property(e => e.RoomNo)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Salutation)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.SignatoryImageName)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Signature).HasMaxLength(1000);
+
+                entity.Property(e => e.TDSPercent).HasColumnName("TDSPercent");
+
+                entity.HasOne(d => d.Department)
+                    .WithMany(p => p.EmpEmployees)
+                    .HasForeignKey(d => d.DepartmentId)
+                    .HasConstraintName("FK__EMP_Emplo__Depar__24285DB4");
+
+                entity.HasOne(d => d.EmployeeRole)
+                    .WithMany(p => p.EmpEmployees)
+                    .HasForeignKey(d => d.EmployeeRoleId)
+                    .HasConstraintName("FK_EMP_Employee_EMP_EmployeeRole");
+
+                entity.HasOne(d => d.EmployeeType)
+                    .WithMany(p => p.EmpEmployees)
+                    .HasForeignKey(d => d.EmployeeTypeId)
+                    .HasConstraintName("FK_EMP_Employee_EMP_EmployeeType");
+            });
             //application and permission mapping
             //modelBuilder.Entity<RbacPermission>()
             //    .HasRequired<RbacApplication>(p => p.Application)

@@ -32,7 +32,14 @@ namespace ClinicSoft.Core
         //    this.Configuration.LazyLoadingEnabled = true;
         //    this.Configuration.ProxyCreationEnabled = false;
         //}
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                //var connectionString = connStr;
+                optionsBuilder.UseSqlServer(connStr);
+            }
+        }
         public DbSet<ParameterModel> Parameters { get; set; }
         public DbSet<LookupsModel> LookUps { get; set; }
         public DbSet<CountryModel> Countries { get; set; }

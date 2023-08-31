@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using ClinicSoft.Security;
+//using ClinicSoft.Security;
 using Microsoft.Extensions.Options;
 using ClinicSoft.Core.Configuration;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +20,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using Google.Apis.Drive.v3.Data;
+using ClinicSoft.Services.Patient;
+//using ClinicSoft.DalLayer.Models;
+using ClinicSoft.Security;
 
 namespace ClinicSoft.Controllers
 {
@@ -32,11 +35,13 @@ namespace ClinicSoft.Controllers
         private readonly string connStringAdmin = null;
         private readonly string applicationVersionNum = null;
         const string SessionEmail = "userEmail";
+        //private readonly IPatient _patient;
         public AccountController(IOptions<MyConfiguration> _config)
         {
             connString = _config.Value.Connectionstring;
             connStringAdmin = _config.Value.ConnectionStringAdmin;
             applicationVersionNum = _config.Value.ApplicationVersionNum;
+            //_patient = patient;
         }
 
         public IActionResult LicenseExpired()
@@ -153,7 +158,7 @@ namespace ClinicSoft.Controllers
                     if (validUser != null)
                     {
                         RbacUser result = new RbacUser();
-                        var employeeRc = rbacdbContext.Employees.Where(a => a.Email == model.UserName).Select(a => a).FirstOrDefault();
+                        var employeeRc = rbacdbContext.Employees.Where(a => a.Email == model.UserName).FirstOrDefault();
                         if (employeeRc != null && validUser == null)
                         {
                             result.EmployeeId = employeeRc.EmployeeId;

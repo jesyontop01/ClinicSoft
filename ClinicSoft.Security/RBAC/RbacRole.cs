@@ -11,9 +11,9 @@ namespace ClinicSoft.Security
     {
         [Key]
         public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public string RoleDescription { get; set; }
-        public string RoleType { get; set; }
+        public string? RoleName { get; set; }
+        public string? RoleDescription { get; set; }
+        public string? RoleType { get; set; }
         public int? ApplicationId { get; set; }
         public bool IsSysAdmin { get; set; }
         public bool IsActive { get; set; }
@@ -26,10 +26,10 @@ namespace ClinicSoft.Security
         public DateTime? ModifiedOn { get; set; }
 
         // public int RouteId { get; set; } 
-        public RbacApplication Application { get; set; }
+        public RbacApplication? Application { get; set; } 
         public List<RbacPermission> Permissions { get; set; }
         public List<RbacUser> Users { get; set; }
-        public DanpheRoute Route { get; set; }
+        public DanpheRoute? Route { get; set; } 
 
         public RbacRole()
         {

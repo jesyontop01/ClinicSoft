@@ -12,9 +12,9 @@ namespace ClinicSoft.ServerModel
         [Key]
         public int CountrySubDivisionId { get; set; }
         public int CountryId { get; set; }
-        public string CountrySubDivisionName { get; set; }
-        public string CountrySubDivisionCode { get; set; }
-        public string MapAreaCode { get; set; }
+        public string? CountrySubDivisionName { get; set; }
+        public string? CountrySubDivisionCode { get; set; }
+        public string? MapAreaCode { get; set; }
         public bool? IsActive { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
