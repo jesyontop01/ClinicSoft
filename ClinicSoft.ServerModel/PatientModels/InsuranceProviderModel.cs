@@ -11,8 +11,8 @@ namespace ClinicSoft.ServerModel
     {
         [Key]
         public int InsuranceProviderId { get; set; }
-        public string InsuranceProviderName { get; set; }
-        public string Description { get; set; }
+        public string? InsuranceProviderName { get; set; }
+        public string? Description { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int CreatedBy { get; set; }
         public int? ModifiedBy { get; set; }

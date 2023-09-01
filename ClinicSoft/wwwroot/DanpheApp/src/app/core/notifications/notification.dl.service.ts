@@ -10,22 +10,22 @@ export class NotificationDLService {
     }
     //get notification
     public GetNotification() {
-        return this.http.get<any>("/api/Notification?reqType=GetData-For-NotificationDropDown")
+        return this.http.get<any>("/clinicsoft/api/Notification?reqType=GetData-For-NotificationDropDown")
     }
     //get-notification-visitdetail
     public GetNotificationVisitDetail(notificationId: number) {
-        return this.http.get<any>("/api/Notification?reqType=visit-notificaiton-detail&notificationId=" + notificationId);
+        return this.http.get<any>("/clinicsoft/api/Notification?reqType=visit-notificaiton-detail&notificationId=" + notificationId);
     }
     //update notification
     public PutNotificationIsRead(messageString: string) {
         let data = messageString;
-        return this.http.put<any>("/api/Notification?reqType=mark-as-read", data)
+        return this.http.put<any>("/clinicsoft/api/Notification?reqType=mark-as-read", data)
     }
 
     //update notification
     public PutNotificationIsArchived(messageString: string) {
         let data = messageString;
-        return this.http.put<any>("/api/Notification?reqType=archive", data)
+        return this.http.put<any>("/clinicsoft/api/Notification?reqType=archive", data)
     }
 
 

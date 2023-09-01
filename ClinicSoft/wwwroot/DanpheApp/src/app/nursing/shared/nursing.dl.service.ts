@@ -18,30 +18,30 @@ export class NursingDLService {
   //Get Nursing Order detail list by patient iD
   public GetNursingOrderListByPatientId(patientID: number) {
     return this.http.get<any>(
-      "/api/Billing?reqType=nursingOrderList" + "&patientId=" + patientID,
+      "/clinicsoft/api/Billing?reqType=nursingOrderList" + "&patientId=" + patientID,
       this.options
     );
   }
 
   public GetNephrologyPatients() {
     return this.http.get<any>(
-      "/api/Nursing/getNephrologyPatients",
+      "/clinicsoft/api/Nursing/getNephrologyPatients",
       this.options
     );
   }
 
   public GetPastVisits(fromDate, toDate) {
-    return this.http.get<any>("/api/Nursing?reqType=nur-opd-list&fromDate=" + fromDate + "&toDate=" + toDate , this.options)
+    return this.http.get<any>("/clinicsoft/api/Nursing?reqType=nur-opd-list&fromDate=" + fromDate + "&toDate=" + toDate , this.options)
   }
 
   public GetPastDataVisits(fromDate, toDate) {
-    return this.http.get<any>("/api/Nursing?reqType=nur-opd-list-pastDays&fromDate=" + fromDate + "&toDate=" + toDate, this.options)
+    return this.http.get<any>("/clinicsoft/api/Nursing?reqType=nur-opd-list-pastDays&fromDate=" + fromDate + "&toDate=" + toDate, this.options)
   }
   //post all the imaging(radiology) requisition items
   public PostImagingItemsRequest(reqItemList: Array<ImagingItemRequisition>) {
     let data = JSON.stringify(reqItemList);
     return this.http.post<any>(
-      "/api/Radiology?reqType=postRequestItems",
+      "/clinicsoft/api/Radiology?reqType=postRequestItems",
       data,
       this.options
     );
@@ -51,7 +51,7 @@ export class NursingDLService {
   public PostBillingReqItems(billReqItems) {
     let data = JSON.stringify(billReqItems);
     return this.http.post<any>(
-      "/api/Billing?reqType=billItemsRequisition",
+      "/clinicsoft/api/Billing?reqType=billItemsRequisition",
       data,
       this.options
     );
@@ -61,7 +61,7 @@ export class NursingDLService {
   public PostLabItemsRequisition(requisitionObjString: string) {
     let data = requisitionObjString;
     return this.http.post<any>(
-      "/api/Lab?reqType=FromBillingToRequisition",
+      "/clinicsoft/api/Lab?reqType=FromBillingToRequisition",
       data,
       this.options
     );
@@ -70,7 +70,7 @@ export class NursingDLService {
   public PostDrugsRequisition(requisitionObjString: string) {
     let data = requisitionObjString;
     return this.http.post<any>(
-      "/api/Pharmacy?reqType=drug-requistion",
+      "/clinicsoft/api/Pharmacy?reqType=drug-requistion",
       data,
       this.options
     );
@@ -78,7 +78,7 @@ export class NursingDLService {
 
   public CancelRadRequest(data: string) {
     return this.http.put<any>(
-      "/api/Radiology?reqType=cancelInpatientRadRequest",
+      "/clinicsoft/api/Radiology?reqType=cancelInpatientRadRequest",
       data,
       this.options
     );
@@ -86,12 +86,12 @@ export class NursingDLService {
 
   //cancel item request from nursing ward billing
   public CancelItemRequest(data: string){
-    return this.http.put<any>("/api/Billing?reqType=cancelInpatientItemFromWard", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Billing?reqType=cancelInpatientItemFromWard", data, this.options);
   }
 
   public CancelBillRequest(data: string) {
     return this.http.put<any>(
-      "/api/Billing?reqType=cancelInpatientBillRequest",
+      "/clinicsoft/api/Billing?reqType=cancelInpatientBillRequest",
       data,
       this.options
     );
@@ -99,27 +99,27 @@ export class NursingDLService {
 
   public SubmitHemoReport(data: string) {
     return this.http.post<any>(
-      "/api/Admission?reqType=submitHemoReport",
+      "/clinicsoft/api/Admission?reqType=submitHemoReport",
       data,
       this.options
     );
   }
   public CheckForLastReport(data: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=checkForLastReport" + "&patientId=" + data,
+      "/clinicsoft/api/Admission?reqType=checkForLastReport" + "&patientId=" + data,
       this.options
     );
   }
   public PreviousReportList(data: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=previousReportList" + "&patientId=" + data,
+      "/clinicsoft/api/Admission?reqType=previousReportList" + "&patientId=" + data,
       this.options
     );
   }
 
   public PostPatientReceivedStatus(data: string) {
     return this.http.put<any>(
-      "/api/Admission?reqType=receive-transfer",
+      "/clinicsoft/api/Admission?reqType=receive-transfer",
       data,
       this.options
     );
@@ -127,7 +127,7 @@ export class NursingDLService {
 
   public UndoPatientTransfer(patVisitId: string, remarks: string) {
     return this.http.put<any>(
-      "/api/Admission?reqType=undo-transfer&cancelRemarks=" + remarks,
+      "/clinicsoft/api/Admission?reqType=undo-transfer&cancelRemarks=" + remarks,
       patVisitId,
       this.options
     );
@@ -135,14 +135,14 @@ export class NursingDLService {
 
   public AddFavouritePatient(patVisitId: string, preferenceType: string, wardId: string) {
     return this.http.post<any>(
-      "/api/Nursing?reqType=AddToPreference&itemId=" + patVisitId +
+      "/clinicsoft/api/Nursing?reqType=AddToPreference&itemId=" + patVisitId +
       "&preferenceType=" + preferenceType +
       "&wardId=" + wardId, this.options)
   }
 
   public RemoveFromFavorites(patVisitId, preferenceType: string, wardId) {
     return this.http.delete<any>(
-      "/api/Nursing?reqType=DeleteFromPreference&itemId=" +
+      "/clinicsoft/api/Nursing?reqType=DeleteFromPreference&itemId=" +
       patVisitId +
       "&preferenceType=" +
       preferenceType + "&wardId=" + wardId,
@@ -152,30 +152,30 @@ export class NursingDLService {
 
   public AddToClinicalInfo(complains) {
     return this.http.post<any>(
-      "/api/Nursing?reqType=post-clinical-info", complains, this.options);
+      "/clinicsoft/api/Nursing?reqType=post-clinical-info", complains, this.options);
   }
 
   public AddNewComplaint(complains) {
     let data = JSON.stringify(complains);
     return this.http.post<any>(
-      "/api/Nursing?reqType=post-complaint", data, this.options);
+      "/clinicsoft/api/Nursing?reqType=post-complaint", data, this.options);
   }
 
   public UpdateClinicalInfo(patientId, patientVisitId, complains) {
     let data = JSON.stringify(complains);
     return this.http.put<any>(
-      "/api/Nursing?reqType=put-clinical-info&patientId=" + patientId + "&patientVisitId=" + patientVisitId , data, this.options);
+      "/clinicsoft/api/Nursing?reqType=put-clinical-info&patientId=" + patientId + "&patientVisitId=" + patientVisitId , data, this.options);
   }
 
   public GetComplaints(patientVisitId) {
     return this.http.get<any>(
-      "/api/Nursing?reqType=get-all-complains&patientVisitId="+ patientVisitId, this.options);
+      "/clinicsoft/api/Nursing?reqType=get-all-complains&patientVisitId="+ patientVisitId, this.options);
   }
 
   public UpdateComplaint(complaint) {
     let data = JSON.stringify(complaint);
     return this.http.put<any>(
-      "/api/Nursing?reqType=update-chief-complaint", data, this.options);
+      "/clinicsoft/api/Nursing?reqType=update-chief-complaint", data, this.options);
   } 
 
   

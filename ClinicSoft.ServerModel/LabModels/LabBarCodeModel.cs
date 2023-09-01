@@ -11,9 +11,9 @@ namespace ClinicSoft.ServerModel.LabModels
     public class LabBarCodeModel
     {
         [Key]
-        public Int64 BarCodeNumber { get; set; }
+        public long BarCodeNumber { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BarCodeId { get; set; }
 
         public int? CreatedBy { get; set; }

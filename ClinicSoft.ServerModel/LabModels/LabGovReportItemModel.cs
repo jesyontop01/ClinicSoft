@@ -13,11 +13,11 @@ namespace ClinicSoft.ServerModel.LabModels
         [Key]
         public int ReportItemId { get; set; }
         public int SerialNumber { get; set; }
-        public string TestName { get; set; }
-        public string GroupName { get; set; }
-        public string DisplayName { get; set; }
+        public string? TestName { get; set; }
+        public string? GroupName { get; set; }
+        public string? DisplayName { get; set; }
         public bool? HasInnerItems { get; set; }
-        public string InnerTestGroupName { get; set; }
+        public string? InnerTestGroupName { get; set; }
         public bool IsActive { get; set; }
 
         [NotMapped]

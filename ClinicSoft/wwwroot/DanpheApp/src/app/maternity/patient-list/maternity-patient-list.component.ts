@@ -92,7 +92,7 @@ export class MaternityPatientListComponent {
   }
 
   SearchPatientForEdit(keyword: any) {
-    return ("/api/Maternity/GetDatForEditSearch?searchText=:dd");
+    return ("/clinicsoft/api/Maternity/GetDatForEditSearch?searchText=:dd");
   }
 
   EditExistingPatientInfo() {

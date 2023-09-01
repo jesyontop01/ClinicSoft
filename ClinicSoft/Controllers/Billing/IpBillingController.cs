@@ -15,15 +15,17 @@ using Newtonsoft.Json;
 using ClinicSoft.Security;
 using ClinicSoft.Controllers.Billing;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.Enums;
 using ClinicSoft.Core;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.BillingModels;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class IpBillingController : CommonController
     {
 

@@ -36,7 +36,7 @@ export class BedInformationsComponent {
 
     // get bed feature summary
     LoadBedFeature(): void {
-        this.http.get<any>("/api/Helpdesk?&reqType=getBedFeature").map(res => res).subscribe(res => {
+        this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getBedFeature").map(res => res).subscribe(res => {
             if (res.Status == "OK") {
                 this.bedFeature = res.Results;
                 this.totaloccupid = CommonFunctions.getGrandTotalData(this.bedFeature);

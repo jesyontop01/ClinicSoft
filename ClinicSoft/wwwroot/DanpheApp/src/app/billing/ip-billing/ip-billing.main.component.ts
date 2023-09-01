@@ -44,7 +44,7 @@ export class IpBillMainComponent {
   }
 
   LoadInpatientList() {
-    this.dlService.Read("/api/IpBilling?reqType=list-ip-patients")
+    this.dlService.Read("/clinicsoft/api/IpBilling?reqType=list-ip-patients")
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {

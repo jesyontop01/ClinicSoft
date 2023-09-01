@@ -42,7 +42,7 @@ export class OrderService {
     public LoadAllLabTests() {
         //call server function only if allLabTests is null/undefined or empty
         if (!this.allLabtests || this.allLabtests.length == 0) {
-            this.http.get<any>("/api/Lab?reqType=allLabTests", this.options)
+            this.http.get<any>("/clinicsoft/api/Lab?reqType=allLabTests", this.options)
                 .map(res => { return res })
                 .subscribe((res: DanpheHTTPResponse) => {
                     if (res.Status == "OK") {
@@ -60,7 +60,7 @@ export class OrderService {
     public LoadAllImagingItems() {
         //call server function only if allLabTests is null/undefined or empty
         if (!this.allImagingItems || this.allImagingItems.length == 0) {
-            this.http.get<any>("/api/Radiology?reqType=allImagingItems", this.options)
+            this.http.get<any>("/clinicsoft/api/Radiology?reqType=allImagingItems", this.options)
                 .map(res => { return res })
                 .subscribe((res: DanpheHTTPResponse) => {
                     if (res.Status == "OK") {
@@ -77,7 +77,7 @@ export class OrderService {
     public LoadAllMedications() {
         if (!this.allMedicationItems || this.allMedicationItems.length == 0) {
 
-            this.http.get<any>('/api/Pharmacy?reqType=item', this.options)
+            this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=item', this.options)
                 .map(res => res)
                 .subscribe((res: DanpheHTTPResponse) => {
                     if (res.Status == "OK") {
@@ -92,7 +92,7 @@ export class OrderService {
     public LoadAllGenericItems() {
         if (!this.allGenericItems || this.allGenericItems.length == 0) {
 
-            this.http.get<any>('/api/Pharmacy?reqType=getGenericList', this.options)
+            this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=getGenericList', this.options)
                 .map(res => res)
                 .subscribe((res: DanpheHTTPResponse) => {
                     if (res.Status == "OK") {
@@ -105,7 +105,7 @@ export class OrderService {
     public LoadAllOtherItems() {
         if (!this.allOtherItems || this.allOtherItems.length == 0) {
 
-            this.http.get<any>('/api/Orders?reqType=otherItems', this.options)
+            this.http.get<any>('/clinicsoft/api/Orders?reqType=otherItems', this.options)
                 .map(res => res)
                 .subscribe((res: DanpheHTTPResponse) => {
                     if (res.Status == "OK") {

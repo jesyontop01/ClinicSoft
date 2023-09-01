@@ -14,30 +14,30 @@ export class FractionPercentEndPoint {
 
     //GET: list of fraction applicable items
     public GetFractionApplicableList() {
-        return this.http.get<any>("/api/FractionPercent", this.options);
+        return this.http.get<any>("/clinicsoft/api/FractionPercent", this.options);
     }
 
     // POST: add new FractionPercent
     public AddFractionPercent(CurrentFractionPercent) {
         var temp = _.omit(CurrentFractionPercent, ['FractionPercentValidator']);
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/FractionPercent", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/FractionPercent", data, this.options);
     }
 
     // PUT: update FractionPercent
     public UpdateFractionPercent(id, CurrentFractionPercent) {
         var temp = _.omit(CurrentFractionPercent, ['FractionPercentValidator']);
         let data = JSON.stringify(temp);
-        return this.http.put<any>("/api/FractionPercent/" + id, data, this.options);
+        return this.http.put<any>("/clinicsoft/api/FractionPercent/" + id, data, this.options);
     }
 
     // Get: FractionPercent By Id
     public GetFractionPercent(id: number) {
-        return this.http.get<any>("/api/FractionPercent/" + id, this.options);
+        return this.http.get<any>("/clinicsoft/api/FractionPercent/" + id, this.options);
     }
 
     // Get: FractionPercent By Id
     public GetFractionPercentByBillPriceId(id: number) {
-        return this.http.get<any>("/api/FractionPercentByPriceId/" + id, this.options);
+        return this.http.get<any>("/clinicsoft/api/FractionPercentByPriceId/" + id, this.options);
     }
 }

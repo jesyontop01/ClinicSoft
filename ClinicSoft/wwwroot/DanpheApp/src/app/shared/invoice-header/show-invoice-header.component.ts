@@ -49,7 +49,7 @@ export class ShowInvoiceHeaderComponent {
 
   public getInvoiceHeaderList() {
     if (this.module) {
-      this._http.get<any>("/api/Pharmacy/GetInvoiceHeader/" + this.module.toLowerCase())
+      this._http.get<any>("/clinicsoft/api/Pharmacy/GetInvoiceHeader/" + this.module.toLowerCase())
         .subscribe(res => {
           if (res.Status == "OK" && res.Results && res.Results.length > 0) {
             this.allInvoiceHeaderList = res.Results;

@@ -37,7 +37,7 @@ namespace ClinicSoft.Controllers
         }
 
 
-        [HttpGet("~/api/GetVendorList")]
+        [HttpGet("~/clinicsoft/api/GetVendorList")]
         public IActionResult GetVendorList()
         {
             try
@@ -119,7 +119,7 @@ namespace ClinicSoft.Controllers
 
         // POST: Post the verified GR to INV Stock table ie Received GR.
         [HttpPost]
-        [Route("~/api/InventoryGoodReceipt/ReceiveGoodsReceipt/{GoodsReceiptId}")]
+        [Route("~/clinicsoft/api/InventoryGoodReceipt/ReceiveGoodsReceipt/{GoodsReceiptId}")]
         public IActionResult ReceiveGoodsReceipt([FromRoute] int GoodsReceiptId, string ReceivedRemarks)
         {
             var currentUser = HttpContext.Session.Get<RbacUser>("currentuser");

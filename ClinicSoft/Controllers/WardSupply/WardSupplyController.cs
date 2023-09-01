@@ -525,7 +525,7 @@ namespace ClinicSoft.Controllers
 
             return DanpheJSONConvert.SerializeObject(responseData, true);
         }
-        [HttpGet("~/api/WardSupply/GetInventoryItemsByStoreId/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupply/GetInventoryItemsByStoreId/{StoreId}")]
         public IActionResult GetInventoryItemsByStoreId(int StoreId)
         {
             WardSupplyDbContext wardSupplyDbContext = new WardSupplyDbContext(connString);
@@ -558,7 +558,7 @@ namespace ClinicSoft.Controllers
             responseData.Results = totalStock;
             return Ok(responseData);
         }
-        [HttpGet("~/api/WardSupply/GetInventoryItemsForPatConsumptionByStoreId/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupply/GetInventoryItemsForPatConsumptionByStoreId/{StoreId}")]
         public IActionResult GetInventoryItemsForPatConsumptionByStoreId(int StoreId)
         {
             WardSupplyDbContext wardSupplyDbContext = new WardSupplyDbContext(connString);
@@ -589,7 +589,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpGet("~/api/WardSupply/GetInventoryPatConsumptionItemlistById/{ReceiptId}")]
+        [HttpGet("~/clinicsoft/api/WardSupply/GetInventoryPatConsumptionItemlistById/{ReceiptId}")]
         public IActionResult GetInventoryPatConsumptionItemlistById(int ReceiptId)
         {
             WardSupplyDbContext wardSupplyDbContext = new WardSupplyDbContext(connString);
@@ -613,7 +613,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/WardSupply/GetInventoryConsumptionList/{StoreId}/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/WardSupply/GetInventoryConsumptionList/{StoreId}/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryConsumptionList(int StoreId, DateTime FromDate, DateTime ToDate)
         {
             WardSupplyDbContext dbContext = new WardSupplyDbContext(connString);
@@ -645,7 +645,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/WardSupply/GetInventoryPatientConsumptionReceiptList/{StoreId}/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/WardSupply/GetInventoryPatientConsumptionReceiptList/{StoreId}/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryPatientConsumptionReceiptList(int StoreId, DateTime FromDate, DateTime ToDate)
         {
             WardSupplyDbContext dbContext = new WardSupplyDbContext(connString);
@@ -683,7 +683,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/WardSupply/GetDispatchListForItemReceive/{RequisitionId}")]
+        [Route("~/clinicsoft/api/WardSupply/GetDispatchListForItemReceive/{RequisitionId}")]
         public IActionResult GetDispatchListForItemReceive([FromRoute] int RequisitionId)
         {
             var inventoryDb = new InventoryDbContext(connString);
@@ -739,7 +739,7 @@ namespace ClinicSoft.Controllers
 
         //WARDSUPPLY REPORTS
         //Ward Stock Items Report
-        [HttpGet("/api/WardSupply/WARDStockItemsReport/{itemId}/{storeId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDStockItemsReport/{itemId}/{storeId}")]
         public IActionResult WARDStockItemsReport(int itemId, int storeId)
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -762,7 +762,7 @@ namespace ClinicSoft.Controllers
         }
 
         //Ward Requisition Report
-        [HttpGet("/api/WardSupply/WARDRequisitionReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDRequisitionReport/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult WARDRequisitionReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -786,7 +786,7 @@ namespace ClinicSoft.Controllers
 
 
         //Ward Breakage Report
-        [HttpGet("/api/WardSupply/WARDBreakageReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDBreakageReport/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult WARDBreakageReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -809,7 +809,7 @@ namespace ClinicSoft.Controllers
         }
 
         //ward Internal Consumption Report
-        [HttpGet("/api/WardSupply/WARDInternalConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDInternalConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult WARDInternalConsumptionReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -831,7 +831,7 @@ namespace ClinicSoft.Controllers
         }
 
         //Ward Consumption Report
-        [HttpGet("/api/WardSupply/WARDConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult WARDConsumptionReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -854,7 +854,7 @@ namespace ClinicSoft.Controllers
         }
 
         //Ward Transfer Report
-        [HttpGet("/api/WardSupply/WARDTransferReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/WARDTransferReport/{FromDate}/{ToDate}/{StoreId}")]
         public string WARDTransferReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<DataTable> responseData = new DanpheHTTPResponse<DataTable>();
@@ -878,7 +878,7 @@ namespace ClinicSoft.Controllers
 
         //////WARD INVENTORY REPORT
         //RequisitionDispatchReport
-        [HttpGet("/api/WardSupply/Inventory/Reports/RequisitionDispatchReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/Inventory/Reports/RequisitionDispatchReport/{FromDate}/{ToDate}/{StoreId}")]
         public string RequisitionDispatchReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<DataTable> responseData = new DanpheHTTPResponse<DataTable>();
@@ -900,7 +900,7 @@ namespace ClinicSoft.Controllers
         }
 
         //TransferReport
-        [HttpGet("/api/WardSupply/Inventory/Reports/TransferReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/Inventory/Reports/TransferReport/{FromDate}/{ToDate}/{StoreId}")]
         public string TransferReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<DataTable> responseData = new DanpheHTTPResponse<DataTable>();
@@ -922,7 +922,7 @@ namespace ClinicSoft.Controllers
         }
 
         //ConsumptionReport
-        [HttpGet("/api/WardSupply/Inventory/Reports/ConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("/clinicsoft/api/WardSupply/Inventory/Reports/ConsumptionReport/{FromDate}/{ToDate}/{StoreId}")]
         public string ConsumptionReport(DateTime FromDate, DateTime ToDate, int StoreId)
         {
             DanpheHTTPResponse<DataTable> responseData = new DanpheHTTPResponse<DataTable>();
@@ -1408,7 +1408,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpPost("~/api/RetrunStockToPharmacy/{ReceivedBy}")]
+        [HttpPost("~/clinicsoft/api/RetrunStockToPharmacy/{ReceivedBy}")]
         public IActionResult RetrunStockToPharmacy(String ReceivedBy, [FromBody] List<WARDStockModel> data)
         {
 
@@ -1443,7 +1443,7 @@ namespace ClinicSoft.Controllers
             }
             return Ok(responseData);
         }
-        [HttpPost("~/api/TransferStock/{ReceivedBy}")]
+        [HttpPost("~/clinicsoft/api/TransferStock/{ReceivedBy}")]
         public IActionResult TransferStock(String ReceivedBy, [FromBody] WARDStockModel data)
         {
 
@@ -1509,7 +1509,7 @@ namespace ClinicSoft.Controllers
         }
         //Put method for item receive in Substore
         [HttpPut]
-        [Route("~/api/WardSupply/UpdateDispatchedItemsReceiveStatus/{DispatchId}")]
+        [Route("~/clinicsoft/api/WardSupply/UpdateDispatchedItemsReceiveStatus/{DispatchId}")]
         public async Task<IActionResult> UpdateDispatchedItemsReceiveStatus([FromRoute] int DispatchId, [FromBody] string ReceivedRemarks)
         {
             var inventoryDb = new InventoryDbContext(connString);
@@ -1530,7 +1530,7 @@ namespace ClinicSoft.Controllers
             }
         }
         // Put method Internal  Consumption Item List
-        [HttpPut("~/api/WardSupply/put-intrenal-consumption")]
+        [HttpPut("~/clinicsoft/api/WardSupply/put-intrenal-consumption")]
         public IActionResult PutIntrenalConsumptionData()
         {
             string str = this.ReadPostData();
@@ -1627,7 +1627,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpPut("~/api/WardSupply/UpdateRequisition")]
+        [HttpPut("~/clinicsoft/api/WardSupply/UpdateRequisition")]
         public IActionResult UpdateRequisition()
         {
             string str = this.ReadPostData();
@@ -1707,7 +1707,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         //put method Consumption Item List
-        [HttpPut("~/api/WardSupply/put-consumption")]
+        [HttpPut("~/clinicsoft/api/WardSupply/put-consumption")]
         public IActionResult PutConsumptionData()
         {
             string str = this.ReadPostData();

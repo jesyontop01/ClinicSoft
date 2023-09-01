@@ -153,7 +153,7 @@ export class OrderRequisitionsComponent {
       if (this.medicationsToPost.length != 0) {
 
         let medsJson = this.GetPrescriptionItemsMapped(this.medicationsToPost);
-        this.http.post<any>("/api/Pharmacy?reqType=postprescriptionitem", medsJson, this.options).map(res => res)
+        this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postprescriptionitem", medsJson, this.options).map(res => res)
           .subscribe(res => {
             if (res.Status == 'OK') {
               //this is temporary solution...to avoid to alert after posting and showing the status of  order  requistion

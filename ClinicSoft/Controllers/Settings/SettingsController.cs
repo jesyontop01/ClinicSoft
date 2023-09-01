@@ -192,7 +192,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Settings/GetStoreVerifiers/{StoreId}")]
+        [Route("~/clinicsoft/api/Settings/GetStoreVerifiers/{StoreId}")]
         public IActionResult GetStoreVerifiers([FromRoute] int StoreId)
         {
             var context = new RbacDbContext(connString);

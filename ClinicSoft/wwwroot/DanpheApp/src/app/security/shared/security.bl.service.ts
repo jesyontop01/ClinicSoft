@@ -58,12 +58,12 @@ export class SecurityBLService {
 
     ////adding the samplecode 
     //public GetLoggedInCounterInfo() {
-    //    return this.http.get<any>("/api/Security?reqType=loggedInCounter", this.options);
+    //    return this.http.get<any>("/clinicsoft/api/Security?reqType=loggedInCounter", this.options);
     //}
 
     ////adding the samplecode 
     //public SetLoggedInCounterInfo() {
-    //    return this.http.put<any>("/api/Security?reqType=loggedInCounter", this.options);
+    //    return this.http.put<any>("/clinicsoft/api/Security?reqType=loggedInCounter", this.options);
     //}
 
     public GetAccountingHopitalInfo() {

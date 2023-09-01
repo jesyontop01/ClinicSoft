@@ -10,19 +10,19 @@ export class DLService {
         this.http = _http;
     }
     public getWard() {
-        return this.http.get<any>("/api/Admission?reqType=WardList", this.options);
+        return this.http.get<any>("/clinicsoft/api/Admission?reqType=WardList", this.options);
     }
     public getDepartment() {
-        return this.http.get<any>("/api/Admission?reqType=DepartmentList", this.options);
+        return this.http.get<any>("/clinicsoft/api/Admission?reqType=DepartmentList", this.options);
     }
     public getBedFeature() {
-        return this.http.get<any>("/api/Admission?reqType=BedFeatureList", this.options);
+        return this.http.get<any>("/clinicsoft/api/Admission?reqType=BedFeatureList", this.options);
     }
     public getLabTest() {
-        return this.http.get<any>("/api/LabSetting?reqType=labTestsList", this.options);
+        return this.http.get<any>("/clinicsoft/api/LabSetting?reqType=labTestsList", this.options);
     }
     public getCategory() {
-        return this.http.get<any>("/api/Lab?reqType=all-lab-category", this.options);
+        return this.http.get<any>("/clinicsoft/api/Lab?reqType=all-lab-category", this.options);
     }
     public Read(url: string) {
         return this.http.get<any>(url, this.options);
@@ -38,14 +38,14 @@ export class DLService {
     }
 
     public ActivateLab(labId: number, labName: string) {
-        return this.http.put<any>("/api/Security?reqType=activateLab&labId=" + labId + "&labName=" + labName, this.options);
+        return this.http.put<any>("/clinicsoft/api/Security?reqType=activateLab&labId=" + labId + "&labName=" + labName, this.options);
     }
 
     public GetDepartment() {
-        return this.http.get<any>("/api/Appointment?reqType=department");
+        return this.http.get<any>("/clinicsoft/api/Appointment?reqType=department");
     }
 
     public GetAllMembershipType() {
-        return this.http.get<any>("/api/BillSettings?reqType=get-membership-types", this.options);
+        return this.http.get<any>("/clinicsoft/api/BillSettings?reqType=get-membership-types", this.options);
     }
 }

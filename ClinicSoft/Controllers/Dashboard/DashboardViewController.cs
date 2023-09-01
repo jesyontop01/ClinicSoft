@@ -10,6 +10,9 @@ using ClinicSoft.Utilities;
 
 namespace ClinicSoft.Controllers
 {
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class DashboardViewController : Controller
     {
         private readonly string config = null;

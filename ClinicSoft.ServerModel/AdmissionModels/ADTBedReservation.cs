@@ -19,7 +19,7 @@ namespace ClinicSoft.ServerModel
         public int BedFeatureId { get; set; }
         public int BedId { get; set; }
         public DateTime AdmissionStartsOn { get; set; }
-        public string AdmissionNotes { get; set; }
+        public string? AdmissionNotes { get; set; }
         public DateTime? ReservedOn { get; set; }
         public int? ReservedBy { get; set; }
         public int? CreatedBy { get; set; }

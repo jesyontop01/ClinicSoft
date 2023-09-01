@@ -98,7 +98,7 @@ export class RPT_CovidTestsSummaryReport {
 
   GetCountrySubDivision() {
     this.dlService
-      .Read("/api/Master?type=GetCountrySubDivision&countryId=" + 0)
+      .Read("/clinicsoft/api/Master?type=GetCountrySubDivision&countryId=" + 0)
       .map((res) => res)
       .subscribe(res => {
         if (res.Status == "OK" && res.Results) {

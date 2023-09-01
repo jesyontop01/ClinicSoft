@@ -130,7 +130,7 @@ export class NotesListComponent {
   GetPatientClinicalNotes() {
     this.http
       .get<any>(
-        "/api/Clinical?reqType=patient-clinical-notes&patientId=" +
+        "/clinicsoft/api/Clinical?reqType=patient-clinical-notes&patientId=" +
           this.patVisit.PatientId,
         this.options
       )

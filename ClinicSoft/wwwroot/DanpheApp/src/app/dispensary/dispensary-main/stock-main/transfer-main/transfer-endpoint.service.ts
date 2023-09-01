@@ -7,7 +7,7 @@ export class TransferEndpointService {
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(public http: HttpClient) {
-    this.baseUrl = '/api/DispensaryTransfer';
+    this.baseUrl = '/clinicsoft/api/DispensaryTransfer';
   }
 
   GetAllStores() {

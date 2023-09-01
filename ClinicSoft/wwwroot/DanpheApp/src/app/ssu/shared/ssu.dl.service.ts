@@ -12,14 +12,14 @@ export class SSU_DLService {
   }
   // getting the patient
   public GetPatients(searchTxt) {
-    //return this.http.get<any>("/api/Patient", this.options); 
-    return this.http.get<any>("/api/Patient?reqType=patient-search-by-text&search=" + searchTxt, this.options);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options); 
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=patient-search-by-text&search=" + searchTxt, this.options);
 
   }
 
   // getting the patient
   public GetPatientsWithVisitsInfo(searchTxt) {
-    return this.http.get<any>("/api/Patient?reqType=patientsWithVisitsInfo&search=" + searchTxt, this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=patientsWithVisitsInfo&search=" + searchTxt, this.options);
   }
 
 
@@ -27,61 +27,61 @@ export class SSU_DLService {
     return this.http.get<any>("/Reporting/PatientBillHistory?LPNo=" + LPNo, this.options);
   }
   public GetPatientUplodedDocument(patientId: number) {
-    return this.http.get<any>("/api/Patient?reqType=getPatientUplodedDocument&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=getPatientUplodedDocument&patientId=" + patientId, this.options);
   }
 
   public GetPatientById(patientId) {
-    return this.http.get<any>("/api/Patient?reqType=getPatientByID&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=getPatientByID&patientId=" + patientId, this.options);
   }
   // getting the  GetCountrySubDivision from dropdown
   public GetCountrySubDivision(countryId: number) {
-    return this.http.get<any>("/api/Master?type=GetCountrySubDivision&countryId=" + countryId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Master?type=GetCountrySubDivision&countryId=" + countryId, this.options);
   }
   public GetCountries() {
-    return this.http.get<any>("/api/Master?type=get-countries", this.options);
+    return this.http.get<any>("/clinicsoft/api/Master?type=get-countries", this.options);
   }
 
   public GetMembershipType() {
-    return this.http.get<any>("/api/Patient?reqType=membership-types", this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=membership-types", this.options);
   }
 
   public GetLightPatientById(patientId) {
-    return this.http.get<any>("/api/Patient?reqType=getLightPatientByPatId&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=getLightPatientByPatId&patientId=" + patientId, this.options);
   }
   public GetInpatientList() {
-    return this.http.get<any>("/api/Patient?reqType=inpatient-list", this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=inpatient-list", this.options);
   }
 
   public GetInsuranceProviderList() {
-    return this.http.get<any>("/api/Patient?reqType=insurance-providers", this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=insurance-providers", this.options);
   }
 
   public GetDialysisCode() {
-    return this.http.get<any>("/api/Patient?reqType=get-dialysis-code", this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=get-dialysis-code", this.options);
   }
 
   ////Getting Patient List excluding insurance patient..
   //public GetPatientList() {
-  //  return this.http.get<any>("/api/BillInsurance?reqType=patient-list-excluding-ins-pat", this.options);
+  //  return this.http.get<any>("/clinicsoft/api/BillInsurance?reqType=patient-list-excluding-ins-pat", this.options);
   //}
 
   //posting the patient
   public PostPatient(patientObjString: string) {
     let data = patientObjString;
     return this.http.
-      post<any>("/api/Patient?reqType=patient", data, this.options);
+      post<any>("/clinicsoft/api/Patient?reqType=patient", data, this.options);
 
   }
 
   //updating the patient
   public PutPatient(patientId: number, patientObjString: string) {
     let data = patientObjString;
-    return this.http.put<any>("/api/Patient?patientId=" + patientId, data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Patient?patientId=" + patientId, data, this.options);
 
   }
   //Get Matching Patient Details by FirstName,LastName,PhoneNumber for showing registered matching patient on Visit Creation time
   public GetExistedMatchingPatientList(FirstName, LastName, PhoneNumber, Age, Gender, IsInsurance, IMISCode) {
-    return this.http.get<any>("/api/Patient?reqType=GetMatchingPatList&FirstName="
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=GetMatchingPatList&FirstName="
       + FirstName +
       "&LastName=" + LastName +
       "&PhoneNumber=" + PhoneNumber +
@@ -93,55 +93,55 @@ export class SSU_DLService {
   }
   public PostPatientFiles(formData: any) {
     try {
-      return this.http.post<any>("/api/Patient?reqType=upload", formData);
+      return this.http.post<any>("/clinicsoft/api/Patient?reqType=upload", formData);
     } catch (exception) {
       throw exception;
     }
   }
 
   public GetMembershipTypes() {
-    return this.http.get<any>("/api/Patient?reqType=membership-types", this.options);
+    return this.http.get<any>("/clinicsoft/api/Patient?reqType=membership-types", this.options);
   }
 
 
   //posting the patient
   public PostGovInsPatient(patientObjString: string) {
     let data = patientObjString;
-    return this.http.post<any>("/api/Patient?reqType=gov-insurance-patient", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Patient?reqType=gov-insurance-patient", data, this.options);
 
   }
 
   public PostBillingOutPatient(patientObjString: string) {
     let data = patientObjString;
-    return this.http.post<any>("/api/Patient?reqType=billing-out-patient", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Patient?reqType=billing-out-patient", data, this.options);
 
   }
 
   //posting the patient
   public UpdateGovInsPatient(patientObjString: string) {
     let data = patientObjString;
-    return this.http.put<any>("/api/Patient?reqType=update-gov-insurance-patient", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Patient?reqType=update-gov-insurance-patient", data, this.options);
 
   }
 
   public GetSsuPatients(search) {
-    //return this.http.get<any>("/api/Patient", this.options); 
-    return this.http.get<any>('/api/SocialServiceUnit/GetAllSsuPatients?search=' + search);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options); 
+    return this.http.get<any>('/clinicsoft/api/SocialServiceUnit/GetAllSsuPatients?search=' + search);
   }
 
   public PostSsuPatient(data) {
-    //return this.http.get<any>("/api/Patient", this.options); 
-    return this.http.post<any>('/api/SocialServiceUnit/post-ssu-patient-information', data, this.options);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options); 
+    return this.http.post<any>('/clinicsoft/api/SocialServiceUnit/post-ssu-patient-information', data, this.options);
   }
 
   public PutSsuPatient(data) {
-    //return this.http.get<any>("/api/Patient", this.options); 
-    return this.http.put<any>('/api/SocialServiceUnit/put-ssu-patient-information', data);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options); 
+    return this.http.put<any>('/clinicsoft/api/SocialServiceUnit/put-ssu-patient-information', data);
   }
 
   public PutActivateDeactivateSsuPatient(data) {
-    //return this.http.get<any>("/api/Patient", this.options); 
-    return this.http.put<any>('/api/SocialServiceUnit/put-activate-deactivate-ssu-patient', data);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options); 
+    return this.http.put<any>('/clinicsoft/api/SocialServiceUnit/put-activate-deactivate-ssu-patient', data);
   }
 
 }

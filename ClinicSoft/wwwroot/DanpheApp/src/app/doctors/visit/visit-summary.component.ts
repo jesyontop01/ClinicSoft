@@ -64,7 +64,7 @@ export class VisitSummaryComponent {
     ///Correct the controller method and pass the template name as parameter.
     //get only the current template from server.
     GetQtnTemplateFromServer() {
-        let url = "/api/DynTemplates?reqType=getSurveyTemplate&templateCode=ClinicalPsychiatry"
+        let url = "/clinicsoft/api/DynTemplates?reqType=getSurveyTemplate&templateCode=ClinicalPsychiatry"
 
         this.dlService.Read(url).map(res => res).subscribe(res => {
             let templateData: Template = res.Results;
@@ -75,7 +75,7 @@ export class VisitSummaryComponent {
     }
 
     public GetPatientVisitList() {
-        let url = "/api/Visit?reqType=patVisitList&patientId=" + this.selectedPatient.PatientId;
+        let url = "/clinicsoft/api/Visit?reqType=patVisitList&patientId=" + this.selectedPatient.PatientId;
         this.dlService.Read(url).map(res => res).subscribe(res => {
             if (res.Status == "OK" && res.Results.length) {
                 this.visitList = res.Results;
@@ -90,7 +90,7 @@ export class VisitSummaryComponent {
 
 
     public GetPatientData(visitId: number) {
-        let url = "/api/ClnPsychiatry?reqType=getPatientData&visitId=" + visitId;
+        let url = "/clinicsoft/api/ClnPsychiatry?reqType=getPatientData&visitId=" + visitId;
         this.dlService.Read(url).map(res => res).subscribe(res => {
             if (res.Status == "OK" && res.Results) {
                 if (!this.loadInQnairLevel) {
@@ -162,7 +162,7 @@ export class VisitSummaryComponent {
     //this is used inside by QuestionComponent to provide source to such controls.
     public CreateDataSets() {
         //    let dsmList = DSM_V_Code.GetAllDSMCodes();
-        let url = "/api/Master?reqType=dsm-codes"
+        let url = "/clinicsoft/api/Master?reqType=dsm-codes"
         let dsmCodes = [];
         this.dlService.Read(url).map(res => res).subscribe(res => {
 
@@ -226,7 +226,7 @@ export class VisitSummaryComponent {
     }
 
     public PostPatientData(patDataJson) {
-        let url = "/api/ClnPsychiatry?reqType=addPatientData";
+        let url = "/clinicsoft/api/ClnPsychiatry?reqType=addPatientData";
         this.dlService.Add(patDataJson, url).map(res => res).subscribe(res => {
             if (res.Status == "OK" && res.Results.length) {
                 this.msgBoxServ.showMessage("success", ["Data added succesfully"]);
@@ -235,7 +235,7 @@ export class VisitSummaryComponent {
         });
     }
     public UpdatePatientData(patDataJson) {
-        let url = "/api/ClnPsychiatry?reqType=updatePatientData";
+        let url = "/clinicsoft/api/ClnPsychiatry?reqType=updatePatientData";
         this.dlService.Update(patDataJson, url).map(res => res).subscribe(res => {
             if (res.Status == "OK") {
                 this.msgBoxServ.showMessage("success", ["Data updated succesfully"]);
@@ -251,7 +251,7 @@ export class VisitSummaryComponent {
         this.loading = false;
     }
     public UpdateIsSignedStatus() {
-        let url = "/api/Visit?reqType=updateIsSignedPatientData&visitId=" + this.currentVisitId;
+        let url = "/clinicsoft/api/Visit?reqType=updateIsSignedPatientData&visitId=" + this.currentVisitId;
         this.dlService.Update(null, url).map(res => res).subscribe(res => {
             if (res.Status == "OK") {
                 this.msgBoxServ.showMessage("success", ["Data submitted succesfully"]);

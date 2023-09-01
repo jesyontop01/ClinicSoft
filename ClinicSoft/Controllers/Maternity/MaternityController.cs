@@ -14,12 +14,12 @@ using ClinicSoft.Core.Parameters;
 using System.Linq;
 using System.Collections.Generic;
 using System.Transactions;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using ClinicSoft.DalLayer;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
 

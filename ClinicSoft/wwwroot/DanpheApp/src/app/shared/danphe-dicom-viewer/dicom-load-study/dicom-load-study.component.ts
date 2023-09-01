@@ -22,9 +22,9 @@ export class DicomLoadStudyComponent {
 
   public showPatientStudy: boolean = false;
   private headers: HttpHeaders;
-  private accessStudiesByPatStudyId: string = "/api/Dicom?reqType=getStudiesByPatStudyId&patStudyId="
-  private accessPointUrl1: string = "/api/Dicom?reqType=getAllData&studyInstanceUID=";
-  private accessDicomWebLink: string = "/api/radiology?reqType=dicomImageLoaderUrl";
+  private accessStudiesByPatStudyId: string = "/clinicsoft/api/Dicom?reqType=getStudiesByPatStudyId&patStudyId="
+  private accessPointUrl1: string = "/clinicsoft/api/Dicom?reqType=getAllData&studyInstanceUID=";
+  private accessDicomWebLink: string = "/clinicsoft/api/radiology?reqType=dicomImageLoaderUrl";
   public dicomDataObj: DicomDataModel = new DicomDataModel();
   private dicomDataObjs: Array<DicomDataModel> = new Array<DicomDataModel>();
   constructor(public _http: HttpClient,

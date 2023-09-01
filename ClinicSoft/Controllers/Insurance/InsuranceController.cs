@@ -20,9 +20,9 @@ using ClinicSoft.Core;
 using ClinicSoft.Controllers;
 using ClinicSoft.Sync.IRDNepal.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Transactions;
-
+using Microsoft.Data.SqlClient;
 using ClinicSoft.ServerModel.InsuranceModels;
 
 

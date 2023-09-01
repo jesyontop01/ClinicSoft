@@ -7,10 +7,10 @@ using ClinicSoft.Security;
 using System.Reflection;
 //using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     [AuditDbContext(Mode = AuditOptionMode.OptIn)]
@@ -26,10 +26,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         public DbSet<PHRMRackModel> PHRMRack { get; set; }
         public DbSet<Security.RbacUser> Users { get; set; }

@@ -7,7 +7,7 @@ export class CssdReportEndpointService {
   option = { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) };
   optionJson = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private _http: HttpClient) {
-    this.baseUrl = '/api/CSSDReport';
+    this.baseUrl = '/clinicsoft/api/CSSDReport';
   }
   getIntegratedCssdReport(fromDate: string, toDate: string) {
     return this._http.get<any>(`${this.baseUrl}/GetIntegratedCssdReport?FromDate=${fromDate}&ToDate=${toDate}`);

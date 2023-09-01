@@ -39,7 +39,7 @@ namespace ClinicSoft.Controllers.Pharmacy
         }
 
         [HttpGet]
-        [Route("~/api/Rack/GetStoreRackNameByItemId/{ItemId}")]
+        [Route("~/clinicsoft/api/Rack/GetStoreRackNameByItemId/{ItemId}")]
         public IActionResult GetStoreRackNameByItemId([FromRoute] int ItemId)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -90,13 +90,13 @@ namespace ClinicSoft.Controllers.Pharmacy
             rackService.DeleteRack(id);
         }
 
-        [HttpGet("~/api/GetParentRack")]
+        [HttpGet("~/clinicsoft/api/GetParentRack")]
         public IActionResult GetParentRackList()
         {
             return Ok(rackService.GetParentRack());
         }
 
-        [HttpGet("~/api/GetDrugsList/{rackId}")]
+        [HttpGet("~/clinicsoft/api/GetDrugsList/{rackId}")]
         public IActionResult GetDrugList(int rackId)
         {
              return Ok(rackService.GetDrugList(rackId));

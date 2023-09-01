@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClinicSoft.ServerModel.ReportingModels;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -15,7 +15,7 @@ using ClinicSoft.ServerModel;
 using ClinicSoft.ServerModel.SystemAdminModels;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.InventoryModels.InventoryReportModel;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class ReportingDbContext : DbContext
@@ -37,10 +37,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
 
         #region Doctor Report

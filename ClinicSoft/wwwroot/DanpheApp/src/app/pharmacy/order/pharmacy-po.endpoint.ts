@@ -4,7 +4,7 @@ import { PHRMPurchaseOrder } from '../shared/phrm-purchase-order.model';
 
 @Injectable()
 export class PharmacyPOEndpoint {
-  baseUrl: string = '/api/PharmacyPO';
+  baseUrl: string = '/clinicsoft/api/PharmacyPO';
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(public http: HttpClient) { }
 

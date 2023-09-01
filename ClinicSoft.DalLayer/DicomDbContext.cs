@@ -33,10 +33,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         public DbSet<PatientStudyModel> PatientStudies { get; set; }
         public DbSet<DicomFileInfoModel> DicomFiles { get; set; }

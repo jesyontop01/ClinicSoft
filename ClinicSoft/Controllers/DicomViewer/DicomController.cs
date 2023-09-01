@@ -34,7 +34,7 @@ namespace ClinicSoft.Controllers
         }
 
 
-        //api/Dicom/byDicomFileId?id=1
+        //clinicsoft/api/Dicom/byDicomFileId?id=1
         [HttpGet("byDicomFileId")]
         public FileStreamResult GetDicomImage(Int64 dicomFileId)
         {

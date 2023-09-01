@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 //using System.Data.Entity;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClinicSoft.ServerModel;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class FractionDbContext : DbContext
@@ -43,10 +43,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         public DataTable GetFractionApplicable()
         {

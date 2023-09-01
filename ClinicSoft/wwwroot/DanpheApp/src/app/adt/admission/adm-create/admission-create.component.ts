@@ -48,7 +48,7 @@ export class AdmissionCreateComponent {
   public billTxnItems: Array<BillingTransactionItem> = new Array<BillingTransactionItem>();
   public bedBilItem: BillingTransactionItem = new BillingTransactionItem();
 
-  public providersPath: string = "/api/Master?type=employee&name=:keywords";
+  public providersPath: string = "/clinicsoft/api/Master?type=employee&name=:keywords";
   public selectedProvider: any;
   public selectedDept: any;
   public doctorList: any = [];

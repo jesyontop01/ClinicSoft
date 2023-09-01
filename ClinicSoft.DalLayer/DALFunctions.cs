@@ -1,19 +1,104 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //using System.Data.Entity;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace ClinicSoft.DalLayer
 {
     public class DALFunctions
     {
         #region GetData From stored procedure
+        //public static DataSet GetDatasetFromStoredProc(string storedProcName, List<SqlParameter> inputParams, DbContext dbContext)
+        //{
+        //    // Create a resulting dataset
+        //    var result = new DataSet();
+
+        //    using (var connection = dbContext.Database.GetDbConnection())
+        //    {
+        //        // Create a command
+        //        using (var cmd = connection.CreateCommand())
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.CommandText = storedProcName;
+
+        //            if (inputParams != null && inputParams.Count > 0)
+        //            {
+        //                cmd.Parameters.AddRange(inputParams.ToArray());
+        //            }
+
+        //            try
+        //            {
+        //                connection.Open();
+        //                var reader = cmd.ExecuteReader();
+
+        //                do
+        //                {
+        //                    // Check if there are more result sets
+        //                    if (reader.HasRows)
+        //                    {
+        //                        var dataTable = new DataTable();
+        //                        dataTable.Load(reader);
+        //                        result.Tables.Add(dataTable);
+        //                    }
+        //                } while (reader.NextResult());
+        //            }
+        //            finally
+        //            {
+        //                connection.Close();
+        //            }
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
+        //public static DataSet GetDatasetFromStoredProc(string storedProcName, List<SqlParameter> inputParams, DbContext dbContext)
+        //{
+        //    // Create a resulting dataset
+        //    var result = new DataSet();
+
+        //    using (var connection = dbContext.Database.GetDbConnection())
+        //    {
+        //        // Create a command
+        //        using (var cmd = connection.CreateCommand())
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.CommandText = storedProcName;
+
+        //            if (inputParams != null && inputParams.Count > 0)
+        //            {
+        //                cmd.Parameters.AddRange(inputParams.ToArray());
+        //            }
+
+        //            try
+        //            {
+        //                connection.Open();
+        //                var reader = cmd.ExecuteReader();
+
+        //                do
+        //                {
+        //                    // Load each result set into a DataTable and add it to the DataSet
+        //                    var dataTable = new DataTable();
+        //                    dataTable.Load(reader);
+        //                    result.Tables.Add(dataTable);
+        //                } while (reader.NextResult());
+        //            }
+        //            finally
+        //            {
+        //                connection.Close();
+        //            }
+        //        }
+        //    }
+
+        //    return result;
+        //}
         public static DataSet GetDatasetFromStoredProc(string storedProcName, List<SqlParameter> ipParams, DbContext dbContext)
         {
             // creates resulting dataset
@@ -56,6 +141,54 @@ namespace ClinicSoft.DalLayer
             }
 
         }
+        //public static DataSet GetDatasetFromStoredProc(string storedProcName, List<SqlParameter> ipParams, DbContext dbContext)
+        //{
+        //    // creates resulting dataset
+        //    var result = new DataSet();
+        //    // creates a Command 
+        //    var cmd = dbContext.Database.GetDbConnection().CreateCommand();
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.CommandText = storedProcName;
+
+        //    if (ipParams != null && ipParams.Count > 0)
+        //    {
+        //        foreach (var param in ipParams)
+        //        {
+        //            var p = new System.Data.SqlClient.SqlParameter
+        //            {
+        //                ParameterName = param.ParameterName,
+        //                Value = param,
+        //                SqlDbType = param.SqlDbType
+        //            };
+        //            cmd.Parameters.Add(p);
+        //        }
+        //    }
+
+        //    try
+        //    {
+        //        // executes
+        //        dbContext.Database.OpenConnection();
+        //        var reader = cmd.ExecuteReader();
+
+        //        // loop through all resultsets (considering that it's possible to have more than one)
+        //        do
+        //        {
+        //            // loads the DataTable (schema will be fetch automatically)
+        //            var tb = new DataTable();
+        //            tb.Load(reader);
+        //            result.Tables.Add(tb);
+
+        //        } while (!reader.IsClosed);
+
+        //        return result;
+        //    }
+        //    finally
+        //    {
+        //        // closes the connection
+        //        dbContext.Database.CloseConnection();
+        //    }
+
+        //}
         ///// Get DataTable From SP with Input Parameters
         public static DataTable GetDataTableFromStoredProc(string storedProcName, List<SqlParameter> ipParams, DbContext dbContext)
         {
@@ -66,7 +199,7 @@ namespace ClinicSoft.DalLayer
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw; // Rethrow the original exception.
             }
         }
         ///// Get DataTable From SP without Any Input Parameters

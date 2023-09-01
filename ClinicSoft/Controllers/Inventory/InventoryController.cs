@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.ServerModel;
 using ClinicSoft.DalLayer;
-
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using ClinicSoft.Utilities;
@@ -1923,7 +1923,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         // GET api/values/5
-        [HttpGet("~/api/Inventory/GetSubstoreRequistionList/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/Inventory/GetSubstoreRequistionList/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult GetSubstoreRequistionList([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int StoreId)
         {
             InventoryDbContext inventoryDbContext = new InventoryDbContext(connString);
@@ -1976,7 +1976,7 @@ namespace ClinicSoft.Controllers
             }
             return Ok(responseData);
         }
-        [HttpGet("~/api/Inventory/GetAllSubstoreRequistionList/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/Inventory/GetAllSubstoreRequistionList/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult GetAllSubstoreRequistionList([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int StoreId)
         {
             InventoryDbContext inventoryDbContext = new InventoryDbContext(connString);
@@ -2032,7 +2032,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Inventory/GetAllPOVerifiers")]
+        [Route("~/clinicsoft/api/Inventory/GetAllPOVerifiers")]
         public IActionResult GetAllPOVerifiers()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -2060,7 +2060,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Inventory/TrackRequisitionById/{RequisitionId}")]
+        [Route("~/clinicsoft/api/Inventory/TrackRequisitionById/{RequisitionId}")]
         public IActionResult TrackRequisitionById(int RequisitionId)
         {
             var dbContext = new InventoryDbContext(connString);
@@ -2114,7 +2114,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Inventory/GetPurchaseRequestItemsById/{PurchaseRequestId}")]
+        [Route("~/clinicsoft/api/Inventory/GetPurchaseRequestItemsById/{PurchaseRequestId}")]
         public async Task<IActionResult> GetPurchaseRequestItemsById(int PurchaseRequestId)
         {
             var _context = new InventoryDbContext(connString);
@@ -2154,7 +2154,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Inventory/GetAllItemPriceHistory")]
+        [Route("~/clinicsoft/api/Inventory/GetAllItemPriceHistory")]
         public async Task<IActionResult> GetAllItemPriceHistory()
         {
             var inventoryDb = new InventoryDbContext(connString);
@@ -2188,7 +2188,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Inventory/GetAllInventoryFiscalYears")]
+        [Route("~/clinicsoft/api/Inventory/GetAllInventoryFiscalYears")]
         public async Task<IActionResult> GetAllInventoryFiscalYears()
         {
             var db = new InventoryDbContext(connString);
@@ -2257,7 +2257,7 @@ namespace ClinicSoft.Controllers
 
 
         [HttpGet]
-        [Route("~/api/Inventory/GetFixedAssetDonation")]
+        [Route("~/clinicsoft/api/Inventory/GetFixedAssetDonation")]
         public IActionResult GetFixedAssetDonation()
         {
             var inventoryDbContext = new InventoryDbContext(connString);
@@ -2284,7 +2284,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Inventory/GetAvailableQuantityByItemId/{ItemId}")]
+        [Route("~/clinicsoft/api/Inventory/GetAvailableQuantityByItemId/{ItemId}")]
         public IActionResult GetAvailableQuantityByItemId([FromRoute] int ItemId)
         {
             var dbContext = new InventoryDbContext(connString);
@@ -2303,7 +2303,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Inventory/GetActiveInventoryList/")]
+        [Route("~/clinicsoft/api/Inventory/GetActiveInventoryList/")]
         public IActionResult GetActiveInventoryList()
         {
             var dbContext = new PharmacyDbContext(connString);
@@ -2335,7 +2335,7 @@ namespace ClinicSoft.Controllers
 
 
         [HttpGet]
-        [Route("~/api/Inventory/GetProcurementGRView/{GoodsReceiptId}")]
+        [Route("~/clinicsoft/api/Inventory/GetProcurementGRView/{GoodsReceiptId}")]
         public IActionResult GetProcurementGRView([FromRoute] int GoodsReceiptId)
         {
             var inventoryDb = new InventoryDbContext(connString);
@@ -2803,7 +2803,7 @@ namespace ClinicSoft.Controllers
             return DanpheJSONConvert.SerializeObject(responseData, true);
         }
         [HttpPost]
-        [Route("~/api/Inventory/WithdrawRequisitionById/{RequisitionId}")]
+        [Route("~/clinicsoft/api/Inventory/WithdrawRequisitionById/{RequisitionId}")]
         public IActionResult WithdrawRequisitionById([FromRoute] int RequisitionId)
         {
 
@@ -2830,7 +2830,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Inventory/CancelGoodsReceipt/{GoodsReceiptId}")]
+        [Route("~/clinicsoft/api/Inventory/CancelGoodsReceipt/{GoodsReceiptId}")]
         public IActionResult CancelGoodsReceipt([FromRoute] int GoodsReceiptId)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -2854,7 +2854,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/Inventory/WithdrawPurchaseRequestById/{PurchaseRequestId}")]
+        [Route("~/clinicsoft/api/Inventory/WithdrawPurchaseRequestById/{PurchaseRequestId}")]
         public IActionResult WithdrawPurchaseRequestById(int PurchaseRequestId)
         {
             var context = new InventoryDbContext(connString);
@@ -2908,7 +2908,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/Inventory/PostDirectDispatch")]
+        [Route("~/clinicsoft/api/Inventory/PostDirectDispatch")]
         public IActionResult PostDirectDispatch([FromBody] List<DispatchItemsModel> dispatchItems)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -2928,7 +2928,7 @@ namespace ClinicSoft.Controllers
             }
             return Ok(responseData);
         }
-        [HttpPost("~/api/Inventory/PostPurchaseOrder")]
+        [HttpPost("~/clinicsoft/api/Inventory/PostPurchaseOrder")]
         public IActionResult PostPurchaseOrder([FromBody] PurchaseOrderModel poFromClient)
         {
             var inventoryDbContext = new InventoryDbContext(connString);

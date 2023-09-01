@@ -11,26 +11,26 @@ export class AccountingSettingsDLService {
     //#region Ledger Settings Calls
     //GET
     public GetLedgersList() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=LedgersList");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=LedgersList");
     }   
     public getPrimaryGroupList() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=get-primary-list");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=get-primary-list");
     } 
     public GetLedgers() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgers",this.options);
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgers",this.options);
     }
     public GetFiscalYearList() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetFiscalYearList");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetFiscalYearList");
     }
 
     public GetCostCenterItemList() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetCostCenterItemList");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetCostCenterItemList");
     }
 
     //get pharmacy supplier
     GetPharmacySupplier() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=phrm-supplier", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=phrm-supplier", this.options);
         } catch (ex) {
             throw ex
         }
@@ -38,14 +38,14 @@ export class AccountingSettingsDLService {
     // GetEmployeeList
     GetEmployeeList() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-employee", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-employee", this.options);
         } catch (ex) {
             throw ex
         }
     }
     GetCreditOrgList() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-creditOrg-list", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-creditOrg-list", this.options);
         } catch (ex) {
             throw ex
         }
@@ -53,146 +53,146 @@ export class AccountingSettingsDLService {
    
     GetInvVendorList() {
         try {
-          return this.http.get<any>("/api/Accounting?reqType=get-invVendor-list", this.options);
+          return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-invVendor-list", this.options);
         } catch (ex) {
             throw ex
         }
     }
     GetInvSubcategoryList(){
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-invSubcategory-list", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-invSubcategory-list", this.options);
         } catch (ex) {
             throw ex
         }
     }
     GetBillingItemsList() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-billings-ledgers", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-billings-ledgers", this.options);
         } catch (ex) {
             throw ex
         }
     }
     //fiscal year activity detaols
     public getfsyearactivitydetail() {
-        return this.http.get<any>("/api/Accounting?reqType=get-fsyearactivity");
+        return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-fsyearactivity");
     } 
 
     //public GetLedgerGroupwithMultipleVoucher() {
-    //    return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGroupwithMultipleVoucher");
+    //    return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGroupwithMultipleVoucher");
     //}
     //POST
     public PostLedgers(CurrentLedger) {
         let data = JSON.stringify(CurrentLedger);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddLedgers", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddLedgers", data);
     }
     
     public PostSection(CurrentSection) {
         let data = JSON.stringify(CurrentSection);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddSection", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddSection", data);
     }
   public PostLedgersList(CurrentLedger) {
     let data = JSON.stringify(CurrentLedger);
-    return this.http.post<any>("/api/AccountingSettings?reqType=AddLedgersList", data);
+    return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddLedgersList", data);
   }
     public PostFiscalYear(currentFiscalYear) {
         let data = JSON.stringify(currentFiscalYear);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddFiscalYear", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddFiscalYear", data);
     }
     public PostCostCenterItem(currentCostCenterItem) {
         let data = JSON.stringify(currentCostCenterItem);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddCostCenterItem", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddCostCenterItem", data);
     }
     public PostLedgersGroupCategory(ledgerGrpCategory) {
         let data = JSON.stringify(ledgerGrpCategory);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddLedgerGroupCategory", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddLedgerGroupCategory", data);
     }
 
     ////PUT
     public PutLedgerIsActive(selectedLedger) {
         let data = JSON.stringify(selectedLedger);
-        return this.http.put<any>("/api/AccountingSettings?reqType=ledgerISActive", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=ledgerISActive", data);
     }
     public PutReopenFiscalYear(selectedFiscalYr) {
         let data = JSON.stringify(selectedFiscalYr);
-        return this.http.put<any>("/api/AccountingSettings?reqType=reopen-fiscal-year", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=reopen-fiscal-year", data);
     }
     public PutFiscalYearStatus(selectedFiscalYr) {
         let data = JSON.stringify(selectedFiscalYr);
-        return this.http.put<any>("/api/AccountingSettings?reqType=updateFiscalYearStatus", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=updateFiscalYearStatus", data);
     }
     public PutCostCenterItemStatus(selectedCostCenterItm) {
         let data = JSON.stringify(selectedCostCenterItm);
-         return this.http.put<any>("/api/AccountingSettings?reqType=updateCostCenterItemStatus", data);
+         return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=updateCostCenterItemStatus", data);
     }
     public PutLedgerGrpCategoryIsActive(selectedLedgerGrpCategory) {
         let data = JSON.stringify(selectedLedgerGrpCategory);
-        return this.http.put<any>("/api/AccountingSettings?reqType=updateLedgerGrpCategoryIsActive", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=updateLedgerGrpCategoryIsActive", data);
     }
     public PutLedger(CurrentLedger) {
         let data = JSON.stringify(CurrentLedger);
-        return this.http.put<any>("/api/AccountingSettings?reqType=UpdateLedger", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=UpdateLedger", data);
     } 
 
     public PutVoucherHead(CurrentVoucherhead) {
         let data = JSON.stringify(CurrentVoucherhead);
-        return this.http.put<any>("/api/AccountingSettings?reqType=UpdateVoucherHead", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=UpdateVoucherHead", data);
     }
     //update section 
     public PutSection(CurrentSection)
     {
         let data = JSON.stringify(CurrentSection);
-        return this.http.put<any>("/api/AccountingSettings?reqType=UpdateSection", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=UpdateSection", data);
     }
     public PutCOA(coa)
     {
         let data = JSON.stringify(coa);
-        return this.http.put<any>("/api/AccountingSettings?reqType=UpdateCOA", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=UpdateCOA", data);
     }
     //#endregion Ledger Settings Calls
 
     //#region  Vouchar Settings Calls
     //GET
     //public GetVouchersList() {
-    //    return this.http.get<any>("/api/AccountingSettings?reqType=VouchersList");
+    //    return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=VouchersList");
     //}
     public GetVouchers() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetVouchers");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetVouchers");
     }
 
     public GetVoucherHead() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetVoucherHead");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetVoucherHead");
     }
     public GetVoucherswithVOCMap() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetVoucherswithVOCMap");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetVoucherswithVOCMap");
     }
 
     public GetLedgerGrpVoucherByLedgerGrpId(ledgergroupId) {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGrpVoucherByLedgerGrpId&ledgergroupId=" + ledgergroupId);
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGrpVoucherByLedgerGrpId&ledgergroupId=" + ledgergroupId);
     }
     public GetLedgerGrpCategory() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGrpCategory");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGrpCategory");
     }
     public GetLedgerGroupsDetails() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGroupsDetails");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGroupsDetails");
     }
     public GetChartofAccount() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetChartofAccount");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetChartofAccount");
     }
     public getTrasferRuleData(sectionId) {
-        return this.http.get<any>("/api/AccountingSettings?reqType=getTrasferRuleDataBySectionId&SectionId=" + sectionId);
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=getTrasferRuleDataBySectionId&SectionId=" + sectionId);
     }
     //POST
     public PostVouchers(CurrentVoucher) {
         let data = JSON.stringify(CurrentVoucher);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddVouchers", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddVouchers", data);
     }
     public PostCOA(coa) {
         let data = JSON.stringify(coa);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddCOA", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddCOA", data);
     }
     public PostVoucherHead(CurrentVoucherhead) {
         let data = JSON.stringify(CurrentVoucherhead);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddVoucherHead", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddVoucherHead", data);
     }
 
     ////PUT
@@ -202,15 +202,15 @@ export class AccountingSettingsDLService {
     //#region Item Settings Calls 
     //GET
     public GetItemsList() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=VoucherItemsList");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=VoucherItemsList");
     }
     public GetItems() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetItems");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetItems");
     }
     //get provisional ledger code
     public GetProvisionalLedgerCode() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=provisional-ledger-code");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=provisional-ledger-code");
         } catch (ex) {
             throw ex;
         }
@@ -219,16 +219,16 @@ export class AccountingSettingsDLService {
     //POST
     public PostItems(CurrentItem) {
         let data = JSON.stringify(CurrentItem);
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddItems", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddItems", data);
     }
     public PostManageVoucher(mappedVoucherList) {
         let data = JSON.stringify(mappedVoucherList);
-        return this.http.post<any>("/api/AccountingSettings?reqType=manageVoucherWithLedgegroup", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=manageVoucherWithLedgegroup", data);
     }
     ////PUT
     public PutItemIsActive(selectedItem) {
         let data = JSON.stringify(selectedItem);
-        return this.http.put<any>("/api/AccountingSettings?reqType=itemISActive", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=itemISActive", data);
     }
 
     //#endregion Item Settings Calls
@@ -236,28 +236,28 @@ export class AccountingSettingsDLService {
     //#region LedgerGroup Settings Calls
     //Get
     public GetLedgerGroup() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGroups");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGroups");
     }
 
     //Post
     public PostLedgersGroup(ledgerGrpObjString: string) {
         let data = ledgerGrpObjString;
-        return this.http.post<any>("/api/AccountingSettings?reqType=AddLedgersGroup", data);
+        return this.http.post<any>("/clinicsoft/api/AccountingSettings?reqType=AddLedgersGroup", data);
     }
 
     //Put
     public PutLedgerGrpIsActive(selectedLedgerGrp) {
         let data = JSON.stringify(selectedLedgerGrp);
-        return this.http.put<any>("/api/AccountingSettings?reqType=updateLedgerGrpIsActive", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=updateLedgerGrpIsActive", data);
     }
     PutLedgersGroup(currentLedgerGroup) {
         let data = JSON.stringify(currentLedgerGroup);
-        return this.http.put<any>("/api/AccountingSettings?reqType=updateLedgerGroup", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=updateLedgerGroup", data);
     }
 
     public PutTransferRuleIsActive(ruleName) {
         let data = JSON.stringify(ruleName);
-        return this.http.put<any>("/api/AccountingSettings?reqType=UpdateTransferRulesActive", data);
+        return this.http.put<any>("/clinicsoft/api/AccountingSettings?reqType=UpdateTransferRulesActive", data);
     }
     //#endregion LedgerGroup Settings Calls
 }

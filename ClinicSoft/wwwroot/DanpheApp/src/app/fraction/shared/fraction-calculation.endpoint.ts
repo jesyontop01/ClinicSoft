@@ -13,18 +13,18 @@ export class FractionCalculationEndPoint {
 
     //GET: list of companies
     public GetFractionApplicableTxnItemList() {
-        return this.http.get<any>("/api/GetFractionTxnList", this.options);
+        return this.http.get<any>("/clinicsoft/api/GetFractionTxnList", this.options);
     }
     public GetFractionReportByItemList() {
-        return this.http.get<any>("/api/GetFractionReportByItemList", this.options);
+        return this.http.get<any>("/clinicsoft/api/GetFractionReportByItemList", this.options);
     }
     
     public GetFractionReportByDoctorList(FromDate: string, ToDate: string) {
-        return this.http.get<any>("/api/GetFractionReportByDoctorList/"+ FromDate + "/" + ToDate, this.options);
+        return this.http.get<any>("/clinicsoft/api/GetFractionReportByDoctorList/"+ FromDate + "/" + ToDate, this.options);
     }
     //GET: list of companies
     public GetFractionCalculationList() {
-        return this.http.get<any>("/api/FractionCalculation", this.options);
+        return this.http.get<any>("/clinicsoft/api/FractionCalculation", this.options);
     }
 
     // POST: add new FractionCalculation
@@ -36,18 +36,18 @@ export class FractionCalculationEndPoint {
         });
     
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/FractionCalculation", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/FractionCalculation", data, this.options);
     }
 
     // PUT: update FractionCalculation
     public UpdateFractionCalculation(id, CurrentFractionCalculation) {
         var temp = _.omit(CurrentFractionCalculation, ['FractionCalculationValidator']);
         let data = JSON.stringify(temp);
-        return this.http.put<any>("/api/FractionCalculation/" + id, data, this.options);
+        return this.http.put<any>("/clinicsoft/api/FractionCalculation/" + id, data, this.options);
     }
 
     // Get: FractionCalculation By BillTxnId
     public GetFractionCalculation(id: number) {
-        return this.http.get<any>("/api/FractionCalculation/" + id, this.options);
+        return this.http.get<any>("/clinicsoft/api/FractionCalculation/" + id, this.options);
     }
 }

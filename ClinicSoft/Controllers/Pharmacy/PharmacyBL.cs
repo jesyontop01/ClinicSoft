@@ -5,13 +5,13 @@ using ClinicSoft.ServerModel;
 using ClinicSoft.DalLayer;
 using ClinicSoft.Security;
 //for entity-update.
-
+using Microsoft.Data.SqlClient;
 using ClinicSoft.ServerModel.PharmacyModels;
 using System.Configuration;
 using ClinicSoft.Sync.IRDNepal.Models;
 using Newtonsoft.Json;
 using ClinicSoft.Utilities;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.Core;
 //using System.Data.Entity.Migrations.Model;
 using ClinicSoft.Core.Parameters;

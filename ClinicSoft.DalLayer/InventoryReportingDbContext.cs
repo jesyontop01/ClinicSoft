@@ -4,7 +4,7 @@ using System.Collections.Generic;
 //using System.Data.Entity;
 using System.Linq;
 using ClinicSoft.ServerModel.ReportingModels;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Data;
 using ClinicSoft.ServerModel.InventoryModels.InventoryReportModel;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +12,7 @@ using ClinicSoft.ServerModel.SystemAdminModels;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using Microsoft.Extensions.Configuration;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class InventoryReportingDbContext : DbContext
@@ -42,10 +42,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         #region Current Stock Level Report
         public List<CurrentStockLevel> CurrentStockLevelReport(string ItemName)

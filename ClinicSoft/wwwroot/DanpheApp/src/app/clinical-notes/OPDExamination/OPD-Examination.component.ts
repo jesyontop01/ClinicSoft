@@ -624,7 +624,7 @@ public GetICDList() {
   this.ICD10List = DanpheCache.GetData(MasterType.ICD, null);
 }
 LoadAllOrderItems() {
-  this.http.get<any>('/api/Orders?reqType=allOrderItems', this.options).map(res => res)
+  this.http.get<any>('/clinicsoft/api/Orders?reqType=allOrderItems', this.options).map(res => res)
     .subscribe((res: DanpheHTTPResponse) => {
       if (res.Status == "OK") {
         this.allOrdItems = res.Results.filter(d => d.PreferenceType.toLowerCase() != 'medication');

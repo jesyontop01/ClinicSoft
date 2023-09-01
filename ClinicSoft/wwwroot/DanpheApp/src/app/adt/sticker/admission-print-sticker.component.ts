@@ -124,7 +124,7 @@ export class AdmissionPrintStickerComponent {
     }
 
     GetADTStickerDetail() {
-        this.http.get<any>('/api/Admission?reqType=admission-sticker' + '&patientVisitId=' + this.patientVisitId, this.options)
+        this.http.get<any>('/clinicsoft/api/Admission?reqType=admission-sticker' + '&patientVisitId=' + this.patientVisitId, this.options)
             .map(res => res)
             .subscribe(res => {
                 if (res.Status = "OK") {
@@ -303,7 +303,7 @@ Address: `+ this.stickerDetail.Address;
         }
         this.loading = true;
         this.showLoading = true;
-        this.http.post<any>("/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
+        this.http.post<any>("/clinicsoft/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
             .map(res => res).subscribe(res => {
                 if (res.Status = "OK") {
                     this.timerFunction();

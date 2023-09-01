@@ -11,6 +11,9 @@ using ClinicSoft.Security;
 //review:25Jan'17-sudarshan: check if ViewData["ConnectionString"] is needed or not in respective cshtml, remove from here if not needed.
 namespace ClinicSoft.Controllers
 {
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class AppointmentViewController : Controller
     {
         private readonly string connString = null;

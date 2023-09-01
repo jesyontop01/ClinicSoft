@@ -46,8 +46,8 @@ export class DynamicTemplateEditComponent {
     ///Correct the controller method and pass the template name as parameter.
     //get only the current template from server.
     GetQtnTemplateFromServer() {
-        let url = "/api/DynTemplates?reqType=getSurveyTemplate&templateCode=" + this.selectedTemplate + "&renderMode=edit"
-        //let url = "/api/DynTemplates?reqType=getSurveyTemplate&templateCode=ClinicalPsychiatry&renderMode=edit"
+        let url = "/clinicsoft/api/DynTemplates?reqType=getSurveyTemplate&templateCode=" + this.selectedTemplate + "&renderMode=edit"
+        //let url = "/clinicsoft/api/DynTemplates?reqType=getSurveyTemplate&templateCode=ClinicalPsychiatry&renderMode=edit"
         this.dlService.Read(url).map(res => res).subscribe(res => {
             let templateData: Template = res.Results;
             this.template = templateData;
@@ -76,7 +76,7 @@ export class DynamicTemplateEditComponent {
             this.UndoQnairRename(qnr);
             alert("section name cannot be empty. name reset to previous value.");
         }
-        let url = "/api/DynTemplates?reqType=updateQnairs";
+        let url = "/clinicsoft/api/DynTemplates?reqType=updateQnairs";
         let data = JSON.stringify([qnr]);
         this.dlService.Update(data, url).map(res => res).subscribe(res => {
             if (res.Status == "OK") {
@@ -101,7 +101,7 @@ export class DynamicTemplateEditComponent {
             newQnrObj.Text = this.newQnrText;
             newQnrObj.TemplateId = this.template.TemplateId;
             newQnrObj.DisplaySeq = this.newQnrSeq;
-            let url = "/api/DynTemplates?reqType=addQnair";
+            let url = "/clinicsoft/api/DynTemplates?reqType=addQnair";
             let data = JSON.stringify(newQnrObj);
             this.dlService.Add(data, url).map(res => res).subscribe(res => {
                 if (res.Status == "OK") {
@@ -142,7 +142,7 @@ export class DynamicTemplateEditComponent {
             return { QnairId: q.QnairId, Text: q.Text, TemplateId: q.TemplateId, DisplaySeq: q.DisplaySeq, ChildQuestions: null }
         });
 
-        let url = "/api/DynTemplates?reqType=updateQnairs";
+        let url = "/clinicsoft/api/DynTemplates?reqType=updateQnairs";
         let data = JSON.stringify(updatedQnrs);
         this.dlService.Update(data, url).map(res => res).subscribe(res => {
             if (res.Status == "OK") {

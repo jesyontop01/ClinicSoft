@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using ClinicSoft.ServerModel;
 //using System.Data.Entity;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.Security;
 using Audit.EntityFramework;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class BillingDbContext : AuditDbContext
@@ -102,10 +102,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         //public BillingDbContext(string conn) : base(conn)
         //{

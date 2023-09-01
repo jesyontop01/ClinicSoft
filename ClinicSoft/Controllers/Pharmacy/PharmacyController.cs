@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ClinicSoft.Core.Configuration;
@@ -9,7 +9,7 @@ using ClinicSoft.CommonTypes;
 using ClinicSoft.DalLayer;
 using ClinicSoft.Utilities;
 using ClinicSoft.ServerModel;
-
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.Security;
 using System.Data;
@@ -2935,7 +2935,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Pharmacy/getGoodReceiptHistory")]
+        [Route("~/clinicsoft/api/Pharmacy/getGoodReceiptHistory")]
         public async Task<IActionResult> GetGoodReceiptHistory()
         {
             var pharmacyDbContext = new PharmacyDbContext(connString);
@@ -2970,7 +2970,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Pharmacy/GetInvoiceHeader/{Module}")]
+        [Route("~/clinicsoft/api/Pharmacy/GetInvoiceHeader/{Module}")]
         public IActionResult GetInvoieHeader([FromRoute] string Module)
         {
 
@@ -3044,7 +3044,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Pharmacy/GetPODetailsByPOID/{PurchaseOrderId}")]
+        [Route("~/clinicsoft/api/Pharmacy/GetPODetailsByPOID/{PurchaseOrderId}")]
         public async Task<IActionResult> GetPODetailsByPOID([FromRoute] int PurchaseOrderId)
         {
             var phrmDBContext = new PharmacyDbContext(connString);
@@ -3064,7 +3064,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Pharmacy/GetInvoiceReceiptByInvoiceId/{InvoiceId}")]
+        [Route("~/clinicsoft/api/Pharmacy/GetInvoiceReceiptByInvoiceId/{InvoiceId}")]
         public IActionResult GetInvoiceReceiptByInvoiceId([FromRoute] int InvoiceId)
         {
             var phrmDBContext = new PharmacyDbContext(connString);
@@ -3203,7 +3203,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Pharmacy/GetRequisitionDetailsForDispatch/{RequisitionId}")]
+        [Route("~/clinicsoft/api/Pharmacy/GetRequisitionDetailsForDispatch/{RequisitionId}")]
         public async Task<IActionResult> GetRequisitionDetailsForDispatch([FromRoute] int RequisitionId)
         {
             var phrmDBContext = new PharmacyDbContext(connString);
@@ -3307,7 +3307,7 @@ namespace ClinicSoft.Controllers
 
         }
         [HttpPost]
-        [Route("~/api/Pharmacy/postInvoiceHeader")]
+        [Route("~/clinicsoft/api/Pharmacy/postInvoiceHeader")]
         public IActionResult PostInvoiceHeader()
         {
             var pharmacyDbContext = new PharmacyDbContext(connString);
@@ -3390,7 +3390,7 @@ namespace ClinicSoft.Controllers
         // POST api/values
         #region:POST: Direct Dispatch
         [HttpPost]
-        [Route("~/api/Pharmacy/PostDirectDispatch")]
+        [Route("~/clinicsoft/api/Pharmacy/PostDirectDispatch")]
         public async Task<IActionResult> PostDirectDispatch([FromBody] List<PHRMDispatchItemsModel> dispatchedItems)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -4762,7 +4762,7 @@ namespace ClinicSoft.Controllers
             return DanpheJSONConvert.SerializeObject(responseData, true);
         }
         [HttpPost()]
-        [Route("~/api/Pharmacy/PostStoreDispatch")]
+        [Route("~/clinicsoft/api/Pharmacy/PostStoreDispatch")]
         public async Task<IActionResult> PostStoreDispatch([FromBody] IList<PostStoreDispatchViewModel> dispatchItems)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -4912,7 +4912,7 @@ namespace ClinicSoft.Controllers
         }
         // PUT invoice header
         [HttpPut]
-        [Route("~/api/Pharmacy/putInvoiceHeader")]
+        [Route("~/clinicsoft/api/Pharmacy/putInvoiceHeader")]
         public IActionResult PutInvoiceHeader()
         {
             var pharmacyDbContext = new PharmacyDbContext(connString);
@@ -5674,7 +5674,7 @@ namespace ClinicSoft.Controllers
             return currSettlmntNo.Value + 1;
         }
         [HttpGet]
-        [Route("~/api/Pharmacy/getItemRateHistory")]
+        [Route("~/clinicsoft/api/Pharmacy/getItemRateHistory")]
         public async Task<IActionResult> GetItemRateHistory()
         {
             var phrmDbContext = new PharmacyDbContext(connString);
@@ -5707,7 +5707,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Pharmacy/getMRPHistory")]
+        [Route("~/clinicsoft/api/Pharmacy/getMRPHistory")]
         public async Task<IActionResult> GetMRPHistory()
         {
             var phrmDbContext = new PharmacyDbContext(connString);

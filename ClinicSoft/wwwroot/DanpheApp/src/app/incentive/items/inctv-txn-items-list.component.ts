@@ -51,7 +51,7 @@ export class IncentiveTxnItemsListComponent {
     if (empIdToSend == 0) {
       empIdToSend = null;
     }
-    this.dlService.Read("/api/Incentive?reqType=view-txn-items-list&fromDate=" + this.fromDate + "&toDate=" + this.toDate + "&employeeId=" + empIdToSend)
+    this.dlService.Read("/clinicsoft/api/Incentive?reqType=view-txn-items-list&fromDate=" + this.fromDate + "&toDate=" + this.toDate + "&employeeId=" + empIdToSend)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -153,8 +153,8 @@ export class IncentiveTxnItemsListComponent {
     if (itemsToFormat && itemsToFormat.length > 0) {
 
       let frcItemsToSave = IncentiveService.GetFractionItemsFromTxnItems(itemsToFormat);
-      //this.http.post<any>('/api/Incentive?reqType=addEmpProfileMap', strData, this.options);
-      let url = "/api/Incentive?reqType=save-fraction-items";
+      //this.http.post<any>('/clinicsoft/api/Incentive?reqType=addEmpProfileMap', strData, this.options);
+      let url = "/clinicsoft/api/Incentive?reqType=save-fraction-items";
       let data = JSON.stringify(frcItemsToSave);
       this.dlService.Add(data, url).map(res => res).subscribe(res => {
         if (res.Status == "OK") {

@@ -55,7 +55,7 @@ export class AdtHomeComponent {
     };
 
     LoadBedInfo(): void {
-        this.http.get<any>("/api/Helpdesk?&reqType=getBedinfo"
+        this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getBedinfo"
             + "&status=" + status, this.options).map(res => res)
             .subscribe(res => {
                 if (res.Status == "OK") {
@@ -69,7 +69,7 @@ export class AdtHomeComponent {
     }
     // get bed feature summary
     LoadBedFeature(): void {
-        this.http.get<any>("/api/Helpdesk?&reqType=get-bedoccupancy-of-wards").map(res => res).subscribe(res => {
+        this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=get-bedoccupancy-of-wards").map(res => res).subscribe(res => {
             if (res.Status == "OK") {
 
                 this.bedFeature = res.Results;
@@ -82,7 +82,7 @@ export class AdtHomeComponent {
     }
     LoadBedPatientFeature(): void {
 
-        this.http.get<any>("/api/Helpdesk?&reqType=getBedPatientInfo").map(res => res).subscribe(res => {
+        this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getBedPatientInfo").map(res => res).subscribe(res => {
             if (res.Status == "OK") {
 
                 this.bedPatientFeature = res.Results;

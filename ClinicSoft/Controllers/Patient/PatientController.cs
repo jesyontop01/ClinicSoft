@@ -1,32 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Data.SqlClient;
-using Microsoft.AspNetCore.Mvc;
-using ClinicSoft.Core.Configuration;
-using ClinicSoft.ServerModel;
-using ClinicSoft.DalLayer;
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
-using ClinicSoft.Utilities;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Mvc.Filters;
-using ClinicSoft.CommonTypes;
+﻿using ClinicSoft.CommonTypes;
 ////for entity-update.
 //
 using ClinicSoft.Core;
-using ClinicSoft.Core.Parameters;
-using System.IO;
-using ClinicSoft.Security;
+using ClinicSoft.Core.Configuration;
+using ClinicSoft.DalLayer;
 using ClinicSoft.Enums;
-using System.Data;
-using Microsoft.AspNetCore.Http;
+using ClinicSoft.Security;
+using ClinicSoft.ServerModel;
+using ClinicSoft.Utilities;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using System.Transactions;
-//
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using System.Data;
+//using System.Data.SqlClient;
+using System.Transactions;
+using Microsoft.Data.SqlClient;
+//
 
 
 
@@ -107,7 +98,7 @@ namespace ClinicSoft.Controllers
         [HttpGet]
         public string Get(int patientId, string reqType, string firstName, string lastName, string phoneNumber, string Age, string Gender,
             string LPNo, string search, string admitStatus, bool IsInsurance, string IMISCode, string searchType)
-        
+
         {
 
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -118,17 +109,25 @@ namespace ClinicSoft.Controllers
 
                 if (reqType == "getPatientByID" && patientId != 0)
                 {
-                    PatientModel returnPatient = new PatientModel();
+                    //PatientModel returnPatient = new PatientModel();
 
-                    returnPatient = (from pat in patDbContext.Patients
-                                     where pat.PatientId == patientId
-                                     select pat).Include(a => a.Addresses)
-                                        .Include(a => a.Guarantor)
-                                        .Include(a => a.Insurances)
-                                        .Include(a => a.KinEmergencyContacts)
-                                        .Include(a => a.CountrySubDivision)
-                                        .Include(p => p.Admissions)
-                                        .FirstOrDefault();
+                    //returnPatient = (from pat in patDbContext.Patients
+                    //                 where pat.PatientId == patientId
+                    //                 select pat).Include(a => a.Addresses)
+                    //                    .Include(a => a.Guarantor)
+                    //                    .Include(a => a.Insurances)
+                    //                    .Include(a => a.KinEmergencyContacts)
+                    //                    .Include(a => a.CountrySubDivision)
+                    //                    .Include(p => p.Admissions)
+                    //                    .FirstOrDefault();
+                    PatientModel returnPatient = patDbContext.Patients
+                                    .Include(a => a.Addresses)
+                                    .Include(a => a.Guarantor)
+                                    .Include(a => a.Insurances)
+                                    .Include(a => a.KinEmergencyContacts)
+                                    .Include(a => a.CountrySubDivision)
+                                    .Include(p => p.Admissions)
+                                    .FirstOrDefault(pat => pat.PatientId == patientId);
 
                     if (returnPatient != null && returnPatient.Addresses != null && returnPatient.Addresses.Count > 0)
                     {
@@ -651,15 +650,15 @@ namespace ClinicSoft.Controllers
                     //clientPatModel.CreatedBy =
 
                     //sud:10Apr'19--To centralize patient number and Patient code logic.
-                   /* NewPatientUniqueNumbersVM newPatientNumber = DanpheEMR.Controllers.PatientBL.GetPatNumberNCodeForNewPatient(connString);
+                    /* NewPatientUniqueNumbersVM newPatientNumber = DanpheEMR.Controllers.PatientBL.GetPatNumberNCodeForNewPatient(connString);
 
 
 
-                    //clientPatModel.PatientNo = GetNewPatientNo(patDbContext);
-                    //clientPatModel.LPNo = GetLPNo(clientPatModel.PatientNo.Value);
+                     //clientPatModel.PatientNo = GetNewPatientNo(patDbContext);
+                     //clientPatModel.LPNo = GetLPNo(clientPatModel.PatientNo.Value);
 
-                    clientPatModel.PatientNo = newPatientNumber.PatientNo;
-                    clientPatModel.LPNo = newPatientNumber.LPNo;*/
+                     clientPatModel.PatientNo = newPatientNumber.PatientNo;
+                     clientPatModel.LPNo = newPatientNumber.LPNo;*/
                     if (clientPatModel.MembershipTypeId == null)
                     {
                         var membership = patDbContext.MembershipTypes.Where(i => i.MembershipTypeName == "General").FirstOrDefault();
@@ -668,7 +667,7 @@ namespace ClinicSoft.Controllers
                     patDbContext.Patients.Add(clientPatModel);
                     //patDbContext.SaveChanges();
 
-                    GeneratePatientNoAndSavePatient(patDbContext,clientPatModel,connString); //This is done to handle the duplicate patientNo..//Krishna' 6th,JAN'2022
+                    GeneratePatientNoAndSavePatient(patDbContext, clientPatModel, connString); //This is done to handle the duplicate patientNo..//Krishna' 6th,JAN'2022
 
 
                     //clientPatModel.LPNo = this.GetLPNo(clientPatModel.PatientId);

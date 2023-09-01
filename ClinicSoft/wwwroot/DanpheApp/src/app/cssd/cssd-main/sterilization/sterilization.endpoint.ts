@@ -9,7 +9,7 @@ export class SterilizationEndpoint {
   option = { headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' }) };
   optionJson = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
   constructor(private _http: HttpClient) {
-    this.baseUrl = '/api/CSSDSterilization';
+    this.baseUrl = '/clinicsoft/api/CSSDSterilization';
   }
   getAllPendingCSSDTransactions(fromDate, toDate): Observable<DanpheHTTPResponse> {
     return this._http.get<any>(`${this.baseUrl}/GetAllPendingCSSDTransactions?FromDate=${fromDate}&ToDate=${toDate}`);

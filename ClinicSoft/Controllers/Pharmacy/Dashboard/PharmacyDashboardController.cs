@@ -69,13 +69,13 @@ namespace ClinicSoft.Controllers.Pharmacy.Dashboard
             rackService.DeleteRack(id);
         }
 
-        //[HttpGet("~/api/GetParentRack")]
+        //[HttpGet("~/clinicsoft/api/GetParentRack")]
         //public IActionResult GetParentRackList()
         //{
         //    return Ok(rackService.GetParentRack());
         //}
 
-        //[HttpGet("~/api/GetDrugList/{rackId}")]
+        //[HttpGet("~/clinicsoft/api/GetDrugList/{rackId}")]
         //public IActionResult GetDrugList(int rackId)
         //{
         //    return Ok(rackService.GetDrugList(rackId));

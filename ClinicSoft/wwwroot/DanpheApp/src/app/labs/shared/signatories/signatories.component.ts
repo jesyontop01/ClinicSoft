@@ -58,7 +58,7 @@ export class SignatoriesComponent {
   LoadEmployees() {
     this.http
       .get<any>(
-        "/api/Master?type=signatories&departmentName=" + this.departmentName,
+        "/clinicsoft/api/Master?type=signatories&departmentName=" + this.departmentName,
         this.options
       )
       .map((res) => res)

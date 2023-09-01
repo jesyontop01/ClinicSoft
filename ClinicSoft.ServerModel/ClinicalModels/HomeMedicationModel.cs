@@ -17,22 +17,22 @@ namespace ClinicSoft.ServerModel
         public int? PatientVisitId { get; set; }
         public int? MedicationId { get; set; }
         [NotMapped]
-        public string MedicationName { get; set; }
-        public string Dose { get; set; }
-        public string Route { get; set; }
+        public string? MedicationName { get; set; }
+        public string? Dose { get; set; }
+        public string? Route { get; set; }
         public int Frequency { get; set; }
         public DateTime LastTaken { get; set; }
-        public string Comments { get; set; }
-        public string MedicationType { get; set; }
+        public string? Comments { get; set; }
+        public string? MedicationType { get; set; }
 
         public int? CreatedBy { get; set; }
         public int? ModifiedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
-        public virtual PatientModel Patient { get; set; }
+        public virtual PatientModel? Patient { get; set; }
         public int Days { get; set; }
         public int? FrequencyId { get; set; }
         [NotMapped]
-        public string FrequencyType { get; set; }
+        public string? FrequencyType { get; set; }
     }
 }

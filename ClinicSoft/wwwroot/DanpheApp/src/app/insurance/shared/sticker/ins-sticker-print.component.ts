@@ -112,7 +112,7 @@ export class InsStickerComponent {
 
   GetVisitforStickerPrint(PatientVisitId) {
     try {
-      this.http.get<any>('/api/Insurance?reqType=getVisitInfoforStickerPrint&visitId=' + PatientVisitId, this.options)
+      this.http.get<any>('/clinicsoft/api/Insurance?reqType=getVisitInfoforStickerPrint&visitId=' + PatientVisitId, this.options)
         .map(res => res)
         .subscribe(res => {
           if (res.Status = "OK") {
@@ -203,7 +203,7 @@ Address: `+ this.insStickerDetails.Address;
     }
     this.loading = true;
     this.showLoading = true;
-    this.http.post<any>("/api/Insurance?reqType=saveHTMLfile&PrinterName=" + printFileName + "&FilePath=" + filePath, printableHTML, this.options)
+    this.http.post<any>("/clinicsoft/api/Insurance?reqType=saveHTMLfile&PrinterName=" + printFileName + "&FilePath=" + filePath, printableHTML, this.options)
       .map(res => res).subscribe(res => {
         if (res.Status = "OK") {
           this.timerFunction();

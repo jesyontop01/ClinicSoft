@@ -10,7 +10,7 @@ export class NepaliReceiptEndpointService {
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(public http: HttpClient) {
-    this.baseUrl = '/api/NepaliReceipt';
+    this.baseUrl = '/clinicsoft/api/NepaliReceipt';
   }
 
   GetNepaliRequisitionView(RequisitionId: number, ModuleType: string) {

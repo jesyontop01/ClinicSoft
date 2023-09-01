@@ -58,7 +58,7 @@ namespace ClinicSoft.Controllers
         }
         #region Inventory Requisition List APIs
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryRequisitionListBasedOnUser/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryRequisitionListBasedOnUser/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryRequisitionListBasedOnUser([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate)
         {
             try
@@ -80,7 +80,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryRequisitionDetails/{RequisitionId}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryRequisitionDetails/{RequisitionId}")]
         public IActionResult GetInventoryRequisitionDetails([FromRoute] int RequisitionId)
         {
             try
@@ -101,8 +101,8 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Verification/ApproveRequisition/")]
-        [Route("~/api/Verification/ApproveRequisition/{VerificationRemarks}")]
+        [Route("~/clinicsoft/api/Verification/ApproveRequisition/")]
+        [Route("~/clinicsoft/api/Verification/ApproveRequisition/{VerificationRemarks}")]
         public IActionResult ApproveRequisition(string VerificationRemarks = "")
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -132,7 +132,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/Verification/RejectRequisition/{RequisitionId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
+        [Route("~/clinicsoft/api/Verification/RejectRequisition/{RequisitionId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
         public IActionResult RejectRequisition([FromRoute] int RequisitionId, int CurrentVerificationlevel, int CurrentVerificationLevelCount, int MaxVerificationLevel)
         {
             try
@@ -165,7 +165,7 @@ namespace ClinicSoft.Controllers
         #endregion
         #region Inventory Purchase Request APIs
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryPurchaseRequestsBasedOnUser/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryPurchaseRequestsBasedOnUser/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryPurchaseRequestsBasedOnUser([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate)
         {
             try
@@ -186,7 +186,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryPurchaseRequestDetails/{PurchaseRequestId}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryPurchaseRequestDetails/{PurchaseRequestId}")]
         public IActionResult GetInventoryPurchaseRequestDetails([FromRoute] int PurchaseRequestId)
         {
             try
@@ -207,8 +207,8 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Verification/ApprovePurchaseRequest/")]
-        [Route("~/api/Verification/ApprovePurchaseRequest/{VerificationRemarks}")]
+        [Route("~/clinicsoft/api/Verification/ApprovePurchaseRequest/")]
+        [Route("~/clinicsoft/api/Verification/ApprovePurchaseRequest/{VerificationRemarks}")]
         public IActionResult ApprovePurchaseRequest(string VerificationRemarks = "")
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -243,7 +243,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Verification/RejectPurchaseRequest/{PurchaseRequestId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
+        [Route("~/clinicsoft/api/Verification/RejectPurchaseRequest/{PurchaseRequestId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
         public IActionResult RejectPurchaseRequest([FromRoute] int PurchaseRequestId, int CurrentVerificationlevel, int CurrentVerificationLevelCount, int MaxVerificationLevel)
         {
             try
@@ -277,7 +277,7 @@ namespace ClinicSoft.Controllers
 
         #region Inventory Purchase Order APIs
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryPurchaseOrdersBasedOnUser/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryPurchaseOrdersBasedOnUser/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryPurchaseOrdersBasedOnUser([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate)
         {
             try
@@ -300,7 +300,7 @@ namespace ClinicSoft.Controllers
 
 
         [HttpGet]
-        [Route("~/api/Verification/GetQuotationRatesDetails/{PurchaseOrderId}")]
+        [Route("~/clinicsoft/api/Verification/GetQuotationRatesDetails/{PurchaseOrderId}")]
         public IActionResult GetQuotationRatesDetails([FromRoute] int PurchaseOrderId)
         {
 
@@ -323,7 +323,7 @@ namespace ClinicSoft.Controllers
 
 
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryPurchaseOrderDetails/{PurchaseOrderId}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryPurchaseOrderDetails/{PurchaseOrderId}")]
         public IActionResult GetInventoryPurchaseOrderDetails([FromRoute] int PurchaseOrderId)
         {
             try
@@ -343,8 +343,8 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/Verification/ApprovePurchaseOrder/")]
-        [Route("~/api/Verification/ApprovePurchaseOrder/{VerificationRemarks}")]
+        [Route("~/clinicsoft/api/Verification/ApprovePurchaseOrder/")]
+        [Route("~/clinicsoft/api/Verification/ApprovePurchaseOrder/{VerificationRemarks}")]
         public IActionResult ApprovePurchaseOrder(string VerificationRemarks = "")
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -379,7 +379,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Verification/RejectPurchaseOrder/{PurchaseOrderId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
+        [Route("~/clinicsoft/api/Verification/RejectPurchaseOrder/{PurchaseOrderId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
         public IActionResult RejectPurchaseOrder([FromRoute] int PurchaseOrderId, int CurrentVerificationlevel, int CurrentVerificationLevelCount, int MaxVerificationLevel)
         {
             try
@@ -413,7 +413,7 @@ namespace ClinicSoft.Controllers
         #endregion
         #region Inventory Goods Receipt APIs
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryGRBasedOnUser/{FromDate}/{ToDate}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryGRBasedOnUser/{FromDate}/{ToDate}")]
         public IActionResult GetInventoryGRBasedOnUser([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate)
         {
             try
@@ -434,7 +434,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpGet]
-        [Route("~/api/Verification/GetInventoryGRDetails/{GoodsReceiptId}")]
+        [Route("~/clinicsoft/api/Verification/GetInventoryGRDetails/{GoodsReceiptId}")]
         public IActionResult GetInventoryGRDetails([FromRoute] int GoodsReceiptId)
         {
             try
@@ -454,8 +454,8 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/Verification/ApproveGoodsReceipt/")]
-        [Route("~/api/Verification/ApproveGoodsReceipt/{VerificationRemarks}")]
+        [Route("~/clinicsoft/api/Verification/ApproveGoodsReceipt/")]
+        [Route("~/clinicsoft/api/Verification/ApproveGoodsReceipt/{VerificationRemarks}")]
         public IActionResult ApproveGoodsReceipt(string VerificationRemarks = "")
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -510,7 +510,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]
-        [Route("~/api/Verification/RejectGoodsReceipt/{GoodsReceiptId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
+        [Route("~/clinicsoft/api/Verification/RejectGoodsReceipt/{GoodsReceiptId}/{CurrentVerificationlevel}/{CurrentVerificationlevelCount}/{MaxVerificationLevel}")]
         public IActionResult RejectGoodsReceipt([FromRoute] int GoodsReceiptId, int CurrentVerificationlevel, int CurrentVerificationLevelCount, int MaxVerificationLevel)
         {
             try

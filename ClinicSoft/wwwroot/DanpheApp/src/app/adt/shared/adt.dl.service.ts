@@ -15,13 +15,13 @@ export class ADT_DLService {
   constructor(public http: HttpClient) { }
   public GetADTList(admissionStatus) {
     return this.http.get<any>(
-      "/api/Admission?reqType=getADTList&admissionStatus=" + admissionStatus,
+      "/clinicsoft/api/Admission?reqType=getADTList&admissionStatus=" + admissionStatus,
       this.options
     );
   }
   public GetADTDataByVisitId(admissionStatus, patVisitId) {
     return this.http.get<any>(
-      "/api/Admission?reqType=getADTList&admissionStatus=" +
+      "/clinicsoft/api/Admission?reqType=getADTList&admissionStatus=" +
       admissionStatus +
       "&patientVisitId=" +
       patVisitId,
@@ -30,7 +30,7 @@ export class ADT_DLService {
   }
   public GetDischargedPatientsList(admissionStatus, fromDt, toDt) {
     return this.http.get<any>(
-      "/api/Admission?reqType=DischargedPatientsList&admissionStatus=" +
+      "/clinicsoft/api/Admission?reqType=DischargedPatientsList&admissionStatus=" +
       admissionStatus +
       "&FromDate=" +
       fromDt +
@@ -42,7 +42,7 @@ export class ADT_DLService {
   // used for discharge summary of admitted patient
   public GetAdmittedPatientsList(admissionStatus, fromDt, toDt) {
     return this.http.get<any>(
-      "/api/Admission?reqType=AdmittedPatientsList&admissionStatus=" +
+      "/clinicsoft/api/Admission?reqType=AdmittedPatientsList&admissionStatus=" +
       admissionStatus +
       "&FromDate=" +
       fromDt +
@@ -55,7 +55,7 @@ export class ADT_DLService {
   //used in nursing module
   public GetAdmittedList(fromDate, toDate, searchTxt, wardId) {
     return this.http.get<any>(
-      "/api/Admission?reqType=getAdmittedList&FromDate=" +
+      "/clinicsoft/api/Admission?reqType=getAdmittedList&FromDate=" +
       fromDate +
       "&ToDate=" +
       toDate +
@@ -68,50 +68,50 @@ export class ADT_DLService {
   }
   public GetPendingReceiveTransferredList() {
     return this.http.get<any>(
-      "/api/Admission?reqType=pendingAdmissionReceiveList",
+      "/clinicsoft/api/Admission?reqType=pendingAdmissionReceiveList",
       this.options
     );
   }
   public GetPatientList(searchTxt) {
-    //return this.http.get<any>("/api/Patient", this.options);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options);
     return this.http.get<any>(
-      "/api/Patient?reqType=patient-search-by-text&search=" + searchTxt,
+      "/clinicsoft/api/Patient?reqType=patient-search-by-text&search=" + searchTxt,
       this.options
     );
   } 
   
   //sud:29Nov--Needed Separate API to get the patient list quicker.
   public GetPatientListForADT(searchTxt) {
-    //return this.http.get<any>("/api/Patient", this.options);
+    //return this.http.get<any>("/clinicsoft/api/Patient", this.options);
     return this.http.get<any>(
-      "/api/Patient?reqType=patient-search-for-new-visit&search=" + searchTxt,
+      "/clinicsoft/api/Patient?reqType=patient-search-for-new-visit&search=" + searchTxt,
       this.options
     );
   }
   public GetCheckPatientAdmission(patientId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=checkPatientAdmission" +
+      "/clinicsoft/api/Admission?reqType=checkPatientAdmission" +
       "&patientId=" +
       patientId,
       this.options
     );
   }
   //public CheckPatProvisionalInfo(patId) {
-  //    return this.http.get<any>("/api/Admission?reqType=checkPatProvisionalInfo&patientId=" + patId, this.options);
+  //    return this.http.get<any>("/clinicsoft/api/Admission?reqType=checkPatProvisionalInfo&patientId=" + patId, this.options);
   //}
   public GetWards() {
-    return this.http.get<any>("/api/Admission?reqType=wardList", this.options);
+    return this.http.get<any>("/clinicsoft/api/Admission?reqType=wardList", this.options);
   }
   public GetWardBedFeatures(wardId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=wardBedFeature&wardId=" + wardId,
+      "/clinicsoft/api/Admission?reqType=wardBedFeature&wardId=" + wardId,
       this.options
     );
   }
 
   public GetAdmittedPatInfo(patientVisitId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=getAdmittedPatientDetails&patientVisitId=" +
+      "/clinicsoft/api/Admission?reqType=getAdmittedPatientDetails&patientVisitId=" +
       patientVisitId,
       this.options
     );
@@ -119,26 +119,26 @@ export class ADT_DLService {
 
   public GetDischargeType() {
     return this.http.get<any>(
-      "/api/Admission?reqType=discharge-type",
+      "/clinicsoft/api/Admission?reqType=discharge-type",
       this.options
     );
   }
   public GetProviderList() {
     return this.http.get<any>(
-      "/api/Admission?reqType=provider-list",
+      "/clinicsoft/api/Admission?reqType=provider-list",
       this.options
     );
   }
   //get list of employee from Anasthetists dept
   public GetAnasthetistsEmpList() {
     return this.http.get<any>(
-      "/api/Admission?reqType=anasthetists-employee-list",
+      "/clinicsoft/api/Admission?reqType=anasthetists-employee-list",
       this.options
     );
   }
   public GetDocDptAndWardList(patId: number, visitId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=get-doc-dpt-ward&patientId=" +
+      "/clinicsoft/api/Admission?reqType=get-doc-dpt-ward&patientId=" +
       patId +
       "&patientVisitId=" +
       visitId,
@@ -147,7 +147,7 @@ export class ADT_DLService {
   }
   public GetSimilarBedFeatures(wardId: number, bedFeatureId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=similarBedFeatures&wardId=" +
+      "/clinicsoft/api/Admission?reqType=similarBedFeatures&wardId=" +
       wardId +
       "&bedFeatureId=" +
       bedFeatureId,
@@ -156,7 +156,7 @@ export class ADT_DLService {
   }
   public GetAvailableBeds(wardId: number, bedFeatureId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=availableBeds" +
+      "/clinicsoft/api/Admission?reqType=availableBeds" +
       "&bedFeatureId=" +
       bedFeatureId +
       "&wardId=" +
@@ -166,13 +166,13 @@ export class ADT_DLService {
   }
   public CheckPatProvisionalInfo(patId) {
     return this.http.get<any>(
-      "/api/Admission?reqType=checkPatProvisionalInfo&patientId=" + patId,
+      "/clinicsoft/api/Admission?reqType=checkPatProvisionalInfo&patientId=" + patId,
       this.options
     );
   }
   public GetDischargeSummary(patientVisitId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=discharge-summary-patientVisit&patientVisitId=" +
+      "/clinicsoft/api/Admission?reqType=discharge-summary-patientVisit&patientVisitId=" +
       patientVisitId,
       this.options
     );
@@ -180,7 +180,7 @@ export class ADT_DLService {
 
   public GetPatientPlusBedInfo(patId, patVisitId) {
     return this.http.get<any>(
-      "/api/Admission?reqType=SelectedPatientPlusBedInfo&patientId=" +
+      "/clinicsoft/api/Admission?reqType=SelectedPatientPlusBedInfo&patientId=" +
       patId +
       "&patientVisitId=" +
       patVisitId,
@@ -190,51 +190,51 @@ export class ADT_DLService {
 
   public GetAdmittingDocInfo() {
     return this.http.get<any>(
-      "/api/Admission?reqType=get-doctor-list",
+      "/clinicsoft/api/Admission?reqType=get-doctor-list",
       this.options
     );
   }
 
   public GetAdmissionHistory(patientId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=admissionHistory&patientId=" + patientId,
+      "/clinicsoft/api/Admission?reqType=admissionHistory&patientId=" + patientId,
       this.options
     );
   }
   public GetLatestAdmissionDetail(patientId: number) {
     return this.http.get<any>(
-      "/api/Admission?reqType=latest-adt-detail&patientId=" + patientId,
+      "/clinicsoft/api/Admission?reqType=latest-adt-detail&patientId=" + patientId,
       this.options
     );
   }
   public GetEmployeeFavorites() {
     return this.http.get<any>(
-      "/api/Admission?reqType=get-emp-favorites",
+      "/clinicsoft/api/Admission?reqType=get-emp-favorites",
       this.options
     );
   }
   public GetNursingEmployeeFavorites() {
     return this.http.get<any>(
-      "/api/Admission?reqType=get-nur-favorites",
+      "/clinicsoft/api/Admission?reqType=get-nur-favorites",
       this.options
     );
   }
   public GetAllWardBedInfo() {
-    return this.http.get<any>("/api/Admission/GetAllWardBedInfo", this.options);
+    return this.http.get<any>("/clinicsoft/api/Admission/GetAllWardBedInfo", this.options);
   }
   public GetNewClaimcode() {
-    return this.http.get<any>("/api/insurance?reqType=get-new-claimCode", this.options);
+    return this.http.get<any>("/clinicsoft/api/insurance?reqType=get-new-claimCode", this.options);
   }
   public GetOldClaimcode(patId) {
-    return this.http.get<any>("/api/insurance?reqType=get-patient-old-claimCode-for-admission&patientId="+patId,this.options);
+    return this.http.get<any>("/clinicsoft/api/insurance?reqType=get-patient-old-claimCode-for-admission&patientId="+patId,this.options);
   }
   public GetInsVisitList(claimCode: number, patId:number) {
-    return this.http.get<any>("/api/Insurance?&reqType=existingClaimCode-VisitList&claimCode=" + claimCode+"&patientId="+patId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Insurance?&reqType=existingClaimCode-VisitList&claimCode=" + claimCode+"&patientId="+patId, this.options);
   }
   public PostAdmission(currentAdmission) {
     let data = JSON.stringify(currentAdmission);
     return this.http.post<any>(
-      "/api/Admission?reqType=Admission",
+      "/clinicsoft/api/Admission?reqType=Admission",
       data,
       this.options
     );
@@ -243,7 +243,7 @@ export class ADT_DLService {
   public PostPatientBedInfo(CurrentPatientBedInfo: PatientBedInfo) {
     let data = JSON.stringify(CurrentPatientBedInfo);
     return this.http.post<any>(
-      "/api/Admission?reqType=PatientBedInfo",
+      "/clinicsoft/api/Admission?reqType=PatientBedInfo",
       data,
       this.options
     );
@@ -251,7 +251,7 @@ export class ADT_DLService {
   public PostDischargeSummary(dischargeSummary) {
     let data = JSON.stringify(dischargeSummary);
     return this.http.post<any>(
-      "/api/Admission?reqType=discharge-summary",
+      "/clinicsoft/api/Admission?reqType=discharge-summary",
       data,
       this.options
     );
@@ -259,7 +259,7 @@ export class ADT_DLService {
   public PostDischargeCancelBill(dischargeCancel) {
     let data = JSON.stringify(dischargeCancel);
     return this.http.post<any>(
-      "/api/Admission?reqType=postCancelDischargeBills",
+      "/clinicsoft/api/Admission?reqType=postCancelDischargeBills",
       data,
       this.options
     );
@@ -268,7 +268,7 @@ export class ADT_DLService {
   public PostAdmissionRemark(admission) {
     let data = JSON.stringify(admission);
     return this.http.post<any>(
-      "/api/Admission?reqType=post-admission-remark",
+      "/clinicsoft/api/Admission?reqType=post-admission-remark",
       data,
       this.options
     );
@@ -277,7 +277,7 @@ export class ADT_DLService {
   public PostADTBedReservation(reservation, action) {
     let data = JSON.stringify(reservation);
     return this.http.post<any>(
-      "/api/Admission?reqType=post-admission-reservation&actionName=" + action,
+      "/clinicsoft/api/Admission?reqType=post-admission-reservation&actionName=" + action,
       data,
       this.options
     );
@@ -286,7 +286,7 @@ export class ADT_DLService {
   public CheckAdmissionCancelled(cancelAdmission: AdmissionCancelVM) {
     let data = JSON.stringify(cancelAdmission);
     return this.http.put<any>(
-      "/api/Admission?reqType=cancel-admission&inpatientVisitId=" +
+      "/clinicsoft/api/Admission?reqType=cancel-admission&inpatientVisitId=" +
       cancelAdmission.PatientVisitId,
       data,
       this.options
@@ -296,7 +296,7 @@ export class ADT_DLService {
   public UpdateADTBedReservation(reservation, action) {
     let data = JSON.stringify(reservation);
     return this.http.put<any>(
-      "/api/Admission?reqType=update-admission-reservation&actionName=" +
+      "/clinicsoft/api/Admission?reqType=update-admission-reservation&actionName=" +
       action,
       data,
       this.options
@@ -305,7 +305,7 @@ export class ADT_DLService {
 
   public CancelADTBedReservation(reservationIdToCancel, action) {
     return this.http.put<any>(
-      "/api/Admission?reqType=cancel-admission-reservation&actionName=" +
+      "/clinicsoft/api/Admission?reqType=cancel-admission-reservation&actionName=" +
       action,
       reservationIdToCancel,
       this.options
@@ -315,7 +315,7 @@ export class ADT_DLService {
   public PutPatientDischarge(admission, bedInfoId: number) {
     let data = JSON.stringify(admission);
     return this.http.put<any>(
-      "/api/Admission?&reqType=discharge&bedInfoId=" + bedInfoId,
+      "/clinicsoft/api/Admission?&reqType=discharge&bedInfoId=" + bedInfoId,
       data,
       this.options
     );
@@ -328,7 +328,7 @@ export class ADT_DLService {
   ) {
     let data = JSON.stringify(newBedInfo);
     return this.http.put<any>(
-      "/api/Admission?reqType=transfer-upgrade&bedInfoId=" +
+      "/clinicsoft/api/Admission?reqType=transfer-upgrade&bedInfoId=" +
       bedInfoId +
       "&transferredFrom=" +
       transferredFrom,
@@ -339,14 +339,14 @@ export class ADT_DLService {
   public PutDischargeSummary(dischargeSummary) {
     let data = JSON.stringify(dischargeSummary);
     return this.http.put<any>(
-      "/api/Admission?reqType=discharge-summary",
+      "/clinicsoft/api/Admission?reqType=discharge-summary",
       data,
       this.options
     );
   }
   public PutAdmissionClearDue(patVisitId: number) {
     return this.http.put<any>(
-      "/api/Admission?&reqType=clear-due&patientVisitId=" + patVisitId,
+      "/clinicsoft/api/Admission?&reqType=clear-due&patientVisitId=" + patVisitId,
       this.options
     );
   }
@@ -354,7 +354,7 @@ export class ADT_DLService {
   public PutAdmissionDates(dataToEdit) {
     let data = JSON.stringify(dataToEdit);
     return this.http.put<any>(
-      "/api/Admission?reqType=change-admission-info",
+      "/clinicsoft/api/Admission?reqType=change-admission-info",
       data,
       this.options
     );
@@ -363,7 +363,7 @@ export class ADT_DLService {
   public PutAdmittingDoctor(admittingInfo: AdmittingDocInfoVM) {
     let data = JSON.stringify(admittingInfo);
     return this.http.put<any>(
-      "/api/Admission?reqType=change-admitting-doctor",
+      "/clinicsoft/api/Admission?reqType=change-admitting-doctor",
       data,
       this.options
     );
@@ -371,7 +371,7 @@ export class ADT_DLService {
   //sud: 20Jun'18
   public GetDepartments() {
     return this.http.get<any>(
-      "/api/Master?type=department&reqType=appointment"
+      "/clinicsoft/api/Master?type=department&reqType=appointment"
     );
   }
 
@@ -379,7 +379,7 @@ export class ADT_DLService {
   public DischargePatient(dischargeDetail: DischargeDetailBillingVM) {
     let data = JSON.stringify(dischargeDetail);
     return this.http.put<any>(
-      "/api/Admission?reqType=discharge-frombilling",
+      "/clinicsoft/api/Admission?reqType=discharge-frombilling",
       data,
       this.options
     );
@@ -387,21 +387,21 @@ export class ADT_DLService {
 
   public DischargePatientWithZeroItem(data: string) {
     return this.http.post<any>(
-      "/api/Admission?reqType=discharge-zero-item", data,
+      "/clinicsoft/api/Admission?reqType=discharge-zero-item", data,
       this.options
     );
   }
 
   public GetAdmissionBillItems() {
     return this.http.get<any>(
-      "/api/Billing?reqType=admission-bill-items",
+      "/clinicsoft/api/Billing?reqType=admission-bill-items",
       this.options
     );
   }
 
   public GetBedChargeBillItem(patId, patVisitId) {
     return this.http.get<any>(
-      "/api/Admission?reqType=existing-bed-types-for-patientVisit&patientId=" +
+      "/clinicsoft/api/Admission?reqType=existing-bed-types-for-patientVisit&patientId=" +
       patId +
       "&patientVisitId=" +
       patVisitId,
@@ -416,7 +416,7 @@ export class ADT_DLService {
     wristBandHtmlContent: string
   ) {
     return this.http.post<any>(
-      "/api/Admission?reqType=saveWristBandHTML&PrinterName=" +
+      "/clinicsoft/api/Admission?reqType=saveWristBandHTML&PrinterName=" +
       printerName +
       "&FilePath=" +
       filePath,
@@ -427,7 +427,7 @@ export class ADT_DLService {
 
   public AddToFavorites(itemId: string, preferenceType: string, data) {
     return this.http.post<any>(
-      "/api/Orders?reqType=AddToPreference&itemId=" +
+      "/clinicsoft/api/Orders?reqType=AddToPreference&itemId=" +
       itemId +
       "&preferenceType=" +
       preferenceType,
@@ -438,7 +438,7 @@ export class ADT_DLService {
 
   public RemoveFromFavorites(itemId, preferenceType: string) {
     return this.http.delete<any>(
-      "/api/Orders?reqType=DeleteFromPreference&itemId=" +
+      "/clinicsoft/api/Orders?reqType=DeleteFromPreference&itemId=" +
       itemId +
       "&preferenceType=" +
       preferenceType,

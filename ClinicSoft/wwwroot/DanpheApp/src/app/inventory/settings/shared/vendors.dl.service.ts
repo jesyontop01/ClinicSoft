@@ -8,27 +8,27 @@ export class VendorsDLService {
 	constructor(public http: HttpClient) { }
     //GET
     public GetVendorsList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=VendorsList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=VendorsList");
     }
     public GetVendors() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetVendors");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetVendors");
     }
 
     public GetCurrencyCode()
     {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetCurrencyCodeList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetCurrencyCodeList");
     }
 
     //POST
     public PostVendor(CurrentVendor) {
         let data = JSON.stringify(CurrentVendor);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddVendors", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddVendors", data, this.options);
     }
 
     //PUT
     public PutVendor(vendor) {
         let data = JSON.stringify(vendor);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdateVendors", vendor, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateVendors", vendor, this.options);
     }
    
 }

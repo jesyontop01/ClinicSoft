@@ -14,7 +14,7 @@ export class EmailEndPoint {
     // POST: sendiind new email
     public SendEmail(content: string) {
 
-        return this.http.post<any>("/api/InventoryEmail", content, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventoryEmail", content, this.options);
     }
     
 }

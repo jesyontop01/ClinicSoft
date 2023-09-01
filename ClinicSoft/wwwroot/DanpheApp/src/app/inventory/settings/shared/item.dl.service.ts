@@ -10,35 +10,35 @@ public options =  {
   constructor(public http: HttpClient) { }
     //GET
     public GetItemList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=ItemList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=ItemList");
     }
     public GetItem() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetItem");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetItem");
     }
 
     public GetAccountHead() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetAccountHead");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetAccountHead");
     }
     public GetPackagingType() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetPackagingType");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetPackagingType");
     }
     public GetUnitOfMeasurement() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetUnitOfMeasurement");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetUnitOfMeasurement");
     }
     public GetItemCategory() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetItemCategory");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetItemCategory");
     }
 
     //POST
     public PostItem(CurrentItem) {
         let data = JSON.stringify(CurrentItem);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddItem", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddItem", data, this.options);
     }
 
     //PUT
     public PutItem(Item) {
         let data = JSON.stringify(Item);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdateItem", Item, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateItem", Item, this.options);
     }
 
 }

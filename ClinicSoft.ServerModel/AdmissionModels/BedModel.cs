@@ -12,7 +12,7 @@ namespace ClinicSoft.ServerModel
     {
         [Key]
         public int BedId { get; set; }
-        public string BedCode { get; set; }
+        public string? BedCode { get; set; }
         public int BedNumber { get; set; }
         public int WardId { get; set; }
         public bool IsOccupied { get; set; }
@@ -22,7 +22,7 @@ namespace ClinicSoft.ServerModel
         public DateTime? ModifiedOn { get; set; }
         public DateTime? HoldedOn { get; set; }
         public bool IsActive { get; set; }
-        public WardModel Ward { get; set; }
+        public WardModel? Ward { get; set; }
         public bool? IsReserved { get; set; }
         public bool? OnHold { get; set; }
         [NotMapped]
@@ -36,20 +36,20 @@ namespace ClinicSoft.ServerModel
     }
      public class BedDisplayModel
     {
-        public string WardName { get; set; }
+        public string? WardName { get; set; }
         public int WardId { get; set; }
-        public string BedCode { get; set; }
+        public string? BedCode { get; set; }
         public int BedId { get; set; }
         public int BedNumber { get; set; }
-        public Boolean IsActive { get; set; }
-        public Boolean IsOccupied { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsOccupied { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int? CreatedBy { get; set; }
-        public List<BedFeatureModel> BedFeature {get;set;}
+        public List<BedFeatureModel>? BedFeature {get;set;}
     }
     public class BedFeatureModel
     {
         public int BedFeatureId { get; set; }
-        public string BedFeatureName { get; set; }
+        public string? BedFeatureName { get; set; }
     }
 }

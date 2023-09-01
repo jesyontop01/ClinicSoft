@@ -106,7 +106,7 @@ import { MessageboxService } from "../../shared/messagebox/messagebox.service";
     }
   
     GetPatientStickerDetails(PatientId:number) {
-      this.http.get<any>('/api/Stickers/GetPatientStickerDetails?PatientId=' + PatientId, this.options)
+      this.http.get<any>('/clinicsoft/api/Stickers/GetPatientStickerDetails?PatientId=' + PatientId, this.options)
         .map(res => res)
         .subscribe(res => this.CallBackStickerOnly(res),
           res => this.Error(res));
@@ -251,7 +251,7 @@ import { MessageboxService } from "../../shared/messagebox/messagebox.service";
       }
       this.loading = true;
       this.showLoading = true;
-      this.http.post<any>("/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
+      this.http.post<any>("/clinicsoft/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
         .map(res => res).subscribe(res => {
           if (res.Status = "OK") {
             this.timerFunction();

@@ -11,8 +11,8 @@ export class DanpheLoadingInterceptor implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
   //sud:23Jul'19--made skippUrls as array since multiple urls needed to be skipped..
 
-  skippUrls = ['/api/Notification?reqType=GetData-For-NotificationDropDown'
-    , '/api/BillInsurance?reqType=all-patients-for-insurance'];
+  skippUrls = ['/clinicsoft/api/Notification?reqType=GetData-For-NotificationDropDown'
+    , '/clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance'];
 
   constructor(private loaderService: LoadingScreenService) { }
 
@@ -20,7 +20,7 @@ export class DanpheLoadingInterceptor implements HttpInterceptor {
 
     this.requests.push(req);
 
-    //api/BillInsurance?reqType=all-patients-for-insurance&searchText=sud
+    //clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance&searchText=sud
     let urlWithParam = req.url;
     //if & is found in url then substring the url upto &, else take only url (eg: for notification dropdown)
     let urlOnly = urlWithParam.indexOf('&') > -1 ? urlWithParam.substr(0, urlWithParam.indexOf('&')) : urlWithParam;

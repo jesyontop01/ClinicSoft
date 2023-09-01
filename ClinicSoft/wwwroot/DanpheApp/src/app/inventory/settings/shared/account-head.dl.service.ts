@@ -10,10 +10,10 @@ export class AccountHeadDLService {
    constructor(public http: HttpClient) { }
     //GET
     public GetAccountHeadList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=AccountHeadList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=AccountHeadList");
     }
     public GetAccountHead() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetAccountHead");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetAccountHead");
     }
 
 
@@ -21,7 +21,7 @@ export class AccountHeadDLService {
     //POST
     public PostAccountHead(CurrentAccountHead) {
         let data = JSON.stringify(CurrentAccountHead);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddAccountHead", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddAccountHead", data, this.options);
     }
 
 
@@ -29,6 +29,6 @@ export class AccountHeadDLService {
     //PUT
     public PutAccountHead(accounthead) {
         let data = JSON.stringify(accounthead);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdateAccountHead", accounthead, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateAccountHead", accounthead, this.options);
     }
 }

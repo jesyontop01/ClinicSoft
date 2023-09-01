@@ -74,7 +74,7 @@ export class PatientProfilePicComponent {
         let omited = _.omit(patFileToPost, ['PatientFilesValidator']);
         let patFileInfo = JSON.stringify(omited);
 
-        this.http.post<any>("/api/Patient?reqType=profile-pic", patFileInfo)
+        this.http.post<any>("/clinicsoft/api/Patient?reqType=profile-pic", patFileInfo)
             .map(res => res)
             .subscribe((res: DanpheHTTPResponse) => {
                 if (res.Status == "OK") {
@@ -89,7 +89,7 @@ export class PatientProfilePicComponent {
 
 
     LoadProfilePic() {
-        this.http.get<any>("/api/patient?reqType=profile-pic&patientId=" + this.currPatient.PatientId)
+        this.http.get<any>("/clinicsoft/api/patient?reqType=profile-pic&patientId=" + this.currPatient.PatientId)
             .map(res => res)
             .subscribe((res: DanpheHTTPResponse) => {
                 console.log(res);

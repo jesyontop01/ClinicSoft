@@ -9,7 +9,7 @@ export class SupplierLedgerService {
     optionJson = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     constructor(
         private http: HttpClient,) {
-        this.baseUrl = '/api/phrmsupplierledger';
+        this.baseUrl = '/clinicsoft/api/phrmsupplierledger';
     }
     getAllSuppliersLedgerTxn() {
         return this.http.get<any>(this.baseUrl);

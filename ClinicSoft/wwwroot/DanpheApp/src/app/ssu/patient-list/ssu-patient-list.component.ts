@@ -239,7 +239,7 @@ export class SSU_PatientListComponent {
   }
 
   SearchPatientsByKey(keyword: any) {
-    return "/api/SocialServiceUnit/get-all-patients-for-ssu?searchText=:dd";
+    return "/clinicsoft/api/SocialServiceUnit/get-all-patients-for-ssu?searchText=:dd";
   }
   public EditExistingPatientInfo() {
 

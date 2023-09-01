@@ -14,20 +14,20 @@ namespace ClinicSoft.ServerModel
         public Int64 PatientFileId { get; set; }
         public int PatientId { get; set; }
         public Guid ROWGUID  { get; set; }
-        public string FileType { get; set; }
-        public string Title { get; set; }
+        public string? FileType { get; set; }
+        public string? Title { get; set; }
         public DateTime UploadedOn  { get; set; }
         public int UploadedBy { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         //public byte[] FileBinaryData { get; set; }
         public int FileNo { get; set; }
-        public string FileName { get; set; }
-        public string FileExtention { get; set; }
+        public string? FileName { get; set; }
+        public string? FileExtention { get; set; }
      
         public bool? IsActive { get; set; }
 
         [NotMapped]
-        public string FileBase64String { get; set; }
+        public string? FileBase64String { get; set; }
 
         [NotMapped]
         public bool? HasFile { get; set; }

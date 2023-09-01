@@ -52,7 +52,7 @@ export class MedicationPrescriptionComponent {
 //            //only for temporary purpose, call it using pharmacydl service.
 //            let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 //            let options = new RequestOptions({ headers: headers });
-//            this.http.get<any>('/api/Pharmacy?reqType=item', options).map(res => res)
+//            this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=item', options).map(res => res)
 //                .subscribe(res => {
 //                    if (res.Status == "OK") {
 //                        this.ordServ.medicationList = [];//empty the medicationlist after server call.
@@ -103,7 +103,7 @@ export class MedicationPrescriptionComponent {
 //            var employeeId = this.securityService.GetLoggedInUser().EmployeeId;
 //            let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 //            let options = new RequestOptions({ headers: headers });
-//            this.http.get<any>('/api/Pharmacy?reqType=employeePreference&employeeId=' + employeeId, options)
+//            this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=employeePreference&employeeId=' + employeeId, options)
 //                .map(res => res)
 //                .subscribe(res => {
 //                    if (res.Status == 'OK') {
@@ -299,7 +299,7 @@ export class MedicationPrescriptionComponent {
 //        //only for temporary purpose, call it using pharmacydl service.
 //        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
 //        let options = new RequestOptions({ headers: headers });
-//        this.http.get<any>('/api/Pharmacy?reqType=getGenericList', options).map(res => res)
+//        this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=getGenericList', options).map(res => res)
 //            .subscribe(res => {
 //                if (res.Status == "OK") {
 

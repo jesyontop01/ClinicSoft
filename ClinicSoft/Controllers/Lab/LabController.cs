@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.ServerModel;
@@ -27,7 +27,7 @@ using System.Net;
 using System.IO;
 using ClinicSoft.Services;
 using System.Web;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
 
@@ -2076,7 +2076,7 @@ namespace ClinicSoft.Controllers
                     //ipDataString is input (HTML string)
                     if (ipStr.Length > 0)
                     {
-                        ///api/Billing?reqType=saveLabSticker&PrinterName=sticker1809003399&FilePath=C:\DanpheHealthInc_PvtLtd_Files\Print\
+                        ///clinicsoft/api/Billing?reqType=saveLabSticker&PrinterName=sticker1809003399&FilePath=C:\DanpheHealthInc_PvtLtd_Files\Print\
                         //Read html
 
                         string PrinterName = this.ReadQueryStringData("PrinterName");

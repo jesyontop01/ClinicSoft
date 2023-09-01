@@ -12,24 +12,24 @@ export class OperationTheatreDLService {
   }
 
   public GetEmployeeList() {
-    return this.http.get<any>("/api/EmployeeSettings?reqType=get-employee");
+    return this.http.get<any>("/clinicsoft/api/EmployeeSettings?reqType=get-employee");
   }
 
   public GetIcdList() {
-    return this.http.get<any>("/api/Admission?reqType=get-icd10-list");
+    return this.http.get<any>("/clinicsoft/api/Admission?reqType=get-icd10-list");
   }
 
   public GetAllOTBookingDetails() {
-    return this.http.get<any>("/api/OperationTheatre?reqType=getAllOtBookingInfo")
+    return this.http.get<any>("/clinicsoft/api/OperationTheatre?reqType=getAllOtBookingInfo")
   }
 
   public PostNewBookingDetails(d) {
     let data = JSON.stringify(d);
-    return this.http.post<any>("/api/OperationTheatre?reqType=addNewOtBookingDetails", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/OperationTheatre?reqType=addNewOtBookingDetails", data, this.options);
   }
 
   public PutBookingDetails(data) {
     let strData = JSON.stringify(data);
-    return this.http.put<any>("/api/OperationTheatre?reqType=UpdateOtDetails", strData, this.options);
+    return this.http.put<any>("/clinicsoft/api/OperationTheatre?reqType=UpdateOtDetails", strData, this.options);
   }
 }

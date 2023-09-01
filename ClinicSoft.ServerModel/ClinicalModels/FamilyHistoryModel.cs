@@ -15,9 +15,9 @@ namespace ClinicSoft.ServerModel
         [Key]
         public int FamilyProblemId { get; set; }
        
-        public string Relationship { get; set; }
-        public string Note { get; set; }
-        public virtual PatientModel Patient { get; set; }
+        public string? Relationship { get; set; }
+        public string? Note { get; set; }
+        public virtual PatientModel? Patient { get; set; }
 
     }
 }

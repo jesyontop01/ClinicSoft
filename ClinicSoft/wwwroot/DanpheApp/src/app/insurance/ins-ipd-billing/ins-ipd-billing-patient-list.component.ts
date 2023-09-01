@@ -44,7 +44,7 @@ export class INSIPDBillingComponent {
   }
 
   LoadInpatientList() {
-    this.dlService.Read("/api/Insurance?reqType=list-ip-patients")
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=list-ip-patients")
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {

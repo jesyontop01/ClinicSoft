@@ -400,7 +400,7 @@ export class BIL_Print_IP_Estimation {
     
 
     LoadPatientBillingSummary(patientId: number, patientVisitId: number) {
-        this.dlService.Read("/api/IpBilling?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
+        this.dlService.Read("/clinicsoft/api/IpBilling?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
             .map(res => res)
             .subscribe((res: DanpheHTTPResponse) => {
                 if (res.Status == "OK" && res.Results) {

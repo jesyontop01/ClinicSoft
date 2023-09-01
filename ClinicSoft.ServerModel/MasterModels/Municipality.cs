@@ -11,11 +11,11 @@ namespace ClinicSoft.ServerModel
     {
         [Key]
         public int MunicipalityId { get; set; }
-        public string MunicipalityName { get; set; }
-        public string Type { get; set; }
-        public int CountryId { get; set; }
-        public int CountrySubDivisionId { get; set; }
-        public bool IsActive { get; set; }
+        public string? MunicipalityName { get; set; }
+        public string? Type { get; set; }
+        public int? CountryId { get; set; }
+        public int? CountrySubDivisionId { get; set; }
+        public bool?     IsActive { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int? ModifiedBy { get; set; }

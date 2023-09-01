@@ -38,7 +38,7 @@ export class UserProfileComponent {
   //to load the user data
   LoadUserProfile() {
     var empId = this.securityService.GetLoggedInUser().EmployeeId;
-    this.http.get<any>("/api/Employee?empId=" + empId + "&reqType=employeeProfile", this.options)
+    this.http.get<any>("/clinicsoft/api/Employee?empId=" + empId + "&reqType=employeeProfile", this.options)
       .map(res => res)
       .subscribe(res => {
         if (res.Status == 'OK') {
@@ -108,7 +108,7 @@ export class UserProfileComponent {
     this.SetLandingPage(data);
   }
   private SetLandingPage(data) {
-    this.http.post<any>("/api/Employee?reqType=set-landing-page", data, this.options)
+    this.http.post<any>("/clinicsoft/api/Employee?reqType=set-landing-page", data, this.options)
       .map(res => res)
       .subscribe(res => {
         if (res.Status == 'OK') {

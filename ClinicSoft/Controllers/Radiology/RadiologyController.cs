@@ -19,13 +19,13 @@ using ClinicSoft.Core.Caching;
 using System.Drawing;
 using System.Net.Mail;
 using ClinicSoft.Services;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.Enums;
 using ClinicSoft.ServerModel.RadiologyModels;
 using System.Transactions;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
     public class RadiologyController : CommonController

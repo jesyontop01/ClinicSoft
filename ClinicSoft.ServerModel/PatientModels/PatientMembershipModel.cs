@@ -22,7 +22,7 @@ namespace ClinicSoft.ServerModel
         public DateTime? ModifiedOn { get; set; }
         public bool? IsActive { get; set; }
 
-        public virtual PatientModel Patient { get; set; }
+        public virtual PatientModel? Patient { get; set; }
         //public virtual MembershipTypeModel MembershipType { get; set; }
     }
 

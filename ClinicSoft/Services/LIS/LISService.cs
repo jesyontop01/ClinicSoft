@@ -13,10 +13,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Transactions;
 //using System.Web.ModelBinding;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Services.LIS
 {
     public class LISService : ILISService

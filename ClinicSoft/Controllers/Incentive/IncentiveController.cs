@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.CommonTypes;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.DalLayer;
@@ -9,7 +9,7 @@ using ClinicSoft.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ClinicSoft.ServerModel.IncentiveModels;
-
+using Microsoft.Data.SqlClient;
 using ClinicSoft.ServerModel;
 using ClinicSoft.Core.Caching;
 using Microsoft.EntityFrameworkCore;

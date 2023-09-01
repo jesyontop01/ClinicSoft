@@ -26,7 +26,7 @@ namespace ClinicSoft.Controllers
         {
             realTimeRemoteSyncEnabled = _config.Value.RealTimeRemoteSyncEnabled;
         }
-        [HttpGet("~/api/WardSupplyAssets/GetFixedAssetStockBySubStoreId/{SubStoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetFixedAssetStockBySubStoreId/{SubStoreId}")]
         public IActionResult GetFixedAssetStockBySubStoreId([FromRoute] int SubStoreId)
         {
             WardSupplyDbContext wardSupplyDbContext = new WardSupplyDbContext(connString);
@@ -113,7 +113,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpGet("~/api/WardSupplyAssets/GetCapitalGoodsItemList/")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetCapitalGoodsItemList/")]
         public string GetCapitalGoodsItemList()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
@@ -165,7 +165,7 @@ namespace ClinicSoft.Controllers
             return DanpheJSONConvert.SerializeObject(responseData, true);
         }
 
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetRequistionList/{FromDate}/{ToDate}/{SubStoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetRequistionList/{FromDate}/{ToDate}/{SubStoreId}")]
         public IActionResult GetSubstoreAssetRequistionList([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int SubStoreId)
         {
             InventoryDbContext inventoryDbContext = new InventoryDbContext(connString);
@@ -202,7 +202,7 @@ namespace ClinicSoft.Controllers
             }
             return Ok(responseData);
         }
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetRequistionItemsById/{RequisitionId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetRequistionItemsById/{RequisitionId}")]
         public IActionResult GetSubstoreAssetRequistionItemsById([FromRoute] int RequisitionId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -245,7 +245,7 @@ namespace ClinicSoft.Controllers
         }
 
 
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetRequistionListByStoreId/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetRequistionListByStoreId/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult GetSubstoreAssetRequistionListByStoreId([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int StoreId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -285,7 +285,7 @@ namespace ClinicSoft.Controllers
         }
 
 
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetReturnList/{FromDate}/{ToDate}/{SubStoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetReturnList/{FromDate}/{ToDate}/{SubStoreId}")]
         public IActionResult GetSubstoreAssetReturnList([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int SubStoreId)
         {
             InventoryDbContext inventoryDbContext = new InventoryDbContext(connString);
@@ -322,7 +322,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         //Avanti-4-april-2021
-        [HttpGet("~/api/WardSupplyAssets/dispatchview/{RequisitionId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/dispatchview/{RequisitionId}")]
         public IActionResult dispatchview([FromRoute] int requisitionId, int storeId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -378,7 +378,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpGet("~/api/WardSupplyAssets/dispatchviewbyDispatchId/{DispatchId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/dispatchviewbyDispatchId/{DispatchId}")]
         public IActionResult dispatchviewbyDispatchId([FromRoute] int dispatchId, int storeId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -435,7 +435,7 @@ namespace ClinicSoft.Controllers
         }
 
         //swapnil-2-april-2021
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetReturnListByStoreId/{FromDate}/{ToDate}/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetReturnListByStoreId/{FromDate}/{ToDate}/{StoreId}")]
         public IActionResult GetSubstoreAssetReturnListByStoreId([FromRoute] DateTime FromDate, [FromRoute] DateTime ToDate, [FromRoute] int StoreId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -474,7 +474,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         //swapnil-2-april-2021
-        [HttpGet("~/api/WardSupplyAssets/GetSubstoreAssetReturnById/{ReturnId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetReturnById/{ReturnId}")]
         public IActionResult GetSubstoreAssetReturnItemsById([FromRoute] int ReturnId)
         {
             WardSupplyDbContext wardDbContext = new WardSupplyDbContext(connString);
@@ -512,7 +512,7 @@ namespace ClinicSoft.Controllers
             }
             return Ok(responseData);
         }
-        [HttpGet("~/api/WardSupplyAssets/GetFixedAssetStockByStoreId/{StoreId}")]
+        [HttpGet("~/clinicsoft/api/WardSupplyAssets/GetFixedAssetStockByStoreId/{StoreId}")]
         public IActionResult GetFixedAssetStockByStoreId([FromRoute] int StoreId)
         {
             WardSupplyDbContext wardSupplyDbContext = new WardSupplyDbContext(connString);
@@ -811,7 +811,7 @@ namespace ClinicSoft.Controllers
         }
         //swapnil-2-april-2021
         [HttpGet]
-        [Route("~/api/WardSupplyAssets/GetRequisitionDetailsForDispatch/{RequisitionId}")]
+        [Route("~/clinicsoft/api/WardSupplyAssets/GetRequisitionDetailsForDispatch/{RequisitionId}")]
         public async Task<IActionResult> GetRequisitionDetailsForDispatch([FromRoute] int RequisitionId)
         {
             var wardSupplyContext = new WardSupplyDbContext(connString);
@@ -831,7 +831,7 @@ namespace ClinicSoft.Controllers
         }
         //swapnil-2-april-2021
         [HttpPost()]
-        [Route("~/api/WardSupplyAssets/PostStoreDispatch")]
+        [Route("~/clinicsoft/api/WardSupplyAssets/PostStoreDispatch")]
         public IActionResult PostStoreDispatch()
         {
             var wardSupplydbcontext = new WardSupplyDbContext(connString);
@@ -948,7 +948,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
         [HttpPost]
-        [Route("~/api/WardSupplyAssets/PostDirectDispatch")]
+        [Route("~/clinicsoft/api/WardSupplyAssets/PostDirectDispatch")]
         public IActionResult PostDirectDispatch([FromBody] FixedAssetDispatchModel dispatchdataFromClient)
         {
             var responseData = new DanpheHTTPResponse<object>();
@@ -972,7 +972,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/WardSupply/GetFixedAssetDispatchListForItemReceive/{RequisitionId}")]
+        [Route("~/clinicsoft/api/WardSupply/GetFixedAssetDispatchListForItemReceive/{RequisitionId}")]
         public IActionResult GetFixedAssetDispatchListForItemReceive([FromRoute] int RequisitionId)
         {
             var wardSupplyContext = new WardSupplyDbContext(connString);

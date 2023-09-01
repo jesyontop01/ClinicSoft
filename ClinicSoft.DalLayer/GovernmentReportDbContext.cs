@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClinicSoft.ServerModel.ReportingModels;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Data;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 //using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class GovernmentReportDbContext : DbContext
@@ -41,10 +41,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         #region Outpatient Services
 

@@ -21,7 +21,7 @@ export class INCTV_LoadFractionFromBilling {
 
   LoadUptoDateFractionTransactions() {
     console.log('syncing....');
-    let url = "/api/Incentive?reqType=load-uptodate-transactions&fromDate=" + this.fromDate + "&toDate=" + this.toDate;
+    let url = "/clinicsoft/api/Incentive?reqType=load-uptodate-transactions&fromDate=" + this.fromDate + "&toDate=" + this.toDate;
     let data = null;
     this.dlService.Add(data, url).map(res => res).subscribe(res => {
       console.log(res);

@@ -39,7 +39,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/SocialServiceUnit/GetAllSsuPatients")]
+        [Route("~/clinicsoft/api/SocialServiceUnit/GetAllSsuPatients")]
         public async Task<IActionResult> GetAllSsuPatients(string search = "")
         {
 
@@ -194,7 +194,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/SocialServiceUnit/get-all-patients-for-ssu")]
+        [Route("~/clinicsoft/api/SocialServiceUnit/get-all-patients-for-ssu")]
         public IActionResult GetAllPatientsForSSU(string searchText = "")
         {
 
@@ -270,7 +270,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPost]// POST api/values
-        [Route("~/api/SocialServiceUnit/post-ssu-patient-information")]
+        [Route("~/clinicsoft/api/SocialServiceUnit/post-ssu-patient-information")]
         public IActionResult PostSsuPatientInformation()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();//type 'object' since we have variable return types
@@ -336,7 +336,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPut]
-        [Route("~/api/SocialServiceUnit/put-ssu-patient-information")]
+        [Route("~/clinicsoft/api/SocialServiceUnit/put-ssu-patient-information")]
         public IActionResult PutSsuPatientInformation()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();//type 'object' since we have variable return types
@@ -435,7 +435,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpPut]
-        [Route("~/api/SocialServiceUnit/put-activate-deactivate-ssu-patient")]
+        [Route("~/clinicsoft/api/SocialServiceUnit/put-activate-deactivate-ssu-patient")]
         public IActionResult PutActivateDeactivateSsuPatient()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();//type 'object' since we have variable return types

@@ -18,31 +18,31 @@ namespace ClinicSoft.ServerModel
         public int PatientId { get; set; }
         public int? ProviderId { get; set; }
         public Int64 LabTestId { get; set; }
-        public string ProcedureCode { get; set; }
-        public string LOINC { get; set; }
-        public string LabTestName { get; set; }
-        public string LabTestSpecimen { get; set; }
-        public string LabTestSpecimenSource { get; set; }
-        public string PatientName { get; set; }
-        public string Diagnosis { get; set; }
-        public string Urgency { get; set; }
+        public string? ProcedureCode { get; set; }
+        public string? LOINC { get; set; }
+        public string?       LabTestName { get; set; }
+        public string? LabTestSpecimen { get; set; }
+        public string? LabTestSpecimenSource { get; set; }
+        public string? PatientName { get; set; }
+        public string? Diagnosis { get; set; }
+        public string? Urgency { get; set; }
         public DateTime OrderDateTime { get; set; }
-        public string ProviderName { get; set; }
-        public string BillingStatus { get; set; }
-        public string OrderStatus { get; set; }
+        public string? ProviderName { get; set; }
+        public string? BillingStatus { get; set; }
+        public string? OrderStatus { get; set; }
         public int? SampleCode { get; set; }
-        public string RequisitionRemarks { get; set; }
+        public string? RequisitionRemarks { get; set; }
         public DateTime? SampleCreatedOn { get; set; }
         public DateTime? SampleCollectedOnDateTime { get; set; }
         public int? SampleCreatedBy { get; set; }
-        public string Comments { get; set; }
-        public string RunNumberType { get; set; }  
+        public string? Comments { get; set; }
+        public string? RunNumberType { get; set; }  
         public bool? IsSmsSend { get; set; }
-        public List<LabTestComponentResult> LabTestComponentResults { get; set; }
+        public List<LabTestComponentResult>? LabTestComponentResults { get; set; }
 
         //required for billing for listing the imaging items <dinesh:19Jan'17>
-        public virtual LabTestModel LabTest { get; set; }
-        public virtual PatientModel Patient { get; set; }
+        public virtual LabTestModel? LabTest { get; set; }
+        public virtual PatientModel? Patient { get; set; }
 
         //Suraj: Updated to not null
         public int ReportTemplateId { get; set; }
@@ -57,10 +57,10 @@ namespace ClinicSoft.ServerModel
         public bool? IsActive { get; set; }//sud:15Sept'18--to exclude InActive Records.
 
         //added: ashim : 18Sep2018
-        public string VisitType { get; set; }
+        public string? VisitType { get; set; }
         public int? LabReportId { get; set; }
         public Int64? BarCodeNumber { get; set; }
-        public string WardName { get; set; }
+        public string? WardName { get; set; }
 
         public bool? IsVerified { get; set; }
         public DateTime? VerifiedOn { get; set; }
@@ -72,13 +72,13 @@ namespace ClinicSoft.ServerModel
         public DateTime? ResultAddedOn { get; set; }
         public int? PrintedBy { get; set; }
         public int? PrintCount { get; set; }
-        public string SampleCodeFormatted { get; set; }
+        public string? SampleCodeFormatted { get; set; }
 
         public int? BillCancelledBy { get; set; }
         public DateTime? BillCancelledOn { get; set; }
-        public string LabTypeName { get; set; }//pratik:9Feb2021
-        public string GoogleFileIdForCovid { get; set; }
-        public string CovidFileName { get; set; }
+        public string? LabTypeName { get; set; }//pratik:9Feb2021
+        public string? GoogleFileIdForCovid { get; set; }
+        public string? CovidFileName { get; set; }
         public bool? IsFileUploaded { get; set; }
         public int? UploadedBy { get; set; }
         public DateTime? UploadedOn { get; set; }
@@ -91,17 +91,17 @@ namespace ClinicSoft.ServerModel
     {
         public Int64 BillItemPriceId { get; set; }
         public int ServiceDepartmentId { get; set; }
-        public string ServiceDepartmentName { get; set; }
-        public string ServiceDepartmentShortName { get; set; }
+        public string? ServiceDepartmentName { get; set; }
+        public string? ServiceDepartmentShortName { get; set; }
         public int? Displayseq { get; set; }
         public int ItemId { get; set; }
-        public string ItemName { get; set; }
-        public string ProcedureCode { get; set; }
+        public string? ItemName { get; set; }
+        public string? ProcedureCode { get; set; }
         public int Price { get; set; }
         public bool TaxApplicable { get; set; }
         public bool DiscountApplicable { get; set; }
-        public string Description { get; set; }
-        public string RunNumberType { get; set; }
+        public string? Description { get; set; }
+        public string? RunNumberType { get; set; }
     }
 
 }

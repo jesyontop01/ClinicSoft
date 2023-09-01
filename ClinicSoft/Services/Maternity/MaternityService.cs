@@ -10,12 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.StaticFiles;
 using ClinicSoft.Utilities;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Services.Maternity
 {
     public class MaternityService : IMaternityService

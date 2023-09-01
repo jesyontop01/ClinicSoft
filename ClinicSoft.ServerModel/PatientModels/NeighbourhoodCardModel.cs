@@ -12,7 +12,7 @@ namespace ClinicSoft.ServerModel
         [Key]
         public int NeighbourhoodCardId { get; set; }
         public int PatientId { get; set; }
-        public string LPNo { get; set; }
+        public string? LPNo { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }

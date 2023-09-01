@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.ServerModel;
@@ -23,7 +23,7 @@ using System.Data;
 using Newtonsoft.Json.Converters;
 using ClinicSoft.AccTransfer.Accounting;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
     [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]

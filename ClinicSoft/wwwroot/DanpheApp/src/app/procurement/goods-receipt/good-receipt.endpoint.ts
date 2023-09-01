@@ -13,7 +13,7 @@ export class GoodReceiptEndPoint {
 
     //GET: list of companies
     public GetGoodReceiptList() {
-        return this.http.get<any>("/api/InventoryGoodReceipt", this.options);
+        return this.http.get<any>("/clinicsoft/api/InventoryGoodReceipt", this.options);
     }
 
     // POST: add new company
@@ -26,7 +26,7 @@ export class GoodReceiptEndPoint {
         goodReceipt.GoodsReceiptItem = goodReceiptItems;
         let data = JSON.stringify(goodReceipt);
 
-        return this.http.post<any>("/api/InventoryGoodReceipt", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventoryGoodReceipt", data, this.options);
         
     }
 
@@ -38,17 +38,17 @@ export class GoodReceiptEndPoint {
       });
       temp.GoodsReceiptItem = goodReceiptItems;
       let data = JSON.stringify(temp);
-      return this.http.put<any>("/api/InventoryGoodReceipt", data, this.options);
+      return this.http.put<any>("/clinicsoft/api/InventoryGoodReceipt", data, this.options);
     }
 
     // Get: Company By Id
     public GetGoodReceipt(id: number) {
-        return this.http.get<any>("/api/InventoryGoodReceipt/" + id, this.options);
+        return this.http.get<any>("/clinicsoft/api/InventoryGoodReceipt/" + id, this.options);
     }
 
     // Get: Vendor List for good receipt
     public GetVendorList() {
-        return this.http.get<any>("/api/GetVendorList", this.options);
+        return this.http.get<any>("/clinicsoft/api/GetVendorList", this.options);
     }
 
     

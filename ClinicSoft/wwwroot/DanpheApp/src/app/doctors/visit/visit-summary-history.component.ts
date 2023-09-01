@@ -37,7 +37,7 @@ export class VisitSummaryHistoryComponent {
     }
 
     public GetPatientVisitList() {
-        let url = "/api/Visit?reqType=patVisitList&patientId=" + this.selectedPatient.PatientId;
+        let url = "/clinicsoft/api/Visit?reqType=patVisitList&patientId=" + this.selectedPatient.PatientId;
         this.dlService.Read(url).map(res => res).subscribe(res => {
             if (res.Status == "OK" && res.Results.length) {
                 this.visitList = res.Results;

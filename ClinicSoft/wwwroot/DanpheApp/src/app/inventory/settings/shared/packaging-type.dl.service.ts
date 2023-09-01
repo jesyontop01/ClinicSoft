@@ -10,10 +10,10 @@ export class PackagingTypeDLService {
 	constructor(public http: HttpClient) { }
     //GET
     public GetPackagingTypeList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=PackagingTypeList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=PackagingTypeList");
     }
     public GetPackagingType() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetPackagingType");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetPackagingType");
     }
 
 
@@ -21,13 +21,13 @@ export class PackagingTypeDLService {
     //POST
     public PostPackagingType(CurrentPackagingType) {
         let data = JSON.stringify(CurrentPackagingType);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddPackagingType", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddPackagingType", data, this.options);
     }
 
     //PUT
     public PutPackagingType(packagingtype) {
         let data = JSON.stringify(packagingtype);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdatePackagingType", packagingtype, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdatePackagingType", packagingtype, this.options);
     }
 
 }

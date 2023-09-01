@@ -16,17 +16,17 @@ namespace ClinicSoft.ServerModel
         public int PatientId { get; set; }
         public int MedicationId { get; set; }
         [NotMapped]
-        public string MedicationName { get; set; }
+        public string? MedicationName { get; set; }
         public int ProviderId{ get; set; }
         [NotMapped]
-        public string ProviderName { get; set; }
-        public string Route { get; set; }
+        public string? ProviderName { get; set; }
+        public string? Route { get; set; }
         public int Duration { get; set; }
-        public string DurationType { get; set; }
-        public string Dose { get; set; }
-        public string Frequency { get; set; }
+        public string? DurationType { get; set; }
+        public string? Dose { get; set; }
+        public string? Frequency { get; set; }
         public int? Refill { get; set; }
-        public string TypeofMedication { get; set; }
+        public string? TypeofMedication { get; set; }
         // this is used to show ..selected medicine with tick mark  in order list 
         [NotMapped]
         public bool IsSelected { get; set; }
@@ -34,6 +34,6 @@ namespace ClinicSoft.ServerModel
         public int? ModifiedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
-        public virtual PatientModel Patient { get; set; }
+        public virtual PatientModel? Patient { get; set; }
     }
 }

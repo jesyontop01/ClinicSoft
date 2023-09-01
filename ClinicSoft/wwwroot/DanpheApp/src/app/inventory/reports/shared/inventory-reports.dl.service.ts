@@ -112,10 +112,10 @@ export class InventoryReportsDLService {
     return this.http.get<any>("/InventoryReports/GoodReceiptEvaluationReport?FromDate=" + CurrentGREvaluation.FromDate + "&ToDate=" + CurrentGREvaluation.ToDate + "&GoodReceiptNo=" + CurrentGREvaluation.GoodReceiptNo + "&TransactionType=" + CurrentGREvaluation.TransactionType);
   }
   public GetAllFiscalYears() {
-    return this.http.get<any>("/api/Billing?reqType=all-fiscalYears");
+    return this.http.get<any>("/clinicsoft/api/Billing?reqType=all-fiscalYears");
   }
   public GetCurrentFiscalYear() {
-    return this.http.get<any>("/api/Billing?reqType=current-fiscalYear");
+    return this.http.get<any>("/clinicsoft/api/Billing?reqType=current-fiscalYear");
   }
 
   public showVendorTrasactionDetails(fiscalYearId, VendorId) {
@@ -129,7 +129,7 @@ export class InventoryReportsDLService {
     return this.http.get<any>("/InventoryReports/SubstoreStockReport?StoreId=" + StoreId + "&ItemId=" + ItemId);
   }
   public LoadInventoryStores() {
-    return this.http.get<any>('/api/inventory?reqType=getInventoryStoreList', this.options);
+    return this.http.get<any>('/clinicsoft/api/inventory?reqType=getInventoryStoreList', this.options);
   }
   public GetItemDetailsByIds(selectedIds, itemId) {
     return this.http.get<any>("/InventoryReports/CurrentStockItemDetailsByStoreId?StoreIds=" + selectedIds + "&ItemId=" + itemId, this.options);
@@ -139,7 +139,7 @@ export class InventoryReportsDLService {
   }
 
   public GetItem() {
-    return this.http.get<any>("/api/InventorySettings?reqType=GetItemList");
+    return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetItemList");
   }
 
   public GetReturnToSupplierReport(obj :any) {
@@ -160,6 +160,6 @@ export class InventoryReportsDLService {
 
   }
   public GetInventoryList() {
-    return this.http.get<any>("/api/ActivateInventory/", this.options);
+    return this.http.get<any>("/clinicsoft/api/ActivateInventory/", this.options);
   }
 }

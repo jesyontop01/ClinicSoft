@@ -61,7 +61,7 @@ export class GOVINSPatientWiseClaimsComponent {
 
   public loadClaimsList() {
     this.loading = true;
-    this.dlService.Read("/api/Insurance?reqType=insurance-claim-code-list&patientId=" + this.selPatient.PatientId)
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=insurance-claim-code-list&patientId=" + this.selPatient.PatientId)
       .map(res => res)
       .finally(() => { this.loading = false; })
       .subscribe(res => {
@@ -128,7 +128,7 @@ export class GOVINSPatientWiseClaimsComponent {
       return;
     }
     this.loading = true;
-    this.dlService.Read("/api/Insurance?reqType=insurance-claim-code-list-by-claimcode&claimCode=" + this.selClaimCode)
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=insurance-claim-code-list-by-claimcode&claimCode=" + this.selClaimCode)
       .map(res => res)
       .finally(() => { this.loading = false; })
       .subscribe(res => {

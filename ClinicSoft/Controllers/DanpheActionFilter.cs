@@ -133,7 +133,7 @@ namespace ClinicSoft.Controllers
                 {
                     //this check only for dicom file posting
                     //this condition is used for checking datas of listener.exe
-                    if (req.Method.ToUpper() == "POST" && req.Path.Value.ToString() == "/api/Dicom")
+                    if (req.Method.ToUpper() == "POST" && req.Path.Value.ToString() == "/clinicsoft/api/Dicom")
                     {
                         string bodyData = ReadBodyAsString(context.HttpContext.Request);
                         var obj = JObject.Parse(bodyData);

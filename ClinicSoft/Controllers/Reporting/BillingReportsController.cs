@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.DalLayer;
 using Microsoft.Extensions.Options;
@@ -16,7 +16,7 @@ using ClinicSoft.Enums;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.BillingModels;
 using ClinicSoft.ServerModel.BillingReports;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers.Reporting
 {
     //This Reporting controller provides controller and ControllerView functionality for reporting

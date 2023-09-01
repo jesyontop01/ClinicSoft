@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.CommonTypes;
@@ -12,13 +12,13 @@ using ClinicSoft.Security;
 using ClinicSoft.ServerModel;
 using System.Xml;
 using Newtonsoft.Json;
-
+using Microsoft.Data.SqlClient;
 using ClinicSoft.Core;
 using ClinicSoft.Enums;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.ClinicalModels;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ClinicSoft.Controllers
@@ -109,7 +109,7 @@ namespace ClinicSoft.Controllers
         {
             return "value";
         }
-        [HttpGet("/api/Nursing/getNephrologyPatients")]
+        [HttpGet("/clinicsoft/api/Nursing/getNephrologyPatients")]
         public string getNephrologyPatients()
         {
             DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();

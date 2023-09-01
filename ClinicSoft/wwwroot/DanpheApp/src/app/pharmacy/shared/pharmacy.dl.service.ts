@@ -21,70 +21,70 @@ export class PharmacyDLService {
   }
 
   public GetPHRMPendingBillsForSettlement(storeId) {
-    return this.http.get<any>(`/api/Pharmacy?reqType=pending-bills-for-settlements&storeId=${storeId}`);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy?reqType=pending-bills-for-settlements&storeId=${storeId}`);
   }
   public GetPHRMSettlements(storeId,FromDate,ToDate) {
-    return this.http.get<any>("/api/Pharmacy?reqType=allPHRMSettlements&storeId="+storeId+"&FromDate="+FromDate+"&Todate="+ToDate);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=allPHRMSettlements&storeId="+storeId+"&FromDate="+FromDate+"&Todate="+ToDate);
   }
   // get pharmacy settlement duplicate records. 
   public GetPHRMSettlementDuplicatePrints() {
-    return this.http.get<any>("/api/Pharmacy?reqType=settlements-duplicate-prints");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=settlements-duplicate-prints");
   }
   // get pharmacy settlement duplicate details using settlement id. 
   public GetPHRMSettlementDuplicateDetails(settlementId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-settlements-duplicate-details&settlementId=" + settlementId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-settlements-duplicate-details&settlementId=" + settlementId);
   }
   public GetCreditInvoicesByPatient(patientId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=unpaidInvoiceByPatientId" + "&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=unpaidInvoiceByPatientId" + "&patientId=" + patientId, this.options);
   }
 
   public GetPatientPastBillSummary(patientId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=patientPastBillSummary" + "&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=patientPastBillSummary" + "&patientId=" + patientId, this.options);
   }
   public GetProvisionalItemsByPatientIdForSettle(patientId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=provisionalItemsByPatientIdForSettle" + "&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=provisionalItemsByPatientIdForSettle" + "&patientId=" + patientId, this.options);
   }
   public GetCreditOrganizationList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-credit-organizations");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-credit-organizations");
   }
   //GET: setting-supplier manage : list of suppliers
   public GetSupplierList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=supplier");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=supplier");
   }
   public GetAllSupplierList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=allSupplier");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=allSupplier");
   }
 
   public GetCounter() {
-    return this.http.get<any>('/api/pharmacy?reqType=getCounter', this.options);
+    return this.http.get<any>('/clinicsoft/api/pharmacy?reqType=getCounter', this.options);
   }
   public ActivatePharmacyCounter(counterId: number, counterName: string) {
-    return this.http.put<any>("/api/Security?reqType=activatePharmacyCounter&counterId=" + counterId + "&counterName=" + counterName, this.options);
+    return this.http.put<any>("/clinicsoft/api/Security?reqType=activatePharmacyCounter&counterId=" + counterId + "&counterName=" + counterName, this.options);
   }
   public DeActivatePharmacyCounter() {
-    return this.http.put<any>("/api/Security?reqType=deActivatePharmacyCounter", this.options);
+    return this.http.put<any>("/clinicsoft/api/Security?reqType=deActivatePharmacyCounter", this.options);
   }
 
   //GET: getting vendor accodring the vendorid
   public GetSupplierDetailsBySupplierId(supplierId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=SupplierDetails&supplierId=" + supplierId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=SupplierDetails&supplierId=" + supplierId, this.options);
   }
   //GET: setting-itemtype manage : List of itemtypes
   public GetItemTypeList() {
-    return this.http.get<any>('/api/Pharmacy?reqType=itemtype', this.options);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=itemtype', this.options);
   }
   //GET: setting-packingtype  : List of packingtypes
   public GetPackingTypeList() {
-    return this.http.get<any>('/api/Pharmacy?reqType=GetPackingType', this.options);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=GetPackingType', this.options);
   }
   //GET: setting- item manage: list of itemtypes
   public GetItemTypeListManage() {
-    return this.http.get<any>('/api/Pharmacy?reqType=GetItemType', this.options);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=GetItemType', this.options);
   }
   //GET: List of ItemTypes with all Child Items Master data
   public GetItemTypeListWithItems(dispensaryId?) {
     try {
-      return this.http.get<any>('/api/Pharmacy?reqType=itemtypeListWithItems&DispensaryId=' + dispensaryId, this.options);
+      return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=itemtypeListWithItems&DispensaryId=' + dispensaryId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -93,7 +93,7 @@ export class PharmacyDLService {
 
   public GetRackByItem(itemId) {
     try {
-      return this.http.get<any>('/api/Pharmacy?reqType=GetRackByItem&itemId=' + itemId, this.options);
+      return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=GetRackByItem&itemId=' + itemId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -101,53 +101,53 @@ export class PharmacyDLService {
   }
   //GET: setting-company manage : list of companies
   public GetCompanyList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=company");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=company");
   }
 
   //GET: setting-category manage : list of categories
   public GetCategoryList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=category");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=category");
   }
   ///GET: get ItemList by ItemTypeId
   public GetItemListByItemTypeId(itemTypeId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=GetItemListByItemTypeId&itemTypeId=" + itemTypeId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=GetItemListByItemTypeId&itemTypeId=" + itemTypeId, this.options);
   }
   public GetStockForItemDispatch() {
-    return this.http.get<any>("/api/Pharmacy/GetStockForItemDispatch");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy/GetStockForItemDispatch");
   }
 
 
   //GET: setting-unit of measurement manage : list of unit of measurements
   public GetUnitOfMeasurementList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=unitofmeasurement");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=unitofmeasurement");
   }
   //GET: setting-item manage : list of items
   public GetItemList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=item");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=item");
   }
   //Get Only Master Items
   public GetItemMasterList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=GetAllItems");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=GetAllItems");
   }
   //GET: Get Store Details
   public GetActiveStore() {
-    return this.http.get<any>("/api/PharmacyReport/GetActiveStores");
+    return this.http.get<any>("/clinicsoft/api/PharmacyReport/GetActiveStores");
   }
   //GET: setting-tax manage : list of tax
   public GetTAXList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=tax");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=tax");
   }
   public GetGenericList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=getGenericList");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getGenericList");
   }
 
   //GET:patient List from Patient controller
   public GetPatients(searchTxt: string = '', isInsurance: boolean = false) {
-    // return this.http.get<any>("/api/Patient", this.options);
-    return this.http.get<any>(`/api/Pharmacy/GetPatientList?SearchText=${searchTxt}&IsInsurance=${isInsurance}`, this.options);
+    // return this.http.get<any>("/clinicsoft/api/Patient", this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetPatientList?SearchText=${searchTxt}&IsInsurance=${isInsurance}`, this.options);
   }
   public GetPatientsListForSaleItems(isInsurnaceDispensary) {
-    return this.http.get<any>(`/api/Pharmacy/GetPharmacySalePatient/${isInsurnaceDispensary}`, this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetPharmacySalePatient/${isInsurnaceDispensary}`, this.options);
   }
   //GET:deposit
   public GetDeposit() {
@@ -157,7 +157,7 @@ export class PharmacyDLService {
   //This call to Visit Controller for code reuseability because this method logic written in Visit controller
   public GetExistedMatchingPatientList(firstName, lastName, phoneNumber) {
     try {
-      return this.http.get<any>("/api/Patient?reqType=GetMatchingPatList&FirstName="
+      return this.http.get<any>("/clinicsoft/api/Patient?reqType=GetMatchingPatList&FirstName="
         + firstName +
         "&LastName=" + lastName +
         "&PhoneNumber=" + phoneNumber,
@@ -171,7 +171,7 @@ export class PharmacyDLService {
   //GET: STOCK : get stock manage by ItemId
   public GetStockManageByItemId(ItemId) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=stockManage&itemId=" + ItemId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=stockManage&itemId=" + ItemId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -180,57 +180,57 @@ export class PharmacyDLService {
 
   ///GET: POList by Passing Status 
   public GetPHRMPurchaseOrderList(status: string, fromDate: string, toDate: string) {
-    return this.http.get<any>("/api/Pharmacy?reqType=getPHRMOrderList&status=" + status + "&FromDate=" + fromDate + "&ToDate=" + toDate, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getPHRMOrderList&status=" + status + "&FromDate=" + fromDate + "&ToDate=" + toDate, this.options)
   }
   ///GET: POItemsList By Passing PurchaseOrderId
   public GetPHRMPOItemsByPOId(purchaseOrderId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=getPHRMPOItemsByPOId&purchaseOrderId=" + purchaseOrderId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getPHRMPOItemsByPOId&purchaseOrderId=" + purchaseOrderId, this.options)
   }
 
   //GET: Provisional Items List
   public GetPHRMProvisionalItemList(status: string) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-provisional-items&status=" + status, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-provisional-items&status=" + status, this.options)
   }
 
   //GET: All Provisional Items List
   public GetAllPHRMProvisionalItemList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-all-provisional-items", this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-all-provisional-items", this.options)
   }
 
   //GET: Requsted drug-list by patientId and VisitId (used in Emergency) --added by Anish 25 Feb Anish
   public GetAllDrugOrderOfERPatient(patientId: number, visitId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-all-drugs-order&patientId=" + patientId + "&visitId=" + visitId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-all-drugs-order&patientId=" + patientId + "&visitId=" + visitId, this.options)
   }
 
   //GET: drigs Items List
   public GetPHRMDrugsItemList(requisitionId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-drugs-request-items&requisitionId=" + requisitionId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-drugs-request-items&requisitionId=" + requisitionId, this.options)
   }
 
   // GET: drug dispatch list per nursing requisition
   public GetPHRMDrugDispatchList(requisitionId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-drugs-dispatch-items&requisitionId=" + requisitionId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-drugs-dispatch-items&requisitionId=" + requisitionId, this.options)
   }
 
   ////GET: PhrmPurchaseOrderItems List for GR
   public GetPHRMPOItemsForGR(purchaseOrderId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=getPHRMPOItemsForGR&purchaseOrderId=" + purchaseOrderId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getPHRMPOItemsForGR&purchaseOrderId=" + purchaseOrderId, this.options)
   }
   ///GET: Get Return To SupplierItem by ReturnToSupplierId
   public GetReturnToSupplierItemsByRetSuppId(returnToSupplierId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=getReturnToSupplierItemsByReturnToSupplierId&returnToSupplierId=" + returnToSupplierId, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getReturnToSupplierItemsByReturnToSupplierId&returnToSupplierId=" + returnToSupplierId, this.options)
   }
 
   ///GET: Get Return To SupplierItem of Goodreceipt from GR
   public GetReturnToSupplierItemsofExistingGR() {
-    // return this.http.get<any>("/api/Pharmacy?reqType=getReturnToSu=" + returnToSupplierId, this.options)
-    return this.http.get<any>("/api/GetCreditNoteItems", this.options);
+    // return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getReturnToSu=" + returnToSupplierId, this.options)
+    return this.http.get<any>("/clinicsoft/api/GetCreditNoteItems", this.options);
   }
 
   ///GET: Get Write Off Items By WriteOffId
   public GetWriteOffItemsByWriteOffId(writeOffId) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getWriteOffItemsByWriteOffId&writeOffId=" + writeOffId, this.options)
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getWriteOffItemsByWriteOffId&writeOffId=" + writeOffId, this.options)
     }
     catch (ex) {
       throw ex;
@@ -238,56 +238,56 @@ export class PharmacyDLService {
   }
   //GET: order-goods receipt list
   public GetGoodsReceiptList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=goodsreceipt");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=goodsreceipt");
   }
   //Get GR List with Date Filtered
   GetDateFilteredGoodsReceiptList(fromDate: string, toDate: string) {
-    return this.http.get<any>("/api/Pharmacy/GetDateFilteredGoodsReceiptList?FromDate=" + fromDate + "&ToDate=" + toDate, this.optionJson);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy/GetDateFilteredGoodsReceiptList?FromDate=" + fromDate + "&ToDate=" + toDate, this.optionJson);
   }
 
   public GetAccountDetailsList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-goods-receipt-groupby-supplier");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-goods-receipt-groupby-supplier");
   }
 
   public GetEachAccountDetailsList(SupplierID) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-goods-receipt-by-SupplierID&providerId=" + SupplierID);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-goods-receipt-by-SupplierID&providerId=" + SupplierID);
   }
   //Get : all the stroe list
   public GetMainStore() {
-    return this.http.get<any>("/api/Pharmacy?reqType=getMainStore");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getMainStore");
   }
   //Get : all the main store stock
   public GetMainStoreStock(showAllStock: boolean = false) {
-    return this.http.get<any>(`/api/Pharmacy/GetMainStoreStock/${showAllStock}`);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetMainStoreStock/${showAllStock}`);
   }
   //Get : all the unconfirmed stock for main store
   public GetMainStoreIncomingStock(fromDate, toDate) {
-    return this.http.get<any>("/api/Pharmacy/GetMainStoreIncomingStock?FromDate=" + fromDate + "&ToDate=" + toDate, this.optionJson);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy/GetMainStoreIncomingStock?FromDate=" + fromDate + "&ToDate=" + toDate, this.optionJson);
   }
   //receiveIncomingStock
   ReceiveIncomingStock(dispatchId: number, receivingRemarks: string) {
     var remarks = JSON.stringify(receivingRemarks);
-    return this.http.put<any>(`/api/Pharmacy/ReceiveIncomingStock/${dispatchId}`, remarks, this.optionJson);
+    return this.http.put<any>(`/clinicsoft/api/Pharmacy/ReceiveIncomingStock/${dispatchId}`, remarks, this.optionJson);
   }
   ///GET: Return  To Supplier
   public GetReturnToSupplier(suppId?, grNo?, invcId?, fromDate?, toDate?) {
-    return this.http.get<any>("/api/Pharmacy?reqType=returnToSupplier&supplierId=" + suppId + "&gdprintId=" + grNo + "&invoiceNo=" + invcId + "&FromDate=" + fromDate + "&ToDate=" + toDate, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=returnToSupplier&supplierId=" + suppId + "&gdprintId=" + grNo + "&invoiceNo=" + invcId + "&FromDate=" + fromDate + "&ToDate=" + toDate, this.options);
   }
 
   ///GET: Return Items To Supplier List
   public GetReturnItemsToSupplierList(fromDate, toDate) {
-    return this.http.get<any>("/api/Pharmacy?reqType=returnItemsToSupplierList&FromDate=" + fromDate + "&ToDate=" + toDate, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=returnItemsToSupplierList&FromDate=" + fromDate + "&ToDate=" + toDate, this.options);
   }
 
   ///////here
   //public GetPharmacyInvoiceDetailsByInvoiceId(invoiceId: number) {
-  //    return this.http.get<any>("/api/Pharmacy?reqType=getInvoiceDetailsByInvoiceId" + "&invoiceId=" + invoiceId, this.options);
+  //    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getInvoiceDetailsByInvoiceId" + "&invoiceId=" + invoiceId, this.options);
   //}
 
   //GET: WriteOff List With SUM of Toatal WriteOff Qty
   public GetWriteOffList() {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getWriteOffList");
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getWriteOffList");
     }
     catch (ex) {
       throw ex;
@@ -295,35 +295,35 @@ export class PharmacyDLService {
   }
   ////Get Stock Details List
   public GetStockDetailsList(dispensaryId?) {
-    return this.http.get<any>("/api/Pharmacy?reqType=itemtypeListWithItems&DispensaryId=" + dispensaryId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=itemtypeListWithItems&DispensaryId=" + dispensaryId);
   }
 
   ////Get Narcotics Stock Details List(sales)
   public GetNarcoticsStockDetailsList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=natcoticsstockDetails");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=natcoticsstockDetails");
   }
   public GetSalesDetailsList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=stockDetails");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=stockDetails");
   }
 
   // Get items List
   public GetItemsList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=item");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=item");
   }
   // Get only the item Name List
   public getOnlyItemNameList() {
-    return this.http.get<any>("/api/PharmacyReport/getOnlyItemNameList");
+    return this.http.get<any>("/clinicsoft/api/PharmacyReport/getOnlyItemNameList");
   }
   public getItemListForManualReturn() {
-    return this.http.get<any>("/api/pharmacy/getItemListForManualReturn");
+    return this.http.get<any>("/clinicsoft/api/pharmacy/getItemListForManualReturn");
   }
   public getAvailableBatchesByItemId(itemId: number) {
-    return this.http.get<any>(`/api/pharmacy/getAvailableBatchesByItemId/${itemId}`);
+    return this.http.get<any>(`/clinicsoft/api/pharmacy/getAvailableBatchesByItemId/${itemId}`);
   }
   //Get: Get Users for Return from Customer Report.
 
   public getPharmacyUsers() {
-    return this.http.get<any>("/api/PharmacyReport/GetPharmacyUsersForReturnFromCustomerReport");
+    return this.http.get<any>("/clinicsoft/api/PharmacyReport/GetPharmacyUsersForReturnFromCustomerReport");
   }
   //GET: Get Return From Customer Report.
   public getReturnFromCustomerReport(userId, dispensaryId, fromDate, toDate) {
@@ -435,20 +435,20 @@ export class PharmacyDLService {
   }
   //GET: order-goods receipt items-view by GR-Id
   public GetGRItemsByGRId(goodsReceiptId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=GRItemsViewByGRId&goodsReceiptId=" + goodsReceiptId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=GRItemsViewByGRId&goodsReceiptId=" + goodsReceiptId, this.options);
   }
   //GET:purchase order-items -view by PO-ID
   public GetPODetailsByPOID(purchaseOrderId) {
-    return this.http.get<any>(`/api/Pharmacy/GetPODetailsByPOID/${purchaseOrderId}`, this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetPODetailsByPOID/${purchaseOrderId}`, this.options);
   }
   //GET: order-goods receipt items-view by GR-Id
   public GetGRItemsForEdit(goodsReceiptId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=GRforEdit&goodsReceiptId=" + goodsReceiptId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=GRforEdit&goodsReceiptId=" + goodsReceiptId, this.options);
   }
   ///GET: GetBatchNo List By ItemId
   public GetBatchNoByItemId(ItemId) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getBatchNoByItemId&itemId=" + ItemId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getBatchNoByItemId&itemId=" + ItemId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -457,7 +457,7 @@ export class PharmacyDLService {
   ///GET: Get Item Details By passing BatchNo 
   public GetItemDetailsByBatchNo(BatchNo, ItemId) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getItemDetailsByBatchNo&batchNo=" + BatchNo + "&ItemId=" + ItemId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getItemDetailsByBatchNo&batchNo=" + BatchNo + "&ItemId=" + ItemId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -572,27 +572,27 @@ export class PharmacyDLService {
   }
   ////GET: GET ItemList For Return Function Whose Available Qty is greater then zero
   public GetItemListWithTotalAvailableQty() {
-    return this.http.get<any>("/api/Pharmacy?reqType=PHRMItemListWithTotalAvailableQuantity", this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=PHRMItemListWithTotalAvailableQuantity", this.options)
   }
   //GET: Get all doctors list    
   //we are taking employe
   public GetDoctorList() {
-    return this.http.get<any>("/api/Master?type=departmentemployee&reqType=appointment", this.options);
+    return this.http.get<any>("/clinicsoft/api/Master?type=departmentemployee&reqType=appointment", this.options);
   }
 
   public GetPatientSummary(patientId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=patientSummary" + "&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=patientSummary" + "&patientId=" + patientId, this.options);
   }
 
 
   //GET: Prescription List group by PatientName, DoctorName and CreatedDate
   public GetPrescriptionList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=getprescriptionlist", this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getprescriptionlist", this.options);
   }
   //GET: Prescription Items list by PatientId && ProviderId for sale purpose
   public GetPrescriptionItems(PatientId: number, ProviderId: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getPrescriptionItems&patientId=" + PatientId + "&providerId=" + ProviderId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getPrescriptionItems&patientId=" + PatientId + "&providerId=" + ProviderId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -602,7 +602,7 @@ export class PharmacyDLService {
   //GET: Get all Sale invoice data list
   public GetSaleInvoiceList(fromDate, toDate, dispensaryId) {
     try {
-      return this.http.get<any>(`/api/Pharmacy?reqType=getsaleinvoicelist&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
+      return this.http.get<any>(`/clinicsoft/api/Pharmacy?reqType=getsaleinvoicelist&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
     }
     catch (ex) {
       throw ex;
@@ -612,7 +612,7 @@ export class PharmacyDLService {
   //GET: Get all Sale invoice data list
   public GetSaleReturnList(fromDate, toDate, dispensaryId) {
     try {
-      return this.http.get<any>(`/api/Pharmacy?reqType=getsalereturnlist&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
+      return this.http.get<any>(`/clinicsoft/api/Pharmacy?reqType=getsalereturnlist&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
     }
     catch (ex) {
       throw ex;
@@ -625,7 +625,7 @@ export class PharmacyDLService {
   //GET: Get sale invoice items details by Invoice id
   public GetSaleInvoiceItemsByInvoiceId(invoiceid: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getsaleinvoiceitemsbyid&invoiceid=" + invoiceid, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getsaleinvoiceitemsbyid&invoiceid=" + invoiceid, this.options);
     }
     catch (ex) {
       throw ex;
@@ -634,7 +634,7 @@ export class PharmacyDLService {
   //GET: Get sale return invoice items details by Invoice id
   public GetSaleInvoiceRetItemsByInvoiceId(invoiceid: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getsaleinvoiceretitemsbyid&invoiceid=" + invoiceid, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getsaleinvoiceretitemsbyid&invoiceid=" + invoiceid, this.options);
     }
     catch (ex) {
       throw ex;
@@ -643,7 +643,7 @@ export class PharmacyDLService {
   //GET: Get sale return invoice items details by InvoiceReturnId
   public GetSaleReturnInvoiceItemsByInvoiceRetId(invoiceretid: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getsalereturninvoiceitemsbyid&invoiceretid=" + invoiceretid, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getsalereturninvoiceitemsbyid&invoiceretid=" + invoiceretid, this.options);
     }
     catch (ex) {
       throw ex;
@@ -653,7 +653,7 @@ export class PharmacyDLService {
   //Only get GR Items details with fullfill condition => AvailableQty > 0   
   public GetGRItemsByItemId(ItemId) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getGRItemsByItemId&itemId=" + ItemId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getGRItemsByItemId&itemId=" + ItemId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -664,24 +664,24 @@ export class PharmacyDLService {
   //this for return from customer to pharmacy                
   public GetReturnFromCustomerModelDataByInvoiceId(InvoiceId: number, fiscYrId, storeId: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getReturnFromCustDataModelByInvId&invoiceId=" + InvoiceId + "&FiscalYearId=" + fiscYrId + "&storeId=" + storeId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getReturnFromCustDataModelByInvId&invoiceId=" + InvoiceId + "&FiscalYearId=" + fiscYrId + "&storeId=" + storeId, this.options);
     }
     catch (ex) {
       throw ex;
     }
   }
   public GetAllFiscalYears() {
-    return this.http.get<any>("/api/Billing?reqType=all-fiscalYears");
+    return this.http.get<any>("/clinicsoft/api/Billing?reqType=all-fiscalYears");
   }
 
   public GetCreditOrganization() {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-credit-organizations");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-credit-organizations");
   }
   //
   //GET: Patient - Patient Details by Patient Id (one patient details)
   public GetPatientByPatId(patientId: number) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getPatientByPatId&patientId=" + patientId, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getPatientByPatId&patientId=" + patientId, this.options);
     }
     catch (ex) {
       throw ex;
@@ -699,7 +699,7 @@ export class PharmacyDLService {
   ////Get: Get All Patient List BAsed on PAtient Type
   public GetInOutPatientDetails(value) {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getInOutPatientDetails&IsOutdoorPat=" + value, this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getInOutPatientDetails&IsOutdoorPat=" + value, this.options);
     }
     catch (ex) { throw ex; }
 
@@ -825,7 +825,7 @@ export class PharmacyDLService {
   //GET: Dispensary List
   public GetDispensaryList() {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getDispenaryList", this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getDispenaryList", this.options);
     }
     catch (ex) { throw ex; }
   }
@@ -865,7 +865,7 @@ export class PharmacyDLService {
   //GET: Get Stock Txn Items
   public GetStockTxnItems() {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getStockTxnItemList", this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getStockTxnItemList", this.options);
     }
     catch (ex) { throw ex; }
   }
@@ -875,116 +875,116 @@ export class PharmacyDLService {
   //this stock details with all unique (by ItemId,ExpiryDate,BatchNo)  records with sum of Quantity
   //items with 0 quantity or more than 0 showing in list
   public GetAllItemsStockDetailsList(dispensaryId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=allItemsStockDetails&DispensaryId=" + dispensaryId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=allItemsStockDetails&DispensaryId=" + dispensaryId);
   }
 
   //Get ward stock details
   public GetWardStockDetailsList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=phrm-stock");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=phrm-stock");
   }
   // GET: Stock Details with 0, null or > 0 Quantity
   //this stock details with all unique (by ItemId,ExpiryDate,BatchNo)  records with sum of Quantity
   //items with 0 quantity or more than 0 showing in list
   public GetAllItemsStockList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=allItemsStock");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=allItemsStock");
   }
   // get rack list
   public GetRackList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=getRackList");
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getRackList");
   }
   //Get: Ward Request Item list
   public GetWardRequestedItemList(status: string) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-ward-requested-items&status=" + status, this.options)
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-ward-requested-items&status=" + status, this.options)
   }
 
   //get deposit record of patient
   public GetDepositFromPatient(patientId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=patAllDeposits" + "&patientId=" + patientId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=patAllDeposits" + "&patientId=" + patientId, this.options);
   }
   //Get pharmacy requisition list
   public GetItemwiseRequistionList() {
-    return this.http.get<any>("/api/Pharmacy?reqType=itemwiseRequistionList", this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=itemwiseRequistionList", this.options);
   }
   //Get: Single Requisition Details (RequisitionItems) by RequisitionId for View
   public GetRequisitionItemsByRID(RequisitionId: number) {
-    return this.http.get<any>('/api/Pharmacy?reqType=requisitionItemsForView&requisitionId=' + RequisitionId);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=requisitionItemsForView&requisitionId=' + RequisitionId);
   }
   //GET: Get Requisition and Requisition Items with Stock Records for Dispatch Items
   public GetRequisitionDetailsForDispatch(RequisitionId: number) {
-    return this.http.get<any>("/api/Pharmacy/GetRequisitionDetailsForDispatch/" + RequisitionId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy/GetRequisitionDetailsForDispatch/" + RequisitionId, this.options);
   }
 
   public GetDispatchDetails(RequisitionId: number) {
-    return this.http.get<any>('/api/Pharmacy?reqType=dispatchview&requisitionId=' + RequisitionId);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=dispatchview&requisitionId=' + RequisitionId);
   }
   public GetMainStoreIncomingStockById(DispatchId: number) {
-    return this.http.get<any>(`/api/Pharmacy/GetMainStoreIncomingStockById/${DispatchId}`);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetMainStoreIncomingStockById/${DispatchId}`);
   }
   public GetDispatchItemByDispatchId(DispatchId: number) {
-    return this.http.get<any>('/api/Pharmacy?reqType=dispatchviewbyDispatchId&DispatchId=' + DispatchId);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=dispatchviewbyDispatchId&DispatchId=' + DispatchId);
   }
   public GetTermsList(TermApplicationId: number) {
-    return this.http.get<any>('/api/InventorySettings/GetTermsListByTermsApplicationId/' + TermApplicationId);
+    return this.http.get<any>('/clinicsoft/api/InventorySettings/GetTermsListByTermsApplicationId/' + TermApplicationId);
   }
   //POST : setting-supplier manage
   public PostSupplier(supplier) {
     let data = JSON.stringify(supplier);
-    return this.http.post<any>("/api/Pharmacy?reqType=supplier", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=supplier", data, this.options);
   }
   //POST : setting-company manage
   public PostCompany(company) {
     let data = JSON.stringify(company);
-    return this.http.post<any>("/api/Pharmacy?reqType=company", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=company", data, this.options);
   }
   //POST: setting-dispense add
   public PostDispensary(Dispensary) {
     let data = JSON.stringify(Dispensary);
-    return this.http.post<any>("/api/Pharmacy?reqType=dispensary", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=dispensary", data, this.options);
   }
   //POST : setting-category manage
   public PostCategory(category) {
     let data = JSON.stringify(category);
-    return this.http.post<any>("/api/Pharmacy?reqType=category", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=category", data, this.options);
   }
   //POST : send SMS
   public sendSMS(text) {
     let data = JSON.stringify(text);
-    return this.http.post<any>("/api/Pharmacy?reqType=sendsms", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=sendsms", data, this.options);
   }
   //POST : setting-unit of measurement manage
   public PostUnitOfMeasurement(uom) {
     let data = JSON.stringify(uom);
-    return this.http.post<any>("/api/Pharmacy?reqType=unitofmeasurement", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=unitofmeasurement", data, this.options);
   }
   //POST : setting-item type manage
   public PostItemType(itemtype) {
     let data = JSON.stringify(itemtype)
-    return this.http.post<any>("/api/Pharmacy?reqType=itemtype", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=itemtype", data, this.options);
   }
   //POST : setting-item type manage
   public PostPackingType(packingtype) {
     let data = JSON.stringify(packingtype)
-    return this.http.post<any>("/api/Pharmacy?reqType=packingtype", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=packingtype", data, this.options);
   }
   //POST : setting-item manage
   public PostItem(item) {
     let data = JSON.stringify(item)
-    return this.http.post<any>("/api/Pharmacy?reqType=item", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=item", data, this.options);
   }
   //POST : setting-tax manage
   public PostTAX(tax) {
     let data = JSON.stringify(tax)
-    return this.http.post<any>("/api/Pharmacy?reqType=tax", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=tax", data, this.options);
   }
   //POST : Generic Name
   public PostGenericName(genericName) {
     let data = JSON.stringify(genericName);
-    return this.http.post<any>("/api/Pharmacy?reqType=genericName", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=genericName", data, this.options);
   }
   //POST : narcotic Record
   public PostNarcoticRecord(narcoticRecord) {
     let data = JSON.stringify(narcoticRecord);
-    return this.http.post<any>("/api/Pharmacy?reqType=narcoticRecord", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=narcoticRecord", data, this.options);
   }
 
   //POST: Patient
@@ -992,7 +992,7 @@ export class PharmacyDLService {
   public PostPatientRegister(patient) {
     try {
       let data = JSON.stringify(patient);
-      return this.http.post<any>("/api/Pharmacy?reqType=outdoorPatRegistration", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=outdoorPatRegistration", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1001,18 +1001,18 @@ export class PharmacyDLService {
   //POST: Save Purchase Order
   public PostToPurchaseOrder(PurchaseOrderObjString: string) {
     let data = PurchaseOrderObjString;
-    return this.http.post<any>("/api/Pharmacy?reqType=PurchaseOrder", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=PurchaseOrder", data, this.options);
 
   }
   //POST:Save Goods Receipt
   public PostToGoodReceipt(GoodReceiptVMObjString: string) {
     let data = GoodReceiptVMObjString;
-    return this.http.post<any>("/api/Pharmacy?reqType=postGoodReceipt", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postGoodReceipt", data, this.options);
   }
   ////POST: Return To Supplier Items
   public PostReturnToSupplierItems(ReturnToSupplierObjString: string) {
     let data = ReturnToSupplierObjString;
-    return this.http.post<any>("/api/Pharmacy?reqType=postReturnToSupplierItems", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postReturnToSupplierItems", data, this.options);
 
   }
 
@@ -1024,7 +1024,7 @@ export class PharmacyDLService {
   public PostWriteOffItems(WriteOffObjString: string) {
     try {
       let data = WriteOffObjString;
-      return this.http.post<any>("/api/Pharmacy?reqType=postWriteOffItems", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postWriteOffItems", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1035,20 +1035,20 @@ export class PharmacyDLService {
 
   //POST: Save Prescription with Prescription Items
   public PostPrescription(data: string) {
-    return this.http.post<any>("/api/Pharmacy?reqType=postprescription", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postprescription", data, this.options);
   }
 
   //POST:
   public PostInvoiceDetails(data: string) {
     try {
-      return this.http.post<any>("/api/Pharmacy/PostInvoice", data, this.optionJson);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy/PostInvoice", data, this.optionJson);
     } catch (ex) {
       throw ex;
     }
   }
   public PostSalesCategoryDetails(data: string) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=postsalescategorydetail", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postsalescategorydetail", data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1056,7 +1056,7 @@ export class PharmacyDLService {
 
   public GetSalesCategoryList() {
     try {
-      return this.http.get<any>("/api/Pharmacy?reqType=getsalescategorylist", this.options);
+      return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=getsalescategorylist", this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1065,14 +1065,14 @@ export class PharmacyDLService {
   //POST:return from customer invoice data to post server
   public PostReturnFromCustomerData(data: string) {
     try {
-      return this.http.post<any>("/api/Pharmacy/PostReturnFromCustomer", data, this.optionJson);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy/PostReturnFromCustomer", data, this.optionJson);
     } catch (ex) {
       throw ex;
     }
   }
   public postManualReturn(data: string) {
     try {
-      return this.http.post<any>("/api/pharmacy/postManualReturn", data, this.optionJson);
+      return this.http.post<any>("/clinicsoft/api/pharmacy/postManualReturn", data, this.optionJson);
     } catch (ex) {
       throw ex;
     }
@@ -1082,7 +1082,7 @@ export class PharmacyDLService {
   //Post to StockManage table and post to stockTxnItem table 
   PostManagedStockDetails(data) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=manage-stock-detail", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=manage-stock-detail", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1090,14 +1090,14 @@ export class PharmacyDLService {
   }
   public PostPharmacyOutPatient(patientObjString: string) {
     let data = patientObjString;
-    return this.http.post<any>("/api/Patient?reqType=billing-out-patient", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Patient?reqType=billing-out-patient", data, this.options);
 
   }
   //POST:update storeManage transaction
   //Post to StoreStock table
   PostManagedStoreDetails(data) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=manage-store-detail", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=manage-store-detail", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1106,12 +1106,12 @@ export class PharmacyDLService {
   //POST: Post to credit organizations
   public PostCreditOrganization(creditOrganization) {
     let data = JSON.stringify(creditOrganization);
-    return this.http.post<any>("/api/Pharmacy?reqType=post-credit-organizations", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=post-credit-organizations", data, this.options);
   }
   //POST: transfer to Dispensary and update store stock
   TransferToDispensary(data) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=transfer-to-dispensary", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=transfer-to-dispensary", data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1119,7 +1119,7 @@ export class PharmacyDLService {
   //POST: transfer to Store and update Dispensary stock
   TransferToStore(data, StoreId) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=transfer-to-store&storeId=" + StoreId, data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=transfer-to-store&storeId=" + StoreId, data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1128,7 +1128,7 @@ export class PharmacyDLService {
   //post to stock transaction items
   PostGoodsReceiptCancelDetail(goodsReceiptId: number, cancelRemarks: string) {
     try {
-      return this.http.post<any>(`/api/Pharmacy?reqType=cancel-goods-receipt&goodsReceiptId=${goodsReceiptId}&CancelRemarks=${cancelRemarks}`, this.options);
+      return this.http.post<any>(`/clinicsoft/api/Pharmacy?reqType=cancel-goods-receipt&goodsReceiptId=${goodsReceiptId}&CancelRemarks=${cancelRemarks}`, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1136,22 +1136,22 @@ export class PharmacyDLService {
   }
   //Post drugs request data from nursing to pharmacy invoice item table.
   public PostProvisonalItems(requisitionObjString: string) {
-    return this.http.post<any>("/api/Pharmacy?reqType=post-provisional-item", requisitionObjString, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=post-provisional-item", requisitionObjString, this.options);
   }
 
   public PostPharmacyDeposit(PHRMDepositModel: PHRMDepositModel) {
     let data = JSON.stringify(PHRMDepositModel);
-    return this.http.post<any>("/api/Pharmacy?reqType=depositData", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=depositData", data, this.options);
   }
   //Post ward request data from ward supply to pharmacy
   public PostWardRequisitionItems(requisitionObjString: string) {
-    return this.http.post<any>("/api/Pharmacy?reqType=post-ward-requesition-item", requisitionObjString, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=post-ward-requesition-item", requisitionObjString, this.options);
   }
   //PUT:Setting-Stock Items Expiry Date and BatchNo change
   public UpdateStockExpiryDateandBatchNo(ExpiryDateandBatchNoUpdatedStock) {
     try {
       let data = JSON.stringify(ExpiryDateandBatchNoUpdatedStock);
-      return this.http.put<any>("/api/Pharmacy/UpdateStockExpiryDateandBatchNo", data, this.optionJson);
+      return this.http.put<any>("/clinicsoft/api/Pharmacy/UpdateStockExpiryDateandBatchNo", data, this.optionJson);
     }
     catch (ex) {
       throw ex;
@@ -1160,70 +1160,70 @@ export class PharmacyDLService {
   //PUT : setting-supplier manage
   public PutSupplier(supplier) {
     let data = JSON.stringify(supplier);
-    return this.http.put<any>("/api/Pharmacy?reqType=supplier", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=supplier", data, this.options);
   }
   //PUT: credit organizations
   public PutCreditOrganization(creditOrganization) {
     let data = JSON.stringify(creditOrganization);
-    return this.http.put<any>("/api/Pharmacy?reqType=put-credit-organizations", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=put-credit-organizations", data, this.options);
   }
   //PUT : setting-company manage
   public PutCompany(company) {
     let data = JSON.stringify(company);
-    return this.http.put<any>("/api/Pharmacy?reqType=company", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=company", data, this.options);
   }
   //PUT : setting-dispensary manage
   public PutDispensary(dispensary) {
     let data = JSON.stringify(dispensary);
-    return this.http.put<any>("/api/Pharmacy?reqType=dispensary", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=dispensary", data, this.options);
   }
   //PUT : setting-category manage
   public PutCategory(category) {
     let data = JSON.stringify(category);
-    return this.http.put<any>("/api/Pharmacy?reqType=category", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=category", data, this.options);
   }
   //PUT : setting-unit of measurement manage
   public PutUnitOfMeasurement(uom) {
     let data = JSON.stringify(uom);
-    return this.http.put<any>("/api/Pharmacy?reqType=unitofmeasurement", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=unitofmeasurement", data, this.options);
   }
   //PUT : setting-item type manage
   public PutItemType(itemtype) {
     let data = JSON.stringify(itemtype);
-    return this.http.put<any>("/api/Pharmacy?reqType=itemtype", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=itemtype", data, this.options);
   }
   //PUT : setting-packing type manage
   public PutPackingType(packingtype) {
     let data = JSON.stringify(packingtype);
-    return this.http.put<any>("/api/Pharmacy?reqType=packingtype", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=packingtype", data, this.options);
   }
   //PUT : setting-item  manage
   public PutItem(item) {
     let data = JSON.stringify(item);
-    return this.http.put<any>("/api/Pharmacy?reqType=item", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=item", data, this.options);
   }
 
   //PUT : CCCharge value in parameter tbl
   public PutCCcharge(temp) {
     let data = JSON.stringify(temp)
-    return this.http.put<any>("/api/Pharmacy?reqType=cccharge", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=cccharge", data, this.options);
   }
   //PUT : setting-item type manage
   public PutTAX(tax) {
     let data = JSON.stringify(tax);
-    return this.http.put<any>("/api/Pharmacy?reqType=tax", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=tax", data, this.options);
   }
   //PUT GenericName
   public PutGenericName(genericName) {
     let data = JSON.stringify(genericName);
-    return this.http.put<any>("/api/Pharmacy?reqType=genericName", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=genericName", data, this.options);
   }
 
   //PUT : Stock Manage
   PutStock(stkManage) {
     try {
       let data = JSON.stringify(stkManage);
-      return this.http.put<any>("/api/Pharmacy?reqType=stockManage", data, this.options);
+      return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=stockManage", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1233,14 +1233,14 @@ export class PharmacyDLService {
   //PUT: DepositPrintCount
   PutDepositPrintCount(depositdata) {
     let data = JSON.stringify(depositdata);
-    return this.http.put<any>("/api/Pharmacy?reqType=updateDepositPrint", data, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=updateDepositPrint", data, this.options);
   }
 
   //PUT: Sale -Payment of Credit Invoice Items
   putPayInvoiceItemsCredit(CreditPayData) {
     try {
       let data = JSON.stringify(CreditPayData);
-      return this.http.put<any>("/api/Pharmacy?reqType=InvItemsCreditPay", data, this.options);
+      return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=InvItemsCreditPay", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1251,7 +1251,7 @@ export class PharmacyDLService {
   public UpdateStockMRP(MRPUpdatedStock) {
     try {
       let data = JSON.stringify(MRPUpdatedStock);
-      return this.http.put<any>("/api/Pharmacy/UpdateStockMRP", data, this.optionJson);
+      return this.http.put<any>("/clinicsoft/api/Pharmacy/UpdateStockMRP", data, this.optionJson);
     }
     catch (ex) {
       throw ex;
@@ -1262,7 +1262,7 @@ export class PharmacyDLService {
   public UpdateGoodsReceipt(GoodReceipt) {
     try {
       let data = JSON.stringify(GoodReceipt);
-      return this.http.put<any>("/api/Pharmacy?reqType=updateGoodReceipt", data, this.options);
+      return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=updateGoodReceipt", data, this.options);
     }
     catch (ex) {
       throw ex;
@@ -1274,28 +1274,28 @@ export class PharmacyDLService {
   ///Abhishek: 4Sept'18 -- for credit billing
 
   public GetAllCreditSummary(fromDate, toDate, dispensaryId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=listpatientunpaidtotal&FromDate=" + fromDate + "&ToDate=" + toDate + "&DispensaryId=" + dispensaryId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=listpatientunpaidtotal&FromDate=" + fromDate + "&ToDate=" + toDate + "&DispensaryId=" + dispensaryId);
   }
   //
   public GetAllProvisionalReturn(fromDate, toDate, dispensaryId) {
-    return this.http.get<any>(`/api/Pharmacy?reqType=provisional-return-list&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy?reqType=provisional-return-list&FromDate=${fromDate}&ToDate=${toDate}&DispensaryId=${dispensaryId}`, this.options);
   }
   // GetAllProvisionalReturnDuplicatePrint
   public GetAllProvisionalReturnDuplicatePrint(PatientId) {
-    return this.http.get<any>("/api/Pharmacy?reqType=provisional-return-duplicate-print&patientId=" + PatientId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=provisional-return-duplicate-print&patientId=" + PatientId);
   }
 
   public GetPatientCreditItems(patientId: number, storeId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=provisionalItemsByPatientId&patientId=" + patientId + "&DispensaryId=" + storeId);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=provisionalItemsByPatientId&patientId=" + patientId + "&DispensaryId=" + storeId);
   }
   public GetStoreRackNameByItemId(itemId: number) {
-    return this.http.get<any>("/api/Rack/GetStoreRackNameByItemId/" + itemId);
+    return this.http.get<any>("/clinicsoft/api/Rack/GetStoreRackNameByItemId/" + itemId);
   }
 
   //POST:
   public PostCreditItemsDetails(data: string, requisitionId: number) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=postProvisional&requisitionId=" + requisitionId, data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postProvisional&requisitionId=" + requisitionId, data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1303,14 +1303,14 @@ export class PharmacyDLService {
 
   public AddInvoiceForCreditItems(data: string) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=addInvoiceForCrItems", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=addInvoiceForCrItems", data, this.options);
     } catch (ex) {
       throw ex;
     }
   }
   public updateInvoiceForCreditItems(data: string) {
     try {
-      return this.http.post<any>("/api/Pharmacy?reqType=updateInvoiceForCrItems", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=updateInvoiceForCrItems", data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1318,17 +1318,17 @@ export class PharmacyDLService {
 
   // print to update the print count on billtransaction
   public PutPrintCount(printCount: number, invoiceNo: number) {
-    return this.http.put<any>("/api/Pharmacy?reqType=UpdatePrintCountafterPrint" + "&PrintCount=" + printCount + "&invoiceNo=" + invoiceNo, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=UpdatePrintCountafterPrint" + "&PrintCount=" + printCount + "&invoiceNo=" + invoiceNo, this.options);
   }
 
   public PutAddItemToRack(itemId: number, dispensaryRackId: number, storeRackId: number) {
-    return this.http.put<any>("/api/Pharmacy?reqType=add-Item-to-rack" + "&itemId=" + itemId + "&dispensaryRackId=" + dispensaryRackId + `&storeRackId=${storeRackId}`, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=add-Item-to-rack" + "&itemId=" + itemId + "&dispensaryRackId=" + dispensaryRackId + `&storeRackId=${storeRackId}`, this.options);
   }
   // for cancel the credit bill.
   public CancelCreditBill(creditItems: string) {
     try {
       let data = JSON.stringify(creditItems);
-      return this.http.post<any>("/api/Pharmacy?reqType=cancelCreditItems", data, this.options);
+      return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=cancelCreditItems", data, this.options);
     } catch (ex) {
       throw ex;
     }
@@ -1337,48 +1337,48 @@ export class PharmacyDLService {
   public PostBillSettlement(settlementInfo) {
     let data = JSON.stringify(settlementInfo);
     //data = CommonFunctions.EncodeRequestDataString(data);
-    return this.http.post<any>("/api/Pharmacy?reqType=postSettlementInvoice", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=postSettlementInvoice", data, this.options);
 
   }
 
   //Save Requisition
   public PostToRequisition(RequisitionObjString: string) {
     let data = RequisitionObjString;
-    return this.http.post<any>("/api/Pharmacy?reqType=StoreRequisition", data, this.options);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy?reqType=StoreRequisition", data, this.options);
   }
   //POST:Save dispatched Items to database
   public PostDispatch(dispatchItems) {
-    return this.http.post<any>("/api/Pharmacy/PostStoreDispatch", dispatchItems, this.optionJson);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy/PostStoreDispatch", dispatchItems, this.optionJson);
   }
   //Start: REGION: FOR BillSettlements APIS
   public PutSettlementPrintCount(settlmntId: number) {
-    return this.http.put<any>("/api/Pharmacy?reqType=updateSettlementPrintCount&settlementId=" + settlmntId, this.options);
+    return this.http.put<any>("/clinicsoft/api/Pharmacy?reqType=updateSettlementPrintCount&settlementId=" + settlmntId, this.options);
   }
   //Get pharmacy GR history
   public GetGoodReceiptHistory() {
-    return this.http.get<any>("/api/Pharmacy/getGoodReceiptHistory", this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy/getGoodReceiptHistory", this.options);
   }
   public GetGRDetailsByGRId(goodsReceiptId: number, isGRCancelled) {
-    return this.http.get<any>(`/api/Pharmacy/GetGRDetailsByGRId?GoodsReceiptId=${goodsReceiptId}&IsGRCancelled=${isGRCancelled}`, this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetGRDetailsByGRId?GoodsReceiptId=${goodsReceiptId}&IsGRCancelled=${isGRCancelled}`, this.options);
 
   }
   public GetInvoiceReceiptByInvoiceId(invoiceId: number) {
-    return this.http.get<any>(`/api/Pharmacy/GetInvoiceReceiptByInvoiceId/${invoiceId}`, this.options);
+    return this.http.get<any>(`/clinicsoft/api/Pharmacy/GetInvoiceReceiptByInvoiceId/${invoiceId}`, this.options);
   }
   //POST Direct Dispatch
   public PostDirectDispatch(dispatchItems: any[]) {
     let data = JSON.stringify(dispatchItems);
-    return this.http.post<any>("/api/Pharmacy/PostDirectDispatch", data, this.optionJson);
+    return this.http.post<any>("/clinicsoft/api/Pharmacy/PostDirectDispatch", data, this.optionJson);
   }
   //get PHRM Items Rate History
   public getItemRateHistory() {
-    return this.http.get<any>('/api/Pharmacy/getItemRateHistory', this.options);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy/getItemRateHistory', this.options);
   }
   public getMRPHistory() {
-    return this.http.get<any>('/api/Pharmacy/getMRPHistory', this.options);
+    return this.http.get<any>('/clinicsoft/api/Pharmacy/getMRPHistory', this.options);
   }
 
   public GetSettlementSingleInvoicePreview(InvoiceId: number) {
-    return this.http.get<any>("/api/Pharmacy?reqType=get-settlement-single-invoice-preview" + "&invoiceId=" + InvoiceId, this.options);
+    return this.http.get<any>("/clinicsoft/api/Pharmacy?reqType=get-settlement-single-invoice-preview" + "&invoiceId=" + InvoiceId, this.options);
   }
 }

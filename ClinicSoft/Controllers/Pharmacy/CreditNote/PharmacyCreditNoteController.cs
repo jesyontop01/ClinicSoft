@@ -27,7 +27,7 @@ namespace ClinicSoft.Controllers.Pharmacy.CreditNote
             connString = _config.Value.Connectionstring;
             phrmDbContext = new PharmacyDbContext(connString);
         }
-        [HttpGet("~/api/GetCreditNoteItems")]
+        [HttpGet("~/clinicsoft/api/GetCreditNoteItems")]
         public IActionResult GetCreditNoteItems()
         {
             try
@@ -71,7 +71,7 @@ namespace ClinicSoft.Controllers.Pharmacy.CreditNote
             }
            
         }
-        [HttpGet("~/api/GetCreditNote")]
+        [HttpGet("~/clinicsoft/api/GetCreditNote")]
         public IActionResult GetCreditNote()
         {
             try

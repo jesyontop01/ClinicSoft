@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.DalLayer;
 using Microsoft.Extensions.Options;
@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using ClinicSoft.ServerModel.LabModels;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers.Reporting
 {
     public class GovernmentReportingController : Controller

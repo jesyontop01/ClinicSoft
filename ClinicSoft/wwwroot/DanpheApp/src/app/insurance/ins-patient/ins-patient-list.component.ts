@@ -136,7 +136,7 @@ export class INSPatientListComponent {
     }
   }
   SearchPatientsByKey(keyword: any) {
-    return "/api/Insurance?reqType=all-patients-for-insurance&searchText=:dd";
+    return "/clinicsoft/api/Insurance?reqType=all-patients-for-insurance&searchText=:dd";
   }
   patientListFormatter(data: any): string {
     let html = "";

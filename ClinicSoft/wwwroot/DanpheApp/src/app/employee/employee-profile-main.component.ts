@@ -31,7 +31,7 @@ export class EmployeeProfileMainComponent {
     LoadUserProfile() {
 
         var empId = this.securityService.GetLoggedInUser().EmployeeId;
-        this.http.get<any>("/api/Employee?empId=" + empId + "&reqType=employeeProfile", this.options)
+        this.http.get<any>("/clinicsoft/api/Employee?empId=" + empId + "&reqType=employeeProfile", this.options)
             .map(res => res)
             .subscribe(res => {
                 if (res.Status == 'OK') {
@@ -77,7 +77,7 @@ export class EmployeeProfileMainComponent {
 
       input.append("uploads", profileImage, fileName)
 
-      this.http.put<any>("/api/Employee?empId=" + empId, input)
+      this.http.put<any>("/clinicsoft/api/Employee?empId=" + empId, input)
         .map(res => res)
         .subscribe(res => {
           if (res.Status == 'OK') {

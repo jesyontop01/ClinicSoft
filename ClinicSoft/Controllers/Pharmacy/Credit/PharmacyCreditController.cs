@@ -25,7 +25,7 @@ namespace ClinicSoft.Controllers.Pharmacy.Credit
             connString = _config.Value.Connectionstring;
             phrmDbContext = new PharmacyDbContext(connString);
         }
-        [HttpGet("~/api/GetPatCrDetail/{id}/{visitId}/{fromDate}/{toDate}")]
+        [HttpGet("~/clinicsoft/api/GetPatCrDetail/{id}/{visitId}/{fromDate}/{toDate}")]
         public CreditSaleViewModel GetPatCreditDetails(int id, int? visitId, DateTime? fromDate, DateTime? toDate)
         {
             CreditSaleViewModel creditSale = new CreditSaleViewModel();

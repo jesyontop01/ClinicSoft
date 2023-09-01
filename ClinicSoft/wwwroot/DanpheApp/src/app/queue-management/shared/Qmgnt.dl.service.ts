@@ -9,19 +9,19 @@ export class QueueManagementDLService {
   constructor(public http: HttpClient) {
   }
   public GetAllApptDepartment() {
-    return this.http.get<any>("/api/QueueManagement/GetAllApptDepartment", this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAllApptDepartment", this.options);
   }
 
   public GetAllAppointmentApplicableDoctor() {
-    return this.http.get<any>("/api/QueueManagement/GetAllAppointmentApplicableDoctor", this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAllAppointmentApplicableDoctor", this.options);
   }
 
   public GetAppointmentData(deptId,doctorId,pendingOnly){
-    return this.http.get<any>("/api/QueueManagement/GetAppointmentData?deptId="+deptId+"&doctorId="+doctorId+"&pendingOnly="+pendingOnly, this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAppointmentData?deptId="+deptId+"&doctorId="+doctorId+"&pendingOnly="+pendingOnly, this.options);
   }
 
   public updateQueueStatus(data,visitId){
-    return this.http.put<any>("/api/QueueManagement/updateQueueStatus?data="+data+"&visitId="+visitId,this.options);
+    return this.http.put<any>("/clinicsoft/api/QueueManagement/updateQueueStatus?data="+data+"&visitId="+visitId,this.options);
   }
 
 }

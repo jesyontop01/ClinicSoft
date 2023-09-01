@@ -112,7 +112,7 @@ export class OPDGeneralNoteComponenet {
   }
 
   GetOPDGeneralNotes() {
-    this.http.get<any>("/api/Clinical?reqType=opd-general&notesId=" + this.notesId, this.options)
+    this.http.get<any>("/clinicsoft/api/Clinical?reqType=opd-general&notesId=" + this.notesId, this.options)
       .map(res => res)
       .subscribe(res => {
         if (res.Status == "OK" && res.Results) {
@@ -244,7 +244,7 @@ export class OPDGeneralNoteComponenet {
 
 
   GetClinicalDetail() {
-    this.http.get<any>("/api/Clinical?reqType=patient-clinicaldetail&patientId="
+    this.http.get<any>("/clinicsoft/api/Clinical?reqType=patient-clinicaldetail&patientId="
       + this.PatientDetail.PatientId
       + '&patientVisitId=' + this.PatientDetail.PatientVisitId, this.options)
       .map(res => res)
@@ -415,7 +415,7 @@ export class OPDGeneralNoteComponenet {
   //AddData() {
 
   //    let data = JSON.stringify(this.opdGeneralNote.AllIcdAndOrders);
-  //    this.http.post<any>("/api/Clinical?reqType=clinical-diagnosis", data, this.options)
+  //    this.http.post<any>("/clinicsoft/api/Clinical?reqType=clinical-diagnosis", data, this.options)
   //        .map(res => res)
   //        .subscribe(res => {
   //            if (res.Status == "OK") {
@@ -433,7 +433,7 @@ export class OPDGeneralNoteComponenet {
 
   PostOPDGeneralNote(data) {
 
-    this.http.post<any>("/api/Clinical?reqType=opd-general-note", data, this.options)
+    this.http.post<any>("/clinicsoft/api/Clinical?reqType=opd-general-note", data, this.options)
       .map(res => res)
       .subscribe(res => {
         if (res.Status == "OK") {
@@ -466,7 +466,7 @@ export class OPDGeneralNoteComponenet {
   }
 
   UpdateOPDGeneralNote(data) {
-    this.http.put<any>("/api/Clinical?reqType=opd-general-note", data, this.options)
+    this.http.put<any>("/clinicsoft/api/Clinical?reqType=opd-general-note", data, this.options)
       .map(res => res)
       .subscribe(res => {
         if (res.Status == "OK") {

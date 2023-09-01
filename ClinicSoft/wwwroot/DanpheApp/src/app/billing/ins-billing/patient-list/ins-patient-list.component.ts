@@ -167,7 +167,7 @@ export class InsurancePatientListComponent {
   //the api should be in format: apiName?reqType=reqTypeValue&paramname=:xxx  -> here   :xxx will be replaced by the word typed in the dropdown.
   //Pls do not change it.
   SearchPatientsByKey(keyword: any) {
-    return "/api/BillInsurance?reqType=all-patients-for-insurance&searchText=:dd";
+    return "/clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance&searchText=:dd";
   }
 
   patientListFormatter(data: any): string {

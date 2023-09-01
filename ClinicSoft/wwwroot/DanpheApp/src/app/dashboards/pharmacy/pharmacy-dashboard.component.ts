@@ -80,7 +80,7 @@ export class PharmacyDashboardComponent {
     
     LoadAllSaleRecord(): void {
         ////use already created GetItemList function through reqType = item
-        this.dlService.Read("/api/Pharmacy?reqType=allSaleRecord&currentDate=" + this.counterDayDate)
+        this.dlService.Read("/clinicsoft/api/Pharmacy?reqType=allSaleRecord&currentDate=" + this.counterDayDate)
             .map(res => res)
             .subscribe(res => {
                 if (res.Status == 'OK') {
@@ -98,7 +98,7 @@ export class PharmacyDashboardComponent {
     } 
     // get total amount of all pending bills.
     LoadOverallPendingBillStatus() {
-        this.dlService.Read("/api/Pharmacy?reqType=phrm-pending-bills")
+        this.dlService.Read("/clinicsoft/api/Pharmacy?reqType=phrm-pending-bills")
             .map(res => res)
             .subscribe((res: DanpheHTTPResponse) => {
                 if (res.Status == "OK") {

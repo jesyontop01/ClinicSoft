@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 //using System.Data.Entity;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using ClinicSoft.ServerModel;
 using System.Text;
@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.InventoryModels.InventoryReportModel;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class PharmacyReportingDbContext : DbContext
@@ -26,10 +26,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
 
         #region Purchase Order Report

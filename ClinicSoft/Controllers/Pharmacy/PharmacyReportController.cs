@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 //using MoreLinq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ClinicSoft.Core.Configuration;
@@ -11,7 +11,7 @@ using ClinicSoft.Utilities;
 using ClinicSoft.CommonTypes;
 using ClinicSoft.ServerModel;
 using System.Data;
-
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.ReportingModels;
 using ClinicSoft.ServerModel.PharmacyModels;
@@ -34,7 +34,7 @@ namespace ClinicSoft.Controllers
         #region Get Active Stores list
 
         [HttpGet("GetActiveStores")]
-        [Route("~/api/PharmacyReport/GetActiveStores")]
+        [Route("~/clinicsoft/api/PharmacyReport/GetActiveStores")]
         public IActionResult GetActiveStores()
         {
             var dispensaryCategory = Enums.ENUM_StoreCategory.Dispensary;
@@ -48,7 +48,7 @@ namespace ClinicSoft.Controllers
 
         #region Get User Details
         [HttpGet("getPharmacyUsersForReturnFromCustomerReport")]
-        [Route("~/api/PharmacyReport/GetPharmacyUsersForReturnFromCustomerReport")]
+        [Route("~/clinicsoft/api/PharmacyReport/GetPharmacyUsersForReturnFromCustomerReport")]
         public IActionResult GetPharmacyUsersForReturnFromCustomerReport()
         {
             var userList = (from user in db.Users
@@ -66,7 +66,7 @@ namespace ClinicSoft.Controllers
         #region Get Only ItemName and Id 
 
         [HttpGet("GetOnlyItemNameList")]
-        [Route("~/api/PharmacyReport/GetOnlyItemNameList")]
+        [Route("~/clinicsoft/api/PharmacyReport/GetOnlyItemNameList")]
         public IActionResult GetOnlyItemName()
         {
             var itemList = (from item in db.PHRMItemMaster

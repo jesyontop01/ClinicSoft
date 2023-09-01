@@ -14,27 +14,27 @@ export class SchedulingDLService {
 
     //GET : List of Employees
     public GetEmployeeList() {
-        return this.http.get<any>('/api/scheduling?reqType=employeelist', this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=employeelist', this.options);
     }
     //GET : assigned or default schedule of selected employees
     public GetEmpSchedule(selectedEmpIds, dates) {
-        return this.http.get<any>('/api/scheduling?reqType=getEmpSchedule&EmpIds=' + selectedEmpIds + '&dates=' + dates, this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=getEmpSchedule&EmpIds=' + selectedEmpIds + '&dates=' + dates, this.options);
     }
     //GET: list of shifts
     public GetShiftsList() {
-        return this.http.get<any>('/api/scheduling?reqType=getShiftList', this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=getShiftList', this.options);
     }
     //GET: list of employee working hours
     public GetEmpWHList() {
-        return this.http.get<any>('/api/scheduling?reqType=getEmpWHList', this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=getEmpWHList', this.options);
     }
     //GET: load list of shifts with 'IsDefault = true'
     public GetDefaultShifts() {
-        return this.http.get<any>('/api/scheduling?reqType=getDefaultShifts', this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=getDefaultShifts', this.options);
     }
     //GET: List of Employees that doesnt have any shift assigned.(employee with no shifts)
     public GetEmployeeNoShift() {
-        return this.http.get<any>('/api/scheduling?reqType=getEmployeeNoShift', this.options);
+        return this.http.get<any>('/clinicsoft/api/scheduling?reqType=getEmployeeNoShift', this.options);
     }
 
 
@@ -44,17 +44,17 @@ export class SchedulingDLService {
     //POST : employee schedules
     public PostEmpSchedule(temp) {
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/scheduling?reqType=manageEmpSchedules", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/scheduling?reqType=manageEmpSchedules", data, this.options);
     }
     //
     public AddShift(temp) {
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/scheduling?reqType=AddShift", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/scheduling?reqType=AddShift", data, this.options);
     }
 
     public EmpWorkingHours(temp) {
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/scheduling?reqType=EmpWokringHours", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/scheduling?reqType=EmpWokringHours", data, this.options);
     }
 
 
@@ -63,6 +63,6 @@ export class SchedulingDLService {
     //
     public UpdateShift(temp) {
         let data = JSON.stringify(temp);
-        return this.http.put<any>("/api/scheduling?reqType=UpdateShift", data, this.options);
+        return this.http.put<any>("/clinicsoft/api/scheduling?reqType=UpdateShift", data, this.options);
     }
 }

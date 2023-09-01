@@ -156,7 +156,7 @@ export class AddInvoiceHeaderComponent implements OnInit {
          * there is no service that is shared by these modules,
          * hence, the api call has been made directly here.
         */
-      this._http.post<any>("/api/Pharmacy/postInvoiceHeader", formToPost)
+      this._http.post<any>("/clinicsoft/api/Pharmacy/postInvoiceHeader", formToPost)
         .subscribe(
           res => {
             if (res.Status == "OK") {
@@ -190,7 +190,7 @@ export class AddInvoiceHeaderComponent implements OnInit {
        * there is no service that is shared by these modules,
        * hence, the api call has been made directly here.
       */
-      this._http.put<any>("/api/Pharmacy/putInvoiceHeader", formToPost)
+      this._http.put<any>("/clinicsoft/api/Pharmacy/putInvoiceHeader", formToPost)
         .subscribe(
           res => {
             if (res.Status == "OK") {

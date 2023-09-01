@@ -10,10 +10,10 @@ export class ItemCategoryDLService {
 	constructor(public http: HttpClient) { }
     //GET
     public GetItemCategoryList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=VendorsList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=VendorsList");
     }
     public GetItemCategory() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetItemCategory");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetItemCategory");
     }
 
    
@@ -21,13 +21,13 @@ export class ItemCategoryDLService {
     //POST
     public PostItemCategory(CurrentItemCategory) {
         let data = JSON.stringify(CurrentItemCategory);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddItemCategory", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddItemCategory", data, this.options);
     }
 
     //PUT
     public PutItemCategory(itemcategory) {
         let data = JSON.stringify(itemcategory);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdateItemCategory", itemcategory, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateItemCategory", itemcategory, this.options);
     }
 
 }

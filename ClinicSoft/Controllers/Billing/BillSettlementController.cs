@@ -18,11 +18,13 @@ using System.Data;
 using ClinicSoft.Enums;
 using Microsoft.EntityFrameworkCore;
 using ClinicSoft.ServerModel.BillingModels;
-using System.Data.SqlClient;
-
+//using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class BillSettlementController : CommonController
     {
 

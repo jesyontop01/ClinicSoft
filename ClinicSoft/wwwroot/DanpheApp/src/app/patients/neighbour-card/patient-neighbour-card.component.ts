@@ -69,7 +69,7 @@ export class PatientNeighbourCardComponent implements OnInit {
     }
 
     LoadProfilePic() {
-        this.http.get<any>("/api/patient?reqType=profile-pic&patientId=" + this.selectedPat.PatientId)
+        this.http.get<any>("/clinicsoft/api/patient?reqType=profile-pic&patientId=" + this.selectedPat.PatientId)
             .map(res => res)
             .subscribe((res: DanpheHTTPResponse) => {
                 console.log(res);
@@ -88,7 +88,7 @@ export class PatientNeighbourCardComponent implements OnInit {
         if(this.currNeighbourCard.PatientId ){
             let data = JSON.stringify(this.currNeighbourCard);
 
-            this.http.post<any>("/api/Patient?reqType=postNeighbourhoodCard", data)
+            this.http.post<any>("/clinicsoft/api/Patient?reqType=postNeighbourhoodCard", data)
                     .map(res => res)
                     .subscribe(res => {
                         if (res.Status == "OK") {

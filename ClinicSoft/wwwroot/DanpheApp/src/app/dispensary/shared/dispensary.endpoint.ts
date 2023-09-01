@@ -8,7 +8,7 @@ export class DispensaryEndpoint {
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(public http: HttpClient) {
-    this.baseUrl = '/api/Dispensary/';
+    this.baseUrl = '/clinicsoft/api/Dispensary/';
   }
 
   GetAllDispensaryList() {

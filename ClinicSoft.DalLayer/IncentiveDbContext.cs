@@ -30,10 +30,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         public DbSet<ProfileModel> Profile { get; set; }
         public DbSet<PriceCategoryModel> PriceCategories { get; set; }//this is coming from Billing's -> model

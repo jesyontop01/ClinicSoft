@@ -28,8 +28,8 @@ export class DICOMViewerComponent implements OnInit {
   public set value(val: boolean) {
     this.showDicomViewerPage = val;
   }
-  private accessPointUrl1: string = "/api/Dicom";
-  private accessPointUrlFileToolData: string = "/api/Dicom?reqType=dicomFileToolData&dicomFileId=";
+  private accessPointUrl1: string = "/clinicsoft/api/Dicom";
+  private accessPointUrlFileToolData: string = "/clinicsoft/api/Dicom?reqType=dicomFileToolData&dicomFileId=";
   private isCornerstoneEnabled = false;
   public dicomImageData: DicomDataModel = new DicomDataModel();
   public imageData: Array<DicomDataModel> = Array<DicomDataModel>();

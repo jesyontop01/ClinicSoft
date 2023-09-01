@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 //using System.Data.Entity;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClinicSoft.ServerModel;
 using ClinicSoft.ServerModel.LabModels;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class LabDbContext : DbContext
@@ -59,10 +59,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -15,6 +15,9 @@ using ClinicSoft.Controllers.Billing;
 
 namespace ClinicSoft.Controllers
 {
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class DischargeSummaryController : CommonController
     {
         double cacheExpMinutes;//= 5;//this should come from configuration later on.

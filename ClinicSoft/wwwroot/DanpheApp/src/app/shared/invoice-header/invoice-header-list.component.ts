@@ -40,7 +40,7 @@ export class InvoiceHeaderListComponent {
   /*Bikash: 20July'20 : this component can be used in Billing, inventory and pharmacy and there is no service that is shared by these modules,
   hence, api has been called directly here.*/
   public getInvoiceHeaderList() {
-    this._http.get<any>("/api/Pharmacy/GetInvoiceHeader/" + this.module)
+    this._http.get<any>("/clinicsoft/api/Pharmacy/GetInvoiceHeader/" + this.module)
       .subscribe(res => {
         if (res.Status == "OK" && res.Results && res.Results.length>0) {
           this.allInvoiceHeaderList = res.Results;

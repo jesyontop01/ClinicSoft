@@ -10,10 +10,10 @@ export class UnitOfMeasurementDLService {
  constructor(public http: HttpClient) { }
     //GET
     public GetUnitOfMeasurementList() {
-        return this.http.get<any>("/api/InventorySettings?reqType=UnitOfMeasurementList");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=UnitOfMeasurementList");
     }
     public GetUnitOfMeasurement() {
-        return this.http.get<any>("/api/InventorySettings?reqType=GetUnitOfMeasurement");
+        return this.http.get<any>("/clinicsoft/api/InventorySettings?reqType=GetUnitOfMeasurement");
     }
 
 
@@ -21,13 +21,13 @@ export class UnitOfMeasurementDLService {
     //POST
     public PostUnitOfMeasurement(CurrentUnitOfMeasurement) {
         let data = JSON.stringify(CurrentUnitOfMeasurement);
-        return this.http.post<any>("/api/InventorySettings?reqType=AddUnitOfMeasurement", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/InventorySettings?reqType=AddUnitOfMeasurement", data, this.options);
     }
 
     //PUT
     public PutUnitOfMeasurement(unitofmeasurement) {
         let data = JSON.stringify(unitofmeasurement);
-        return this.http.put<any>("/api/InventorySettings?reqType=UpdateUnitOfMeasurement", unitofmeasurement, this.options);
+        return this.http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateUnitOfMeasurement", unitofmeasurement, this.options);
     }
 
 }

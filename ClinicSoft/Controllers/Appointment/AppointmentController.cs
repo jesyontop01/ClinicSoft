@@ -37,6 +37,9 @@ using Microsoft.EntityFrameworkCore;
 namespace ClinicSoft.Controllers
 {
 
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class AppointmentController : CommonController
     {
         public string InvoiceCode = "BL";//get this from parameters when possible.

@@ -101,7 +101,7 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpGet("~/api/FractionPercentByPriceId/{id}")]
+        [HttpGet("~/clinicsoft/api/FractionPercentByPriceId/{id}")]
         public IActionResult GetFractionPercentByBillPriceId(int id)
         {
             try

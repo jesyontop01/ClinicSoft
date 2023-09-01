@@ -12,25 +12,25 @@ export class DesignationEndPoint {
 
     //GET: list of companies
     public GetDesignationList() {
-        return this.http.get<any>("/api/Designation", this.options);
+        return this.http.get<any>("/clinicsoft/api/Designation", this.options);
     }
 
     // POST: add new Designation
     public AddDesignation(CurrentDesignation) {
         var temp = _.omit(CurrentDesignation, ['DesignationValidator']);
         let data = JSON.stringify(temp);
-        return this.http.post<any>("/api/Designation", data, this.options);
+        return this.http.post<any>("/clinicsoft/api/Designation", data, this.options);
     }
 
     // PUT: update Designation
     public UpdateDesignation(id, CurrentDesignation) {
         var temp = _.omit(CurrentDesignation, ['DesignationValidator']);
         let data = JSON.stringify(temp);
-        return this.http.put<any>("/api/Designation/" + id, data, this.options);
+        return this.http.put<any>("/clinicsoft/api/Designation/" + id, data, this.options);
     }
 
     // Get: Designation By Id
     public GetDesignation(id: number) {
-        return this.http.get<any>("/api/Designation/" + id, this.options);
+        return this.http.get<any>("/clinicsoft/api/Designation/" + id, this.options);
     }
 }

@@ -190,7 +190,7 @@ namespace ClinicSoft.Controllers
         }
         #region: Get Terms List based on application id
         [HttpGet]
-        [Route("~/api/InventorySettings/GetTermsListByTermsApplicationId/{TermsApplicationId}")]
+        [Route("~/clinicsoft/api/InventorySettings/GetTermsListByTermsApplicationId/{TermsApplicationId}")]
         public async Task<IActionResult> GetTermsListByTermsApplicationId([FromRoute] int TermsApplicationId)
         {
             var inventorydb = new InventoryDbContext(connString);

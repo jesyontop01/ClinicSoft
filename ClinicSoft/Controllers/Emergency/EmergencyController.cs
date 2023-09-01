@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.CommonTypes;
@@ -22,7 +22,7 @@ using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers.Emergency
 {
 

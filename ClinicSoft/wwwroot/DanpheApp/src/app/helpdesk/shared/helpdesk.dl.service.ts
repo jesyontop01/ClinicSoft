@@ -11,44 +11,44 @@ export class HelpDeskDLService {
 
   //get Bedinfo using status.
   public GetBedinfo(status: string) {
-    return this.http.get<any>("/api/Helpdesk?&reqType=getBedinfo"
+    return this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getBedinfo"
       + "&status=" + status, this.options);
   }
   //get Employeeinfo using status.
   public GetEmployeeinfo(status: string) {
-    return this.http.get<any>("/api/Helpdesk?&reqType=getHelpdesk"
+    return this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getHelpdesk"
       + "&status=" + status, this.options);
   }
   //get Wardinfo using status.
   public GetWardinfo(status: string) {
-    return this.http.get<any>("/api/Helpdesk?&reqType=getWardinfo"
+    return this.http.get<any>("/clinicsoft/api/Helpdesk?&reqType=getWardinfo"
       + "&status=" + status, this.options);
   }
 
 
 
   GetBedPatientInfo() {
-    return this.http.get<any>('/api/Helpdesk?&reqType=getBedPatientInfo', this.options);
+    return this.http.get<any>('/clinicsoft/api/Helpdesk?&reqType=getBedPatientInfo', this.options);
   }
 
   //sud:16Sept'21---Needed new function to get ward occupancies 
   GetBedOccupancyOfWards() {
-    return this.http.get<any>('/api/Helpdesk?&reqType=get-bedoccupancy-of-wards', this.options);
+    return this.http.get<any>('/clinicsoft/api/Helpdesk?&reqType=get-bedoccupancy-of-wards', this.options);
   }
 
   //sud:16Sept'21---Needed new function to get all beds with their patient information(if occupied)
   GetAllBedsWithPatInfo() {
-    return this.http.get<any>('/api/Helpdesk?&reqType=get-allbeds-with-patientsinfo', this.options);
+    return this.http.get<any>('/clinicsoft/api/Helpdesk?&reqType=get-allbeds-with-patientsinfo', this.options);
   }
 
   public GetAppointmentData(deptId,doctorId,pendingOnly){
-    return this.http.get<any>("/api/QueueManagement/GetAppointmentData?deptId="+deptId+"&doctorId="+doctorId+"&pendingOnly="+pendingOnly, this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAppointmentData?deptId="+deptId+"&doctorId="+doctorId+"&pendingOnly="+pendingOnly, this.options);
   }
   public GetAllApptDepartment() {
-    return this.http.get<any>("/api/QueueManagement/GetAllApptDepartment", this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAllApptDepartment", this.options);
   }
 
   public GetAllAppointmentApplicableDoctor() {
-    return this.http.get<any>("/api/QueueManagement/GetAllAppointmentApplicableDoctor", this.options);
+    return this.http.get<any>("/clinicsoft/api/QueueManagement/GetAllAppointmentApplicableDoctor", this.options);
   }
 }

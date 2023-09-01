@@ -64,7 +64,7 @@ export class AdmissionCancelComponent {
   }
 
   LoadCancelPatientInfo(patientId: number, patientVisitId: number) {
-    this.dlService.Read("/api/Admission?reqType=get-pat-adt-info&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
+    this.dlService.Read("/clinicsoft/api/Admission?reqType=get-pat-adt-info&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK" && res.Results) {

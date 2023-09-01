@@ -17,10 +17,10 @@ using System.Net;
 using System.Collections.Specialized;
 using System.Text;
 using System.Xml;
-
+using Microsoft.Data.SqlClient;
 using ClinicSoft.Core;
 using ClinicSoft.Core.Parameters;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using ClinicSoft.Enums;
 using System.Transactions;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +31,9 @@ using ClinicSoft.ViewModel.ADT;
 namespace ClinicSoft.Controllers
 {
 
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class AdmissionController : CommonController
     {
 
@@ -1498,7 +1501,7 @@ namespace ClinicSoft.Controllers
         }
 
         [HttpGet]
-        [Route("~/api/Admission/GetAllWardBedInfo")]
+        [Route("~/clinicsoft/api/Admission/GetAllWardBedInfo")]
         public async Task<IActionResult> GetAllWardBedInfo()
         {
             var _context = new AdmissionDbContext(connString);

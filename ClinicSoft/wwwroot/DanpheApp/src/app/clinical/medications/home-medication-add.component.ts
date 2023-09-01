@@ -22,7 +22,7 @@ export class HomeMedicationAddComponent {
     //ng2-autocomplete binds the selected medicine to medicineSelected.
     public medicineSelected = { MedicineId: null, MedicineName: null };
     //used in ng2-autocomplete in the cshtml for data source.
-    public medicineServerPath: string = "/api/Master?type=medicine&inputValue=:keywords";
+    public medicineServerPath: string = "/clinicsoft/api/Master?type=medicine&inputValue=:keywords";
     public loading: boolean = false;
     public showMedicationAddBox: boolean = false;
     public enableMedicationValidation: boolean = false;
@@ -87,7 +87,7 @@ export class HomeMedicationAddComponent {
     LoadAllMedications(): void {
         //only for temporary purpose, call it using pharmacydl service.
     
-        this.http.get<any>('/api/Pharmacy?reqType=item', this.options).map(res => res)
+        this.http.get<any>('/clinicsoft/api/Pharmacy?reqType=item', this.options).map(res => res)
             .subscribe(res => {
                 if (res.Status == "OK") {
                     this.allMedicineList = [];//empty the medicationlist after server call.

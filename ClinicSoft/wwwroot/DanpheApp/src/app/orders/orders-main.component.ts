@@ -142,7 +142,7 @@ export class OrderMainComponent {
   }
 
   LoadAllOrderItems() {
-    this.http.get<any>('/api/Orders?reqType=allOrderItems', this.options).map(res => res)
+    this.http.get<any>('/clinicsoft/api/Orders?reqType=allOrderItems', this.options).map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
           this.allOrdItems = res.Results;
@@ -182,7 +182,7 @@ export class OrderMainComponent {
 
   LoadAllPreferences() {
 
-    this.http.get<any>('/api/Orders?reqType=empPreferences', this.options).map(res => res)
+    this.http.get<any>('/clinicsoft/api/Orders?reqType=empPreferences', this.options).map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
           this.empAllPreferences = res.Results;
@@ -286,7 +286,7 @@ export class OrderMainComponent {
 
 
   RemoveFromPreference_New(item) {
-    this.http.delete<any>("/api/Orders?reqType=DeleteFromPreference&itemId=" + item.ItemId + "&preferenceType=" + item.PreferenceType, this.options)
+    this.http.delete<any>("/clinicsoft/api/Orders?reqType=DeleteFromPreference&itemId=" + item.ItemId + "&preferenceType=" + item.PreferenceType, this.options)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -305,7 +305,7 @@ export class OrderMainComponent {
   AddToPreference_New(item) {
     //chek if we can pass only data and not itemid.
     let data = JSON.stringify(item.ItemId);
-    this.http.post<any>("/api/Orders?reqType=AddToPreference&itemId=" + item.ItemId + "&preferenceType=" + item.PreferenceType, data, this.options)
+    this.http.post<any>("/clinicsoft/api/Orders?reqType=AddToPreference&itemId=" + item.ItemId + "&preferenceType=" + item.PreferenceType, data, this.options)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {

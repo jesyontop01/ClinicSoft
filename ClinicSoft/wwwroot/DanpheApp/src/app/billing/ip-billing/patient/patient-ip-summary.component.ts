@@ -335,7 +335,7 @@ export class PatientIpSummaryComponent {
   }
 
   LoadPatientBillingSummary(patientId: number, patientVisitId: number) {
-    this.dlService.Read("/api/IpBilling?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
+    this.dlService.Read("/clinicsoft/api/IpBilling?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK" && res.Results) {
@@ -407,7 +407,7 @@ export class PatientIpSummaryComponent {
   CheckCreditBill(patientId: number) {
     this.hasPreviousCredit = false;
     this.showCreditBillAlert = false;
-    this.dlService.Read("/api/Billing?reqType=check-credit-bill&patientId=" + this.patientId)
+    this.dlService.Read("/clinicsoft/api/Billing?reqType=check-credit-bill&patientId=" + this.patientId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -420,7 +420,7 @@ export class PatientIpSummaryComponent {
   }
 
   LoadCreditInformationOfPatient(patientId: number){
-    this.dlService.Read("/api/Billing/LoadCreditInfo?patientId=" + this.patientId)
+    this.dlService.Read("/clinicsoft/api/Billing/LoadCreditInfo?patientId=" + this.patientId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -430,7 +430,7 @@ export class PatientIpSummaryComponent {
   }
 
   GetPharmacyProvisionalBalance() {
-    this.dlService.Read("/api/GetPatCrDetail/" + this.patientId + "/null/null/null")
+    this.dlService.Read("/clinicsoft/api/GetPatCrDetail/" + this.patientId + "/null/null/null")
       .map(res => res)
       .subscribe(res => {
         if (res) {

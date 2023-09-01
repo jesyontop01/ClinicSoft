@@ -243,13 +243,24 @@ namespace ClinicSoft.Controllers
                     int providerId = currentUser.EmployeeId;//check if we've to pass userid or employeeid--sudarshan 15mar'17
                     var departmentId = dbContext.Employees.Where(a => a.EmployeeId == providerId).Select(a => a).FirstOrDefault();
                     //gets all visits earlier than today for this provider.. and if the visittype is inpatient then  the addmission status shouled be discharged ..Dharam 9th Sept 2017..
-                    var visitList = (from visit in dbContext.Visits.Include("Admission").Include("Patient")
-                                     where visit.DepartmentId == departmentId.DepartmentId
-                                     //&& (visit.Admission == null || visit.Admission.AdmissionStatus == "discharged")
-                                     select visit).ToList()
-                                 .Where(v => v.VisitDate.Date >= fromDate && v.VisitDate <= toDate && v.BillingStatus != ENUM_BillingStatus.returned ) //"returned")
-                                 .OrderByDescending(v => v.VisitDate).ThenByDescending(v => v.VisitTime).ToList();
-                    responseData.Results = visitList;
+                   
+                    var visitList = dbContext.Visits.Include(v=>v.Patient).Where(v=>v.ProviderId == providerId).ToList();
+                    if( visitList.Count() > 0)
+                    {
+                        responseData.Results = visitList;
+
+                    }
+                    else
+                    {
+                        responseData.Results = "";
+
+                    }
+                    //var visitList = (from visit in dbContext.Visits.Include("Admission").Include("Patient")
+                    //                 where visit.DepartmentId == departmentId.DepartmentId
+                    //                 //&& (visit.Admission == null || visit.Admission.AdmissionStatus == "discharged")
+                    //                 select visit).ToList()
+                    //             .Where(v => v.VisitDate.Date >= fromDate && v.VisitDate <= toDate && v.BillingStatus != ENUM_BillingStatus.returned ) //"returned")
+                    //             .OrderByDescending(v => v.VisitDate).ThenByDescending(v => v.VisitTime).ToList();
                 }
 
                 else if (reqType == "providerDeptVisits")

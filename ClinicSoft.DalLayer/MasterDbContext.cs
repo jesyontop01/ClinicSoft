@@ -33,7 +33,7 @@ namespace ClinicSoft.DalLayer
                 //.UseLazyLoadingProxies()
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

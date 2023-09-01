@@ -44,13 +44,13 @@ export class AccountingSyncBaseComponent<TItem> {
        }
     }
     public GetItems() {
-        this.accSyncDLService.Read("/api/AccountingSync?reqType=inventory")
+        this.accSyncDLService.Read("/clinicsoft/api/AccountingSync?reqType=inventory")
             .map(res => res)
             .subscribe(res => this.GetSuccess(res),
             res => this.Error(res));
     }
     public GetVoucherList() {
-        this.accSyncDLService.Read("/api/Accounting?reqType=Vouchers")
+        this.accSyncDLService.Read("/clinicsoft/api/Accounting?reqType=Vouchers")
             .map(res => res)
             .subscribe(res => {
                 if (res.Results == "OK") {
@@ -72,7 +72,7 @@ export class AccountingSyncBaseComponent<TItem> {
     }
     public PostToAccountingTransaction(transactions: Array<TransactionModel>) {
         var data = JSON.stringify(this.transactions);
-        this.accSyncDLService.Add(data, '/api/Accounting?reqType=post-txns');
+        this.accSyncDLService.Add(data, '/clinicsoft/api/Accounting?reqType=post-txns');
     }
 
     public PullToAccounting() {

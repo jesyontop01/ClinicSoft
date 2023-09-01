@@ -5,10 +5,10 @@ import { ActivateInventoryService } from '../../shared/activate-inventory/activa
 
 @Injectable()
 export class FixedAssetDLService {
-  managementBaseUrl = '/api/AssetManagement';
-  maintenanceBaseUrl = '/api/AssetMaintenance';
-  reportBaseUrl = '/api/AssetReports';
-  deprnDiscardingBaseUrl = '/api/AssetDepreciationDiscarding';
+  managementBaseUrl = '/clinicsoft/api/AssetManagement';
+  maintenanceBaseUrl = '/clinicsoft/api/AssetMaintenance';
+  reportBaseUrl = '/clinicsoft/api/AssetReports';
+  deprnDiscardingBaseUrl = '/clinicsoft/api/AssetDepreciationDiscarding';
   public options = {
     headers: new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' })
   };
@@ -81,7 +81,7 @@ export class FixedAssetDLService {
 
   //GET: External : get all  fixed asset donation list
   // public GetFixedAssetDonationList() {
-  //   return this.http.get<any>("/api/inventory/GetFixedAssetDonation");
+  //   return this.http.get<any>("/clinicsoft/api/inventory/GetFixedAssetDonation");
   // }
 
   //GET: External : get all  CheckList
@@ -89,10 +89,10 @@ export class FixedAssetDLService {
     return this.http.get<any>(`${this.maintenanceBaseUrl}/AssestConditionChecklist/${fixedAssetStockId}`);
   }
   public GetSubstoreAssetRequistionList(fromDate: string, toDate: string, StoreId: number) {
-    return this.http.get<any>('/api/WardSupplyAssets/GetSubstoreAssetRequistionListByStoreId/' + fromDate + '/' + toDate + '/' + StoreId, this.optionsJson);
+    return this.http.get<any>('/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetRequistionListByStoreId/' + fromDate + '/' + toDate + '/' + StoreId, this.optionsJson);
   }
   // public GetFixedAssetStocList(FixedAssetStockId) {
-  //   return this.http.get<any>("/api/inventory?reqType=FixedAssetStockByFiexdId&FixedAssetStockId=" + FixedAssetStockId, this.options);
+  //   return this.http.get<any>("/clinicsoft/api/inventory?reqType=FixedAssetStockByFiexdId&FixedAssetStockId=" + FixedAssetStockId, this.options);
   // }
 
   UpdateAssetMaintenanceFixedAssetStocList(selectedAssetForEdit) {
@@ -196,46 +196,46 @@ export class FixedAssetDLService {
   //POST Direct Dispatch
   public PostDirectDispatch(dispatchItems: any[]) {
     let data = JSON.stringify(dispatchItems);
-    //return this.http.post<any>("/api/Pharmacy/PostDirectDispatch", data);
+    //return this.http.post<any>("/clinicsoft/api/Pharmacy/PostDirectDispatch", data);
     return this.http.post<any>(`${this.deprnDiscardingBaseUrl}/PostDirectDispatch`, data);
-    //return this.http.post<any>("/api/Pharmacy/PostDirectDispatch", data, this.optionJson);
+    //return this.http.post<any>("/clinicsoft/api/Pharmacy/PostDirectDispatch", data, this.optionJson);
   }
   //Get : all the main store stock
   public GetMainStoreStock() {
-    //return this.http.get<any>("/api/Pharmacy/GetMainStoreStock");
+    //return this.http.get<any>("/clinicsoft/api/Pharmacy/GetMainStoreStock");
     return this.http.get<any>(this.managementBaseUrl);
   }
   //GET: Get Requisition and Requisition Items with Stock Records for Dispatch Items
   public GetRequisitionDetailsForDispatch(RequisitionId: number) {
-    return this.http.get<any>('/api/WardSupplyAssets/GetRequisitionDetailsForDispatch/' + RequisitionId, this.optionsJson);
-    //return this.http.get<any>("/api/Pharmacy/GetRequisitionDetailsForDispatch/" + RequisitionId, this.options);
+    return this.http.get<any>('/clinicsoft/api/WardSupplyAssets/GetRequisitionDetailsForDispatch/' + RequisitionId, this.optionsJson);
+    //return this.http.get<any>("/clinicsoft/api/Pharmacy/GetRequisitionDetailsForDispatch/" + RequisitionId, this.options);
   }
   //POST:Save dispatched Items to database
   public PostDispatch(dispatchItems) {
-    return this.http.post<any>("/api/WardSupplyAssets/PostStoreDispatch", dispatchItems, this.optionsJson);
+    return this.http.post<any>("/clinicsoft/api/WardSupplyAssets/PostStoreDispatch", dispatchItems, this.optionsJson);
   }
   //POST:Save dispatched Items to database
   public PostdirectDispatch(dispatchdataFromClient) {
-    return this.http.post<any>("/api/WardSupplyAssets/PostDirectDispatch", dispatchdataFromClient, this.optionsJson);
+    return this.http.post<any>("/clinicsoft/api/WardSupplyAssets/PostDirectDispatch", dispatchdataFromClient, this.optionsJson);
   }
   //end-swapnil-2-april-2021 
   public GetSubstoreAssetRequistionItemsById(reqId: number) {
-    return this.http.get<any>("/api/WardSupplyAssets/GetSubstoreAssetRequistionItemsById/" + reqId, this.options);
+    return this.http.get<any>("/clinicsoft/api/WardSupplyAssets/GetSubstoreAssetRequistionItemsById/" + reqId, this.options);
   }
 
   //GET: get substore list.
   public GetActiveSubStoreList() {
-    return this.http.get<any>("/api/WardSupply?reqType=active-substore-list", this.options);
+    return this.http.get<any>("/clinicsoft/api/WardSupply?reqType=active-substore-list", this.options);
   }
   public GetFixedAssetStockByStoreId(StoreId: number) {
-    return this.http.get<any>("/api/WardSupplyAssets/GetFixedAssetStockByStoreId/" + StoreId, this.options);
+    return this.http.get<any>("/clinicsoft/api/WardSupplyAssets/GetFixedAssetStockByStoreId/" + StoreId, this.options);
   }
   //GET
   public GetDispatchDetails(RequisitionId: number) {
-    return this.http.get<any>('/api/WardSupplyAssets/dispatchview/' + RequisitionId, this.options);
+    return this.http.get<any>('/clinicsoft/api/WardSupplyAssets/dispatchview/' + RequisitionId, this.options);
   }
   public GetDispatchDetailsbyDispatchId(DispatchId: number) {
-    return this.http.get<any>('/api/WardSupplyAssets/dispatchviewbyDispatchId/' + DispatchId, this.options);
+    return this.http.get<any>('/clinicsoft/api/WardSupplyAssets/dispatchviewbyDispatchId/' + DispatchId, this.options);
   }
 
 }

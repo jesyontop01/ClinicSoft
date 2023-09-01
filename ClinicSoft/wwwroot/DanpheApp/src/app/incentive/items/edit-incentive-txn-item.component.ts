@@ -96,8 +96,8 @@ export class EditIncentiveTxnItemComponent implements OnInit {
     if (this.isPercentagesValid && this.checkIfFractionValid()) {
       // passing optional parameter to function, in order to receive fraction items..
       let frcItemsToSave = IncentiveService.GetFractionItemsFromTxnItems([this.txnItemToEdit], this.fractionTransactionItems);
-      //this.http.post<any>('/api/Incentive?reqType=addEmpProfileMap', strData, this.options);
-      let url = "/api/Incentive?reqType=save-fraction-items";
+      //this.http.post<any>('/clinicsoft/api/Incentive?reqType=addEmpProfileMap', strData, this.options);
+      let url = "/clinicsoft/api/Incentive?reqType=save-fraction-items";
       let data = JSON.stringify(frcItemsToSave);
       this.dlService.Add(data, url).map(res => res).subscribe(res => {
         if (res.Status == "OK") {

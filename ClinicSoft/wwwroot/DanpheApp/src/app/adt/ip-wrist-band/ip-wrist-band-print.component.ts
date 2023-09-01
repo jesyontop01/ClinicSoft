@@ -82,7 +82,7 @@ export class IPWristBandPrintComponent {
     }
 
     GetWristBandInfo() {
-        this.http.get<any>('/api/Admission?reqType=wrist-band-info' + '&patientVisitId=' + this.patientVisitId, this.options)
+        this.http.get<any>('/clinicsoft/api/Admission?reqType=wrist-band-info' + '&patientVisitId=' + this.patientVisitId, this.options)
             .map(res => res)
             .subscribe(res => {
                 if (res.Status = "OK" && res.Results) {

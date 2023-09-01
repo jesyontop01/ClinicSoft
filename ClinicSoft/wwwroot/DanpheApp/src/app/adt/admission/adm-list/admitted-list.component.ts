@@ -453,7 +453,7 @@ export class AdmittedListComponent {
   }
 
   LoadPatientBillingSummary(patientId: number, patientVisitId: number) {
-    this.dlService.Read("/api/IpBilling?reqType=pat-pending-items&patientId=" + patientId + "&ipVisitId=" + patientVisitId)
+    this.dlService.Read("/clinicsoft/api/IpBilling?reqType=pat-pending-items&patientId=" + patientId + "&ipVisitId=" + patientVisitId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK" && res.Results) {

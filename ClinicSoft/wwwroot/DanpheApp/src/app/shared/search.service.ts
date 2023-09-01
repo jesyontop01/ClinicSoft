@@ -8,15 +8,15 @@ import 'rxjs/add/operator/switchMap';
 import { CoreService } from '../core/shared/core.service';
  
 export enum  APIsByType {
-  PatientListForRegNewVisit = "/api/Patient?reqType=patient-search-for-new-visit&search=",  //sud:10-Oct'2021--making new api since other one is very heavy.
-  PatByName = "/api/Patient?reqType=patient-search-by-text&search=",  
-  BillingPatient="/api/Patient?reqType=patientsWithVisitsInfo",  ///api/Patient?reqType=patientsWithVisitsInfo&admitStatus=
-  NursingInpatient="/api/Admission?reqType=getAdmittedList&search=",
-  VisitList="/api/Visit?status=",
-  NursingOutpatient="/api/Visit?reqType=pastVisitList&search=",
-  BillingDuplicatePrint="/api/Billing?reqType=listinvoicewisebill&search=",
-  BillingEditDoctor="/api/Billing?reqType=GetTxnItemsForEditDoctor&search=",
-  BillingProvisional="/api/Billing?reqType=listprovisionalwisebill&search="
+  PatientListForRegNewVisit = "/clinicsoft/api/Patient?reqType=patient-search-for-new-visit&search=",  //sud:10-Oct'2021--making new api since other one is very heavy.
+  PatByName = "/clinicsoft/api/Patient?reqType=patient-search-by-text&search=",  
+  BillingPatient="/clinicsoft/api/Patient?reqType=patientsWithVisitsInfo",  ///clinicsoft/api/Patient?reqType=patientsWithVisitsInfo&admitStatus=
+  NursingInpatient="/clinicsoft/api/Admission?reqType=getAdmittedList&search=",
+  VisitList="/clinicsoft/api/Visit?status=",
+  NursingOutpatient="/clinicsoft/api/Visit?reqType=pastVisitList&search=",
+  BillingDuplicatePrint="/clinicsoft/api/Billing?reqType=listinvoicewisebill&search=",
+  BillingEditDoctor="/clinicsoft/api/Billing?reqType=GetTxnItemsForEditDoctor&search=",
+  BillingProvisional="/clinicsoft/api/Billing?reqType=listprovisionalwisebill&search="
 }
 @Injectable()
 export class SearchService {

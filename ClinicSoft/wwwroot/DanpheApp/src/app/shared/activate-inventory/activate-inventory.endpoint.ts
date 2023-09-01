@@ -7,7 +7,7 @@ export class ActivateInventoryEndpoint {
   options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
   constructor(public http: HttpClient) {
-    this.baseUrl = '/api/ActivateInventory/';
+    this.baseUrl = '/clinicsoft/api/ActivateInventory/';
   }
 
   GetAllInventoryList() {

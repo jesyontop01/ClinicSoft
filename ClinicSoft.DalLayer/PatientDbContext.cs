@@ -14,32 +14,32 @@ namespace ClinicSoft.DalLayer
     [AuditDbContext(Mode = AuditOptionMode.OptIn)]
     public class PatientDbContext : AuditDbContext
     {
-        public DbSet<PatientModel> Patients { get; set; }
-        public DbSet<MembershipTypeModel> MembershipTypes { get; set; }
-        public DbSet<PatientMembershipModel> PatientMemberships { get; set; }
-        public DbSet<AppointmentModel> Appointments { get; set; }
-        public DbSet<VisitModel> Visits { get; set; }
-        public DbSet<PatientFilesModel> PatientFiles { get; set; }
-        public DbSet<CountrySubDivisionModel> CountrySubdivisions { get; set; }//sud:14May'18
-        public DbSet<CountryModel> Countries { get; set; }//sud:14May'18
+        public DbSet<PatientModel>? Patients { get; set; }
+        public DbSet<MembershipTypeModel>? MembershipTypes { get; set; }
+        public DbSet<PatientMembershipModel>? PatientMemberships { get; set; }
+        public DbSet<AppointmentModel>?  Appointments { get; set; }
+        public DbSet<VisitModel>? Visits { get; set; }
+        public DbSet<PatientFilesModel>? PatientFiles { get; set; }
+        public DbSet<CountrySubDivisionModel>? CountrySubdivisions { get; set; }//sud:14May'18
+        public DbSet<CountryModel>? Countries { get; set; }//sud:14May'18
 
-        public DbSet<DepartmentModel> Department { get; set; }
+        public DbSet<DepartmentModel>? Department { get; set; }
 
-        public DbSet<AdmissionModel> Admissions { get; set; }//sud:3June'18
-        public DbSet<HealthCardInfoModel> PATHealthCard { get; set; }
-        public DbSet<NeighbourhoodCardModel> PATNeighbourhoodCard { get; set; }
-        public DbSet<EmployeeModel> Employee { get; set; }
-        public DbSet<InsuranceProviderModel> InsuranceProviders { get; set; } //Yubraj:22nd Feb 2019
-        public DbSet<InsuranceModel> Insurances { get; set; } //Yubraj:22nd Feb 2019
-        public DbSet<ADTBedReservation> BedReservation { get; set; }
-        public DbSet<CfgParameterModel> CFGParameters { get; set; }
-        public DbSet<EmergencyPatientModel> EmergencyPatient { get; set; }
+        public DbSet<AdmissionModel>? Admissions { get; set; }//sud:3June'18
+        public DbSet<HealthCardInfoModel>? PATHealthCard { get; set; }
+        public DbSet<NeighbourhoodCardModel>? PATNeighbourhoodCard { get; set; }
+        public DbSet<EmployeeModel>? Employee { get; set; }
+        public DbSet<InsuranceProviderModel>? InsuranceProviders { get; set; } //Yubraj:22nd Feb 2019
+        public DbSet<InsuranceModel>? Insurances { get; set; } //Yubraj:22nd Feb 2019
+        public DbSet<ADTBedReservation>? BedReservation { get; set; }
+        public DbSet<CfgParameterModel>? CFGParameters { get; set; }
+        public DbSet<EmergencyPatientModel>? EmergencyPatient { get; set; }
 
-        public DbSet<PatientBedInfo> PatientBedInfos { get; set; }
-        public DbSet<WardModel> Wards { get; set; }
-        public DbSet<BedModel> Beds { get; set; }
-        public DbSet<MunicipalityModel> Municipalities { get; set; }
-        private string connStr = null;
+        public DbSet<PatientBedInfo>? PatientBedInfos { get; set; }
+        public DbSet<WardModel>? Wards { get; set; }
+        public DbSet<BedModel>? Beds { get; set; }
+        public DbSet<MunicipalityModel>? Municipalities { get; set; }
+        private string? connStr = null;
 
         public PatientDbContext(string conn)
         {
@@ -49,10 +49,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -173,7 +173,7 @@ namespace ClinicSoft.DalLayer
 
             modelBuilder.Entity<AppointmentModel>().ToTable("PAT_Appointment");
             modelBuilder.Entity<PatientModel>()
-               .HasOne<CountrySubDivisionModel>(p => p.CountrySubDivision);
+               .HasOne(p => p.CountrySubDivision);
             modelBuilder.Entity<CountrySubDivisionModel>().ToTable("MST_CountrySubDivision");//added sud: 14May
 
             modelBuilder.Entity<CountryModel>().ToTable("MST_Country");//added: sud:3June'18

@@ -76,7 +76,7 @@ export class BillStickerComponent {
 
     }
     public GetVisitDetail(txnId: number) {
-        this.http.get<any>('/api/Billing?reqType=getVisitInfoforStickerPrint&billingTransactionId=' + txnId, this.options)
+        this.http.get<any>('/clinicsoft/api/Billing?reqType=getVisitInfoforStickerPrint&billingTransactionId=' + txnId, this.options)
             .map(res => res)
             .subscribe(res => this.CallBackStickerOnly(res),
                 res => this.Error(res));
@@ -180,7 +180,7 @@ Address: `+ this.billStickerDetail.Address;
         var filePath = this.LoadFileStoragePath();
         this.loading = true;
         this.showLoading = true;
-        this.http.post<any>("/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
+        this.http.post<any>("/clinicsoft/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
             .map(res => res).subscribe(res => {
                 if (res.Status = "OK") {
                     this.timerFunction();

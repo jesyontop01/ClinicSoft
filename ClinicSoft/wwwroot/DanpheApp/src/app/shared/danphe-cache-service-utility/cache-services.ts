@@ -93,35 +93,35 @@ export class DanpheCache {
 
     switch(reqUrl){
         case MasterType.Country:{
-          url = '/api/Master?type=get-countries';                    
+          url = '/clinicsoft/api/Master?type=get-countries';                    
         }
         break;
         case MasterType.ICD:{
-          url = '/api/Master?type=icdcode';                           
+          url = '/clinicsoft/api/Master?type=icdcode';                           
         }
         break;       
         case MasterType.Employee:{
-          url = '/api/EmployeeSettings?reqType=get-employee';            
+          url = '/clinicsoft/api/EmployeeSettings?reqType=get-employee';            
         }
         break;
         case MasterType.PhrmCounter:{
-          url = '/api/pharmacy?reqType=getCounter';
+          url = '/clinicsoft/api/pharmacy?reqType=getCounter';
         }
         break;
         case MasterType.BillingCounter:{
-          url = '/api/billing?reqType=getCounter';
+          url = '/clinicsoft/api/billing?reqType=getCounter';
         }
         break;             
         case MasterType.SubDivision:{
-          url = '/api/Settings?reqType=subdivisions';
+          url = '/clinicsoft/api/Settings?reqType=subdivisions';
         }
         break;        
         case MasterType.AllMasters:{
-          url = '/api/Master?type=AllMasters';
+          url = '/clinicsoft/api/Master?type=AllMasters';
         }
         break;
         case MasterType.ProcedureBillItemPrices:{
-          url = '/api/Settings?reqType=procedure-billitemprices';
+          url = '/clinicsoft/api/Settings?reqType=procedure-billitemprices';
         }
         break;
 
@@ -200,35 +200,35 @@ export class DanpheCache {
 
     switch(type){
         case MasterType.VoucherType:{
-          url = '/api/Accounting?reqType=Vouchers';
+          url = '/clinicsoft/api/Accounting?reqType=Vouchers';
         }
         break;
         case MasterType.VoucherHead:{
-          url = '/api/Accounting?reqType=get-voucher-head';
+          url = '/clinicsoft/api/Accounting?reqType=get-voucher-head';
         }
         break;
         case MasterType.Ledgers:{
-          url = '/api/Accounting?reqType=ledger-list';
+          url = '/clinicsoft/api/Accounting?reqType=ledger-list';
         }
         break;
         case MasterType.LedgerGroups:{
-          url = '/api/AccountingSettings?reqType=GetLedgerGroups';
+          url = '/clinicsoft/api/AccountingSettings?reqType=GetLedgerGroups';
         }
         break;
         case MasterType.CodeDetails:{
-          url = '/api/Accounting?reqType=code-details';
+          url = '/clinicsoft/api/Accounting?reqType=code-details';
         }
         break;
         case MasterType.PrimaryGroup:{
-          url = '/api/AccountingSettings?reqType=get-primary-list';
+          url = '/clinicsoft/api/AccountingSettings?reqType=get-primary-list';
         }
         break;
         case MasterType.COA:{
-          url = '/api/AccountingSettings?reqType=GetChartofAccount';
+          url = '/clinicsoft/api/AccountingSettings?reqType=GetChartofAccount';
         }
         break;
         case MasterType.LedgersAll:{
-          url = '/api/AccountingSettings?reqType=LedgersList';
+          url = '/clinicsoft/api/AccountingSettings?reqType=LedgersList';
         }
         break;
     }

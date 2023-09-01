@@ -49,7 +49,7 @@ export class INCTV_BillTxnItemListComponent {
     this.fromDate = $event ? $event.fromDate : this.fromDate;
     this.toDate = $event ? $event.toDate : this.toDate;
 
-    this.dlService.Read("/api/Incentive?reqType=view-txn-items-list&fromDate=" + this.fromDate + "&toDate=" + this.toDate)
+    this.dlService.Read("/clinicsoft/api/Incentive?reqType=view-txn-items-list&fromDate=" + this.fromDate + "&toDate=" + this.toDate)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {

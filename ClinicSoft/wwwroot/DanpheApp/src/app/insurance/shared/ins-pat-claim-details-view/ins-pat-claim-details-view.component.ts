@@ -55,7 +55,7 @@ export class InsPatientClaimDetailsView {
   public loadSingleClaimDetails(claimObj: any) {
     this.loading = true;
     this.selectedClaimCode = claimObj.ClaimCode;
-    this.dlService.Read("/api/Insurance?reqType=insurance-single-claim-code-details&patientId=" + claimObj.PatientId + "&claimCode=" + claimObj.ClaimCode)
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=insurance-single-claim-code-details&patientId=" + claimObj.PatientId + "&claimCode=" + claimObj.ClaimCode)
       .map(res => res)
       .finally(() => { this.loading = false; })
       .subscribe(res => {

@@ -101,17 +101,17 @@ namespace ClinicSoft.Controllers
             return Ok(responseData);
         }
 
-        [HttpGet("~/api/GetFractionTxnList")]
+        [HttpGet("~/clinicsoft/api/GetFractionTxnList")]
         public IActionResult GetFractionTxnList()
         {
             return Ok(_FractionCalculationService.GetFractionTxnList());
         }
-        [HttpGet("~/api/GetFractionReportByItemList")]
+        [HttpGet("~/clinicsoft/api/GetFractionReportByItemList")]
         public IActionResult GetFractionReportByItemList()
         {
             return Ok(_FractionCalculationService.GetFractionReportByItemList());
         }
-        [HttpGet("~/api/GetFractionReportByDoctorList/{FromDate}/{ToDate}")]
+        [HttpGet("~/clinicsoft/api/GetFractionReportByDoctorList/{FromDate}/{ToDate}")]
         public IActionResult GetFractionReportByDoctorList(DateTime FromDate, DateTime ToDate)
         {
             return Ok(_FractionCalculationService.GetFractionReportByDoctorList(FromDate, ToDate));

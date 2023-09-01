@@ -11,21 +11,21 @@ export class PayrollSettingDLService {
     constructor(public http: HttpClient) {
     }
     public GetFiscalYearsList() {
-        return this.http.get<any>('/api/Payroll?reqType=fiscalYearList', this.options);
+        return this.http.get<any>('/clinicsoft/api/Payroll?reqType=fiscalYearList', this.options);
     }
     //Get Leave Categories
     public getLeaveCategory() {
-        return this.http.get<any>('/api/Payroll?reqType=leaveCategoriesList', this.options);
+        return this.http.get<any>('/clinicsoft/api/Payroll?reqType=leaveCategoriesList', this.options);
     }
     //getweekend holidays
     public getSelectedYearWeekendList(year: number) {
-        return this.http.get<any>('/api/Payroll?reqType=WeekendHolidaysDetails&Year=' + year);
+        return this.http.get<any>('/clinicsoft/api/Payroll?reqType=WeekendHolidaysDetails&Year=' + year);
     }
     //post weekend holidays
     public PostWeekendHolidays(DaysObjString: string) {
         try {
             let data = DaysObjString;
-            return this.http.post<any>("/api/Payroll?reqType=PostWeekendHolidays", data);
+            return this.http.post<any>("/clinicsoft/api/Payroll?reqType=PostWeekendHolidays", data);
         }
         catch (ex) {
             throw (ex);
@@ -33,12 +33,12 @@ export class PayrollSettingDLService {
     }
     public PostLeaveCategory(CurrentLeaveCategory) {
         let data = JSON.stringify(CurrentLeaveCategory);
-        return this.http.post<any>("/api/Payroll?reqType=AddLeaveCategory", data);
+        return this.http.post<any>("/clinicsoft/api/Payroll?reqType=AddLeaveCategory", data);
     }
 
     //put
     public PutLeaveCategory(CurrentLeaveCategory){
         let data = JSON.stringify(CurrentLeaveCategory);
-        return this.http.put<any>("/api/Payroll?reqType=PutLeaveCategory", data);
+        return this.http.put<any>("/clinicsoft/api/Payroll?reqType=PutLeaveCategory", data);
     }
 }

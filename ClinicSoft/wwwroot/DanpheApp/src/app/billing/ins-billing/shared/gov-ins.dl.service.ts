@@ -11,11 +11,11 @@ export class GovInsuranceDLService {
 
   //Getting Patient List excluding insurance patient..
   public GetAllPatientsForInsurance(searchText: string) {
-    return this.http.get<any>("/api/BillInsurance?reqType=all-patients-for-insurance&searchText=" + searchText, this.options);
+    return this.http.get<any>("/clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance&searchText=" + searchText, this.options);
   }
 
   //public GetPatientByKey(key:string) {
-  //  return this.http.get<any>("/api/Patient?reqType=patient-search-by-text&search="+key, this.options);
+  //  return this.http.get<any>("/clinicsoft/api/Patient?reqType=patient-search-by-text&search="+key, this.options);
   //}
    
 }

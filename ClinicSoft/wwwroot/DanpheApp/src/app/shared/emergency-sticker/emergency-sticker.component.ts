@@ -112,7 +112,7 @@ export class EmergencyStickerComponent {
   }
 
   GetVisitforStickerPrint(PatientVisitId) {
-    this.http.get<any>('/api/Visit?reqType=getVisitInfoforStickerPrint' + '&visitId=' + PatientVisitId)
+    this.http.get<any>('/clinicsoft/api/Visit?reqType=getVisitInfoforStickerPrint' + '&visitId=' + PatientVisitId)
       .map(res => res)
       .subscribe(res => this.CallBackStickerOnly(res),
         res => this.Error(res));
@@ -207,7 +207,7 @@ export class EmergencyStickerComponent {
     }
     this.loading = true;
     this.showLoading = true;
-    this.http.post<any>("/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML)
+    this.http.post<any>("/clinicsoft/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML)
       .map(res => res).subscribe(res => {
         if (res.Status = "OK") {
           this.timerFunction();

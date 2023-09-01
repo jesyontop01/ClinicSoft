@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.DalLayer;
 using Microsoft.Extensions.Options;
@@ -14,7 +14,7 @@ using System.Data;
 using ClinicSoft.ServerModel;
 using ClinicSoft.Enums;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 
 namespace ClinicSoft.Controllers.Reporting
 {

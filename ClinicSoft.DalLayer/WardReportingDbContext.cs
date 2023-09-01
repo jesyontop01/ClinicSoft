@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 //using System.Data.Entity;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Linq;
 using ClinicSoft.ServerModel;
 using System.Text;
@@ -11,7 +11,7 @@ using ClinicSoft.ServerModel.ReportingModels;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.DalLayer
 {
     public class WardReportingDbContext : DbContext
@@ -34,10 +34,10 @@ namespace ClinicSoft.DalLayer
         {
 
             optionsBuilder
-                .UseLazyLoadingProxies()
+
                 .UseSqlServer(connStr);
 
-            base.OnConfiguring(optionsBuilder);
+
         }
 
         #region WARD Stock Items Report        

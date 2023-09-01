@@ -12,25 +12,25 @@ namespace ClinicSoft.ServerModel
     {
         [Key]
         public int PatientVisitId { get; set; }
-        public string VisitCode { get; set; } //H followed by 6 digits for InPatient and V for outPatient
+        public string? VisitCode { get; set; } //H followed by 6 digits for InPatient and V for outPatient
         public int PatientId { get; set; }
         public DateTime VisitDate { get; set; }
-        public string QueueStatus { get; set; }
+        public string? QueueStatus { get; set; }
         public int? ProviderId { get; set; }
-        public string ProviderName { get; set; }
+        public string? ProviderName { get; set; }
       [NotMapped]
-        public string Diagnosis { get; set; }      
-        public string Comments { get; set; }
-        public string ReferredByProvider { get; set; }
-        public string VisitType { get; set; }
-        public string VisitStatus { get; set; }
+        public string? Diagnosis { get; set; }      
+        public string? Comments { get; set; }
+        public string? ReferredByProvider { get; set; }
+        public string? VisitType { get; set; }
+        public string? VisitStatus { get; set; }
         //public DateTime? VisitTime { get; set; }
         public TimeSpan? VisitTime { get; set; }
         public int? VisitDuration { get; set; }
         public int? AppointmentId { get; set; }
-        public string BillingStatus { get; set; }
+        public string? BillingStatus { get; set; }
         public int? ReferredByProviderId { get; set; }
-        public string AppointmentType { get; set; }
+        public string? AppointmentType { get; set; }
         public int? ParentVisitId { get; set; }
         public bool? IsVisitContinued { get; set; }
         public DateTime? CreatedOn { get; set; }
@@ -39,7 +39,7 @@ namespace ClinicSoft.ServerModel
         public bool? IsTriaged { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public int? ModifiedBy { get; set; }
-        public string Remarks { get; set; }
+        public string? Remarks { get; set; }
 
         //sud:1-Oct'21--Changing Claimcode from String to Int64-- to use Incremental logic (max+1)
         //need nullable since ClaimCode is Non-Mandatory for normal visits.
@@ -56,18 +56,18 @@ namespace ClinicSoft.ServerModel
         public int? DepartmentId { get; set; }//sud:19June2019-For DepartmentLevel Appointment.
 
         [NotMapped]
-        public string DepartmentName { get; set; }//Yubaraj:21Jun'19--Needed to show Deptname in List visit page.
+        public string? DepartmentName { get; set; }//Yubaraj:21Jun'19--Needed to show Deptname in List visit page.
 
-        public virtual PatientModel Patient { get; set; }
-        public virtual AdmissionModel Admission { get; set; }
+        public virtual PatientModel? Patient { get; set; }
+        public virtual AdmissionModel? Admission { get; set; }
         //Clinical
-        public List<VitalsModel> Vitals { get; set; }
-        public List<InputOutputModel> InputOutput { get; set; }
-        public List<NotesModel> Notes { get; set; }
+        public List<VitalsModel>? Vitals { get; set; }
+        public List<InputOutputModel>? InputOutput { get; set; }
+        public List<NotesModel>? Notes { get; set; }
 
         //Radiology
-        public List<ImagingRequisitionModel> ImagingRequisitions { get; set; }
-        public List<ImagingReportModel> ImagingReports { get; set; }
+        public List<ImagingRequisitionModel>? ImagingRequisitions { get; set; }
+        public List<ImagingReportModel>? ImagingReports { get; set; }
 
         public int? QueueNo { get; set; }
         public bool? Ins_HasInsurance { get; set; }

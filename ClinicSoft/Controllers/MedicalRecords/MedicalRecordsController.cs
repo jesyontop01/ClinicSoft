@@ -12,8 +12,8 @@ using System.Data;
 
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Data.SqlClient;
-
+//using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
     public class MedicalRecordsController : CommonController

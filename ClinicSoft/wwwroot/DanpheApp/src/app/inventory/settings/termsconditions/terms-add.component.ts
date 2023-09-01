@@ -84,7 +84,7 @@ export class TermsAddComponent implements OnInit {
             /*sanjit: 18May'20 : this component is used in both inventory and pharmacy and 
                 there is no service that is shared by these two module,
                 hence, I have written the api call directly here.*/
-            this._http.post<any>("/api/InventorySettings?reqType=PostInventoryTerms", temp)
+            this._http.post<any>("/clinicsoft/api/InventorySettings?reqType=PostInventoryTerms", temp)
                 .subscribe(
                     res => {
                         if (res.Status == "OK") {
@@ -116,7 +116,7 @@ export class TermsAddComponent implements OnInit {
             /*sanjit: 18May'20 : this component is used in both inventory and pharmacy and 
                 there is no service that is shared by these two module,
                 hence, I have written the api call directly here.*/
-            this._http.put<any>("/api/InventorySettings?reqType=UpdateInventoryTerms", temp)
+            this._http.put<any>("/clinicsoft/api/InventorySettings?reqType=UpdateInventoryTerms", temp)
                 .subscribe(
                     res => {
                         if (res.Status == "OK") {

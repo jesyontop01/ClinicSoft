@@ -12,7 +12,7 @@ namespace ClinicSoft.ServerModel
         [Key]
         public int PatHealthCardId { get; set; }
         public int PatientId { get; set; }
-        public string InfoOnCardJSON { get; set; }
+        public string? InfoOnCardJSON { get; set; }
         public DateTime? BillingDate { get; set; }
         public DateTime? CreatedOn { get; set; }
         public int CreatedBy { get; set; }

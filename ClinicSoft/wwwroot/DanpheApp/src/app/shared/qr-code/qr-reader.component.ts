@@ -40,7 +40,7 @@ export class QrReaderComponent {
 
     if (patCodeFormatted) {
       if (this.department == 'billing') {
-        this.dlService.Read("/api/Patient?reqType=getPatientByCode&LPNo=" + patCodeFormatted)
+        this.dlService.Read("/clinicsoft/api/Patient?reqType=getPatientByCode&LPNo=" + patCodeFormatted)
           .map(res => res)
           .subscribe((res: DanpheHTTPResponse) => {
             if (res.Status == "OK" && res.Results && res.Results.PatientId) {

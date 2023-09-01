@@ -9,9 +9,9 @@ using ClinicSoft.Core.Configuration;
 using ClinicSoft.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-
+using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers.ReportingNew
 {
     public class ReportingNewController : Controller

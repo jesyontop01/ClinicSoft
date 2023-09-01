@@ -466,7 +466,7 @@ export class AppComponent {
   }
 
   SaveEmpPref() {
-    this.dlService.Add(this.selectedDatePref, "/api/Core?reqType=post-emp-datepreference")
+    this.dlService.Add(this.selectedDatePref, "/clinicsoft/api/Core?reqType=post-emp-datepreference")
       .subscribe(res => {
         if (res.Status = "OK") {
           let data = res.Results;
@@ -574,7 +574,7 @@ export class AppComponent {
 
   //sud:10Oct'21--Since membership is used accross the modules, we need to set in core service from app.component.
   LoadAllMembershipTypes() {
-    //  return this.http.get<any>("/api/BillSettings?reqType=get-membership-types", this.options);
+    //  return this.http.get<any>("/clinicsoft/api/BillSettings?reqType=get-membership-types", this.options);
     this.dlService.GetAllMembershipType()
       .map(res => res)
       .subscribe(res => {

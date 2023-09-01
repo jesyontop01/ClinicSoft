@@ -53,7 +53,7 @@ export class INCTV_EditFractionComponent {
 
   ngOnInit() {
     if (this.selTxnItem && this.selTxnItem.BillingTransactionItemId) {
-      this.dlService.Read("/api/Incentive?reqType=get-fractionof-billtxnitem&billTxnItemId=" + this.selTxnItem.BillingTransactionItemId)
+      this.dlService.Read("/clinicsoft/api/Incentive?reqType=get-fractionof-billtxnitem&billTxnItemId=" + this.selTxnItem.BillingTransactionItemId)
         .map(res => res)
         .subscribe((res: DanpheHTTPResponse) => {
           if (res.Status == "OK") {
@@ -88,7 +88,7 @@ export class INCTV_EditFractionComponent {
       let frcItemsToSave = this.fractionItems;
       this.TDScalculation(frcItemsToSave);
 
-      let url = "/api/Incentive?reqType=save-fraction-items";
+      let url = "/clinicsoft/api/Incentive?reqType=save-fraction-items";
       let data = JSON.stringify(frcItemsToSave);
       this.dlService.Add(data, url)
         .map(res => res).

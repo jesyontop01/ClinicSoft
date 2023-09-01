@@ -74,7 +74,7 @@ export class IncentiveTxnInvoiceListComponent {
 
   LoadIncentiveTxnInvoiceList() {
     //sud:12Feb'20-employeeid is not needed for this api, make necessaray changs in api and in StoredProcedure of this.
-    this.dlService.Read("/api/Incentive?reqType=view-txn-InvoiceLevel&fromDate=" + this.fromDate + "&toDate=" + this.toDate + "&employeeId=" + 0)
+    this.dlService.Read("/clinicsoft/api/Incentive?reqType=view-txn-InvoiceLevel&fromDate=" + this.fromDate + "&toDate=" + this.toDate + "&employeeId=" + 0)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -93,7 +93,7 @@ export class IncentiveTxnInvoiceListComponent {
     this.allFractionsListOfInvoice = [];
 
     //sud:12Feb'20-employeeid is not needed for this api, make necessaray changs in api and in StoredProcedure of this.
-    this.dlService.Read("/api/Incentive?reqType=view-txn-InvoiceItemLevel&BillingTansactionId=" + this.billingtransactionId)
+    this.dlService.Read("/clinicsoft/api/Incentive?reqType=view-txn-InvoiceItemLevel&BillingTansactionId=" + this.billingtransactionId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -201,7 +201,7 @@ export class IncentiveTxnInvoiceListComponent {
     console.log('syncing....');
     //fromdate is hard-coded: 1Feb2020 for now, we'll soon move this to another page with Sync option.. (sud)
 
-    let url = "/api/Incentive?reqType=load-uptodate-transactions&fromDate=2020-02-01&toDate=" + this.toDate;
+    let url = "/clinicsoft/api/Incentive?reqType=load-uptodate-transactions&fromDate=2020-02-01&toDate=" + this.toDate;
     let data = null;
     this.dlService.Add(data, url).map(res => res).subscribe(res => {
       console.log(res);

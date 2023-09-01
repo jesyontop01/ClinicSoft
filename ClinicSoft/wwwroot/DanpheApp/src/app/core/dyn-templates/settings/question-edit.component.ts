@@ -80,7 +80,7 @@ export class QuestionEditComponent {
 
             if (this.dynTemplateServ.IsValidOptions(this.qtnToUpdate.Type, this.qtnToUpdate.Options)) {
 
-                let url = "/api/DynTemplates?reqType=updateQtn";
+                let url = "/clinicsoft/api/DynTemplates?reqType=updateQtn";
 
                 let data = JSON.stringify(this.qtnToUpdate);
                 this.dlService.Update(data, url).map(res => res).subscribe(res => {

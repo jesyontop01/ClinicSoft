@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ClinicSoft.Core.Configuration;
 using ClinicSoft.ServerModel;
 using ClinicSoft.DalLayer;
-
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using ClinicSoft.Utilities;
@@ -18,13 +18,16 @@ using ClinicSoft.Controllers.Billing;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using ClinicSoft.Enums;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 //test for checkin
 namespace ClinicSoft.Controllers
 {
 
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class VisitController : CommonController
     {
         bool realTimeRemoteSyncEnabled = false;

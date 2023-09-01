@@ -37,7 +37,7 @@ export class TermsListComponent {
     /*sanjit: 18May'20 : this component is used in both inventory and pharmacy and there is no service that is shared by these two module,
     hence, I have written the api call directly here.*/
     public getTermsList() {
-        this._http.get<any>("/api/InventorySettings/GetTermsListByTermsApplicationId/"+ this.TermsApplicationId)
+        this._http.get<any>("/clinicsoft/api/InventorySettings/GetTermsListByTermsApplicationId/"+ this.TermsApplicationId)
             .subscribe(res => {
                 if (res.Status == "OK") {
                     this.allTermsLists = res.Results;

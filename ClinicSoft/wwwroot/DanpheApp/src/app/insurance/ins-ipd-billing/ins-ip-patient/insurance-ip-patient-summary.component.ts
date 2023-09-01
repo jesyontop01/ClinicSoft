@@ -240,7 +240,7 @@ export class InsurancePatientIpSummaryComponent {
       });
   }
   LoadPatientBillingSummary(patientId: number, patientVisitId: number) {
-    this.dlService.Read("/api/Insurance?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=pat-pending-items&patientId=" + this.patientId + "&ipVisitId=" + this.ipVisitId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK" && res.Results) {
@@ -297,7 +297,7 @@ export class InsurancePatientIpSummaryComponent {
   CheckCreditBill(patientId: number) {
     this.hasPreviousCredit = false;
     this.showCreditBillAlert = false;
-    this.dlService.Read("/api/Insurance?reqType=check-credit-bill&patientId=" + this.patientId)
+    this.dlService.Read("/clinicsoft/api/Insurance?reqType=check-credit-bill&patientId=" + this.patientId)
       .map(res => res)
       .subscribe((res: DanpheHTTPResponse) => {
         if (res.Status == "OK") {
@@ -307,7 +307,7 @@ export class InsurancePatientIpSummaryComponent {
   }
 
   GetPharmacyProvisionalBalance() {
-    this.dlService.Read("/api/GetPatCrDetail/" + this.patientId + "/null/null/null")
+    this.dlService.Read("/clinicsoft/api/GetPatCrDetail/" + this.patientId + "/null/null/null")
       .map(res => res)
       .subscribe(res => {
         if (res) {

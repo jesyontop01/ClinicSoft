@@ -153,7 +153,7 @@ export class PrintStickerComponent {
     }
   }
   GetVisitforStickerPrint(PatientVisitId) {
-    this.http.get<any>('/api/Visit?reqType=getVisitInfoforStickerPrint' + '&visitId=' + PatientVisitId, this.options)
+    this.http.get<any>('/clinicsoft/api/Visit?reqType=getVisitInfoforStickerPrint' + '&visitId=' + PatientVisitId, this.options)
       .map(res => res)
       .subscribe(res => this.CallBackStickerOnly(res),
         res => this.Error(res));
@@ -319,7 +319,7 @@ Address: `+ this.OpdStickerDetails.Address;
     }
     this.loading = true;
     this.showLoading = true;
-    this.http.post<any>("/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
+    this.http.post<any>("/clinicsoft/api/Billing?reqType=saveHTMLfile&PrinterName=" + PrinterName + "&FilePath=" + filePath, printableHTML, this.options)
       .map(res => res).subscribe(res => {
         if (res.Status = "OK") {
           this.timerFunction();

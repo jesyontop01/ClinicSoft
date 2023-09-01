@@ -23,7 +23,9 @@ using ClinicSoft.Core.DynTemplates;
 namespace ClinicSoft.Controllers
 {
 
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class DynTemplatesController : CommonController
     {
 

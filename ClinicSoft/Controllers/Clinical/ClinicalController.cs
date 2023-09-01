@@ -23,7 +23,9 @@ using ClinicSoft.ServerModel.ClinicalModels;
 
 namespace ClinicSoft.Controllers.Clinical
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class ClinicalController : CommonController
     {
 
@@ -1224,7 +1226,7 @@ namespace ClinicSoft.Controllers.Clinical
         }
 
         [HttpGet]
-        [Route("~/api/Clinical/GetTemplateDetailsByNoteId/{NotesId}")]
+        [Route("~/clinicsoft/api/Clinical/GetTemplateDetailsByNoteId/{NotesId}")]
         public IActionResult GetTemplateDetailsByNoteId([FromRoute] int NotesId)
         {
 

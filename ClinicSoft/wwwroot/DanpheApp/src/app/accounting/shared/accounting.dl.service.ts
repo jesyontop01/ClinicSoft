@@ -11,7 +11,7 @@ export class AccountingDLService {
     //get information of current accounts.
     public GetAccountInfoById(accountId: number) {
         try {
-            return this.http.get<any>("/api/Accounting" + "?accountId=" + accountId);
+            return this.http.get<any>("/clinicsoft/api/Accounting" + "?accountId=" + accountId);
         } catch (ex) {
             throw ex;
         }
@@ -19,81 +19,81 @@ export class AccountingDLService {
 
     public GetTransactionType() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=VoucherType");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=VoucherType");
         } catch (ex) {
             throw ex;
         }
     }
     public GetLedgerList() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=ledger-list");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=ledger-list");
         } catch (ex) {
             throw ex;
         }
     }
     public GetLedgerFromVoucherId(voucherId: number) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=ledgersFrmVoucherId&voucherId=" + voucherId);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=ledgersFrmVoucherId&voucherId=" + voucherId);
         } catch (ex) {
             throw ex;
         }
     }
     public GetAccountClosureData() {
-        return this.http.get<any>("/api/Accounting?reqType=account-closure");
+        return this.http.get<any>("/clinicsoft/api/Accounting?reqType=account-closure");
     }
     public GetActiveFiscalYear() {
-        return this.http.get<any>("/api/Accounting?reqType=active-fiscal-year");
+        return this.http.get<any>("/clinicsoft/api/Accounting?reqType=active-fiscal-year");
     }
     public GetVoucher() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=Vouchers");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=Vouchers");
         } catch (ex) {
             throw ex;
         }
     }
     public GetVoucherHead() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-voucher-head");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-voucher-head");
         } catch (ex) {
             throw ex;
         }
     }
     public GetLedgerItem(ledgerId: number) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=ledger-items&ledgerId=" + ledgerId);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=ledger-items&ledgerId=" + ledgerId);
         } catch (ex) {
             throw ex;
         }
     }
     public GetItemList() {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=ItemList');
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=ItemList');
         } catch (ex) {
             throw ex;
         }
     }
 
     public GetLedgerGroup() {
-        return this.http.get<any>("/api/AccountingSettings?reqType=GetLedgerGroups");
+        return this.http.get<any>("/clinicsoft/api/AccountingSettings?reqType=GetLedgerGroups");
     }
 
     public GetFiscalYearList() {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=fiscalyear-list');
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=fiscalyear-list');
         } catch (ex) {
             throw ex;
         }
     }
     public GetTransaction(transactionId: number) {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=transaction&transactionId=' + transactionId);
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=transaction&transactionId=' + transactionId);
         } catch (ex) {
             throw ex;
         }
     }
     public GetTransactionbyVoucher(vouchernumber: string, secId, fsYearId) {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=transactionbyVoucher&voucherNumber=' + vouchernumber + "&sectionId=" + secId + "&FiscalYearId=" + fsYearId);
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=transactionbyVoucher&voucherNumber=' + vouchernumber + "&sectionId=" + secId + "&FiscalYearId=" + fsYearId);
         } catch (ex) {
             throw ex;
         }
@@ -101,28 +101,28 @@ export class AccountingDLService {
     ///get Voucher detail for manual edit 
     public GetVoucherforedit(vouchernumber: string, secId, FsYId) {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=getVoucherforedit&voucherNumber=' + vouchernumber + "&sectionId=" + secId + "&FiscalYearId=" + FsYId);
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=getVoucherforedit&voucherNumber=' + vouchernumber + "&sectionId=" + secId + "&FiscalYearId=" + FsYId);
         } catch (ex) {
             throw ex;
         }
     }
     public CheckTransaction(transactionId: number, voucherId: number) {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=check-reference-txnId&voucherNumber=' + transactionId + '&voucherId=' + voucherId);
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=check-reference-txnId&voucherNumber=' + transactionId + '&voucherId=' + voucherId);
         } catch (ex) {
             throw ex;
         }
     }
     public GetCostCenterList() {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=costcentric-list');
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=costcentric-list');
         } catch (ex) {
             throw ex;
         }
     }
     public GetInventoryItemsForTransferToACC(selectedDate, fiscalyearId) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=inventory-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=inventory-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
         } catch (exception) {
             throw exception
         };
@@ -130,8 +130,8 @@ export class AccountingDLService {
     //get all bil txn items from billing for transfer to accounting
     public GetBilTxnItemsForTransferToACC(selectedDate, fiscalyearId) {
         try {
-            // return this.http.get<any>("/api/Accounting?reqType=billing-to-accounting&FromDate=" + frmDt + "&ToDate=" + toDt);
-            return this.http.get<any>("/api/Accounting?reqType=billing-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
+            // return this.http.get<any>("/clinicsoft/api/Accounting?reqType=billing-to-accounting&FromDate=" + frmDt + "&ToDate=" + toDt);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=billing-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
         } catch (exception) {
             throw exception
         };
@@ -140,7 +140,7 @@ export class AccountingDLService {
     //get all pharmacy txn item for transfer to accounting
     public GetPharmItemsForTransferToACC(selectedDate, fiscalyearId) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=pharmacy-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=pharmacy-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
         } catch (exception) {
             throw exception
         };
@@ -148,7 +148,7 @@ export class AccountingDLService {
     //get all incentive txn item for transfer to accounting
     public GetIncentivesForTransferToACC(selectedDate, fiscalyearId) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=incentive-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=incentive-to-accounting&SelectedDate=" + selectedDate + "&FiscalYearId=" + fiscalyearId);
         } catch (exception) {
             throw exception
         };
@@ -156,21 +156,21 @@ export class AccountingDLService {
     //get ledger mapping details for  map with phrm supplier or inventory vendor
     GetLedgerMappingDetails() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=ledger-mapping", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=ledger-mapping", this.options);
         } catch (ex) {
             throw ex
         }
     }
     LoadTxnDates(fromdate, todate, sectionId) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=acc-get-txn-dates&FromDate=" + fromdate + "&ToDate=" + todate + "&sectionId=" + sectionId, this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=acc-get-txn-dates&FromDate=" + fromdate + "&ToDate=" + todate + "&sectionId=" + sectionId, this.options);
         } catch (ex) {
             throw ex
         }
     }
     public GetAllActiveAccTenants() {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=getAllActiveTenants');
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=getAllActiveTenants');
         } catch (ex) {
             throw ex;
         }
@@ -180,7 +180,7 @@ export class AccountingDLService {
     //GET:this function get all transfer rule with details
     public GetACCTransferRule() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=accTransferRule");
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=accTransferRule");
         } catch (exception) {
             throw exception;
         }
@@ -188,7 +188,7 @@ export class AccountingDLService {
     //this method for get provisional Voucher number for curernt new created voucher
     public GettempVoucherNumber(voucherId: number, sectionId, transactiondate) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=gettempVoucherNumber&voucherId=" + voucherId + "&sectionId=" + sectionId + "&transactiondate=" + transactiondate);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=gettempVoucherNumber&voucherId=" + voucherId + "&sectionId=" + sectionId + "&transactiondate=" + transactiondate);
         }
         catch (exception) {
             throw exception;
@@ -197,7 +197,7 @@ export class AccountingDLService {
     //Get Provisional Ledger using ledger type and reference id
     GetProvisionalLedger(referenceId, ledgerType) {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=get-provisional-ledger&ReferenceId=" + referenceId + "&LedgerType=" + ledgerType);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-provisional-ledger&ReferenceId=" + referenceId + "&LedgerType=" + ledgerType);
         }
         catch (ex) {
             throw ex;
@@ -208,7 +208,7 @@ export class AccountingDLService {
     //get inventory vendors
     GetInvVendorList() {
         try {
-          return this.http.get<any>("/api/Accounting?reqType=get-invVendor-list", this.options);
+          return this.http.get<any>("/clinicsoft/api/Accounting?reqType=get-invVendor-list", this.options);
         } catch (ex) {
             throw ex
         }
@@ -216,7 +216,7 @@ export class AccountingDLService {
     //get pharmacy supplier
     GetPharmacySupplier() {
         try {
-            return this.http.get<any>("/api/Accounting?reqType=phrm-supplier", this.options);
+            return this.http.get<any>("/clinicsoft/api/Accounting?reqType=phrm-supplier", this.options);
         } catch (ex) {
             throw ex
         }
@@ -224,7 +224,7 @@ export class AccountingDLService {
     //get good receipt list 
     GetGRList(vendorId: number,sectionId:number,number:any,date:string) {
         try {
-            return this.http.get<response>('/api/Accounting?reqType=get-grlist&voucherId='+ vendorId+'&sectionId='+sectionId+'&voucherNumber='+number+'&transactiondate='+date);
+            return this.http.get<response>('/clinicsoft/api/Accounting?reqType=get-grlist&voucherId='+ vendorId+'&sectionId='+sectionId+'&voucherNumber='+number+'&transactiondate='+date);
         } catch (ex) {
             throw ex;
         }
@@ -233,14 +233,14 @@ export class AccountingDLService {
     //START: POST
     public PostTransaction(TransactionObjString: string) {
         let data = TransactionObjString;
-        return this.http.post<any>("/api/Accounting?reqType=postTransaction", data);
+        return this.http.post<any>("/clinicsoft/api/Accounting?reqType=postTransaction", data);
     }
 
     //post TxnList to accounting Transaction table
     PostTxnListToACC(txnListObjString: string) {
         try {
             let data = txnListObjString;
-            return this.http.post<any>("/api/Accounting?reqType=postTransactionList", data);
+            return this.http.post<any>("/clinicsoft/api/Accounting?reqType=postTransactionList", data);
         } catch (ex) {
             throw (ex);
         }
@@ -249,7 +249,7 @@ export class AccountingDLService {
     PostLedgers(ledgList: string) {
         try {
             let data = ledgList;
-            return this.http.post<any>("/api/Accounting?reqType=AddLedgersFromAcc", data);
+            return this.http.post<any>("/clinicsoft/api/Accounting?reqType=AddLedgersFromAcc", data);
         } catch (ex) {
             throw (ex);
         }
@@ -258,7 +258,7 @@ export class AccountingDLService {
     AddLedger(ledgList: string) {
         try {
             let data = ledgList;
-            return this.http.post<any>("/api/Accounting?reqType=create-ledger-shared-component", data);
+            return this.http.post<any>("/clinicsoft/api/Accounting?reqType=create-ledger-shared-component", data);
         } catch (ex) {
             throw (ex);
         }
@@ -267,31 +267,31 @@ export class AccountingDLService {
     //END: POST
 
     public PostAccountClosure(data: string) {
-        return this.http.post<any>("/api/Accounting?reqType=post-account-closure", data);
+        return this.http.post<any>("/clinicsoft/api/Accounting?reqType=post-account-closure", data);
     }
 
     public PostAccountingInvoiceData(data: string) {
-        return this.http.post<any>("/api/Accounting?reqType=post-accounting-invoice-data", data);
+        return this.http.post<any>("/clinicsoft/api/Accounting?reqType=post-accounting-invoice-data", data);
     }
 
     public UndoTransaction(data: string) {
-        return this.http.post<any>("/api/Accounting?reqType=post-reverse-transaction", data);
+        return this.http.post<any>("/clinicsoft/api/Accounting?reqType=post-reverse-transaction", data);
     }
 
     //START: PUT
 
     public PutTransaction(TransactionObjString: string) {
         let data = TransactionObjString;
-        return this.http.put<any>("/api/Accounting?reqType=putTransaction", data);
+        return this.http.put<any>("/clinicsoft/api/Accounting?reqType=putTransaction", data);
     }
 
     public ActivateAccountingTenant(hospitalId: number) {
-        return this.http.put<any>("/api/Security?reqType=activateAccountingHospital&hospitalId=" + hospitalId, this.options);
+        return this.http.put<any>("/clinicsoft/api/Security?reqType=activateAccountingHospital&hospitalId=" + hospitalId, this.options);
     }
     //END: PUT
 
     //post payment to accounting Payment table
     public PostPayment(data: string,Transactiondata:string) {
-        return this.http.post<any>("/api/Accounting?reqType=post-payment&transactionObj="+Transactiondata,data);
+        return this.http.post<any>("/clinicsoft/api/Accounting?reqType=post-payment&transactionObj="+Transactiondata,data);
     }
 }
