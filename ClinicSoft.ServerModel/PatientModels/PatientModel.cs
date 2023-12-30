@@ -88,6 +88,8 @@ namespace ClinicSoft.ServerModel
         public List<KinModel>? KinEmergencyContacts { get; set; }
         public List<VisitModel>? Visits { get; set; }
         public List<AdmissionModel>? Admissions { get; set; }
+        [NotMapped]
+        public virtual ICollection<BillingTransactionModel>? BilTxnBillingTransactions { get; set; }
 
         public virtual GuarantorModel? Guarantor { get; set; }
 

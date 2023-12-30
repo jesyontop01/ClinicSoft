@@ -35,6 +35,8 @@ namespace ClinicSoft.Controllers
         private readonly string connStringAdmin = null;
         private readonly string applicationVersionNum = null;
         const string SessionEmail = "userEmail";
+         string SessionRoles = "";
+         string SessionLastName = string.Empty;
         //private readonly IPatient _patient;
         public AccountController(IOptions<MyConfiguration> _config)
         {
@@ -138,6 +140,7 @@ namespace ClinicSoft.Controllers
                 RbacDbContext rbacdbContext = new RbacDbContext(connString);
                 RbacUser validUser = new RbacUser();
                 var active = AuthenticateUser.AuthLogin(model.UserName, model.Password);// check AD
+                var rolesString = string.Empty;
 
                 if (active != null)
                 {
@@ -169,13 +172,28 @@ namespace ClinicSoft.Controllers
                             result.UserName = username;
                             RBAC.CreateUser(result);
                             validUser = RBAC.GetUser(model.UserName, model.Password);
+                             rolesString = string.Join(",", validUser.Roles);
+                            if (validUser != null)
+                            {
+                                if (validUser.LandingPageRouteId == 21)
+                                {
 
+                                    HttpContext.Session.SetString(SessionRoles, rolesString);
+                                    return View("Index", "Patient");
+                                }
+                            }
+                          
+
+                            HttpContext.Session.SetString(SessionRoles, rolesString);
                             return RedirectToAction("Index", "Home");
                         }
                         else if (employeeRc == null && validUser == null)
                         {
                             ViewData["userEmail"] = model.UserName;
                             HttpContext.Session.SetString(SessionEmail, model.UserName);
+                            //var rolesString = string.Join(",", validUser.Roles);
+
+                            //HttpContext.Session.SetString(SessionRoles, rolesString);
                             return RedirectToAction("UpdateProfile", "Account");
                         }
                     }
@@ -208,6 +226,17 @@ namespace ClinicSoft.Controllers
                     LoginInfo.UserName = validUser.UserName;
                     adminDbContext.LoginInformation.Add(LoginInfo);
                     adminDbContext.SaveChanges();
+                    if (validUser.Roles.Count > 1)
+                    {
+                        rolesString = string.Join(",", validUser.Roles.Select(roleName => roleName));
+
+                    }
+                    else 
+                    {
+                        rolesString = validUser.Roles.FirstOrDefault().RoleName; 
+
+                    }
+
 
                     SetSessionVariable(validUser);
 
@@ -233,6 +262,16 @@ namespace ClinicSoft.Controllers
                     //    string replacedURL = yourRegex.Replace(url.ToString(), "password=*****");
                     //    ((Audit.WebApi.AuditEventWebApi)auditScope.Event).Action.RequestBody.Value = replacedURL;
                     //}
+                    if (validUser != null)
+                    {
+                        if (validUser.LandingPageRouteId == 21)
+                        {
+                            
+                            HttpContext.Session.SetString("UserRole", rolesString);
+                            return RedirectToAction("Index", "Patient");
+
+                        }
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else

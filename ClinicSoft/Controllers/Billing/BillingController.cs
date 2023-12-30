@@ -22,15 +22,16 @@ using ClinicSoft.Core;
 using ClinicSoft.Core.Parameters;
 using ClinicSoft.Enums;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace ClinicSoft.Controllers
 {
-
     [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
     [DanpheDataFilter()]
-    [Route("api/[controller]")]
+    [Route("/clinicsoft/api/[controller]")]
     public class BillingController : CommonController
     {
+        DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
 
         double cacheExpMinutes;//= 5;//this should come from configuration later on.
         bool realTimeRemoteSyncEnabled = false;
@@ -43,7 +44,276 @@ namespace ClinicSoft.Controllers
             realTimeRemoteSyncEnabled = _config.Value.RealTimeRemoteSyncEnabled;
         }
 
+        public ActionResult Bills()
+        {
+            RbacUser currentUser = HttpContext.Session.Get<RbacUser>("currentuser");
+            ViewBag.Message = HttpContext.Session.GetString("UserRole");
 
+            // You can access user properties like this:
+            PatientDbContext patDbContext = new PatientDbContext(connString);
+            BillingDbContext dbContext = new BillingDbContext(connString);
+            var employeeResult = patDbContext.Employee.Where(e => e.EmployeeId == currentUser.EmployeeId).FirstOrDefault();
+            var patResult = patDbContext.Patients.Where(p => p.LPNo == employeeResult.LPNo).FirstOrDefault();
+            var patientId = patResult.PatientId;
+            var invoices = (from txn in dbContext.BillingTransactions
+                            join fiscalYear in dbContext.BillingFiscalYears on txn.FiscalYearId equals fiscalYear.FiscalYearId
+                            where txn.PatientId == patientId
+                            //&& (txn.IsInsuranceBilling == false || txn.IsInsuranceBilling == null)
+                            select new
+                            {
+                                TransactionId = txn.BillingTransactionId,
+                                Date = txn.CreatedOn,
+                                InvoiceNo = fiscalYear.FiscalYearFormatted + "-" + txn.InvoiceCode + txn.InvoiceNo.ToString(),
+                                Amount = txn.TotalAmount,
+                                BillStatus = txn.BillStatus,
+                                PaymentMode = txn.PaymentMode,
+                                IsReturned = txn.ReturnStatus,
+                                IsInsuranceBilling = txn.IsInsuranceBilling
+                            }).OrderBy(a => a.BillStatus == "paid").ThenByDescending(a => a.Date).ToList();
+
+            var provisionalItems = (from txnItm in dbContext.BillingTransactionItems
+                                    join srvDept in dbContext.ServiceDepartment on txnItm.ServiceDepartmentId equals srvDept.ServiceDepartmentId
+                                    join fiscalYear in dbContext.BillingFiscalYears on txnItm.ProvisionalFiscalYearId equals fiscalYear.FiscalYearId
+                                    where txnItm.PatientId == patientId && txnItm.BillStatus == ENUM_BillingStatus.provisional // "provisional"
+                                    && (txnItm.IsInsurance == false || txnItm.IsInsurance == null)
+                                    select new
+                                    {
+                                        TransactionItemId = txnItm.BillingTransactionItemId,
+                                        Date = txnItm.CreatedOn,
+                                        ServiceDepartmentName = srvDept.ServiceDepartmentName,
+                                        ItemName = txnItm.ItemName,
+                                        Amount = txnItm.TotalAmount,
+                                        ReceiptNo = fiscalYear.FiscalYearFormatted + "-" + "PR" + txnItm.ProvisionalReceiptNo.ToString(),
+                                        BillStatus = txnItm.BillStatus,
+                                        Quantity = txnItm.Quantity,
+                                        Price = txnItm.Price,
+                                        Discount = txnItm.DiscountAmount,
+                                        Tax = txnItm.Tax,
+                                        SubTotal = txnItm.SubTotal
+                                    }).OrderByDescending(a => a.Date).ToList();
+            var paidItems = (from itms in dbContext.BillingTransactionItems
+                             join srvDept in dbContext.ServiceDepartment on itms.ServiceDepartmentId equals srvDept.ServiceDepartmentId
+                             join billtxn in dbContext.BillingTransactions on itms.BillingTransactionId equals billtxn.BillingTransactionId
+                             join fiscalYear in dbContext.BillingFiscalYears on billtxn.FiscalYearId equals fiscalYear.FiscalYearId
+                             where itms.PatientId == patientId && itms.BillStatus == ENUM_BillingStatus.paid// "paid"
+                             && (itms.IsInsurance == false || itms.IsInsurance == null)
+                             select new
+                             {
+                                 TransactionItemId = itms.BillingTransactionItemId,
+                                 Date = billtxn.CreatedOn,
+                                 InvoiceNo = fiscalYear.FiscalYearFormatted + "-" + billtxn.InvoiceCode + billtxn.InvoiceNo.ToString(),
+                                 ServiceDepartmentName = srvDept.ServiceDepartmentName,
+                                 ItemName = itms.ItemName,
+                                 Amount = itms.TotalAmount,
+                                 Quantity = itms.Quantity,
+                                 Price = itms.Price,
+                                 Discount = itms.DiscountAmount,
+                                 Tax = itms.Tax,
+                                 SubTotal = itms.SubTotal,
+                                 PaidDate = itms.CounterDay,
+
+                             }).OrderByDescending(a => a.Date).ToList();
+
+            var unpaidItems = (from crdItems in dbContext.BillingTransactionItems
+                               join srvDept in dbContext.ServiceDepartment on crdItems.ServiceDepartmentId equals srvDept.ServiceDepartmentId
+                               join billtxn in dbContext.BillingTransactions on crdItems.BillingTransactionId equals billtxn.BillingTransactionId
+                               join fiscalYear in dbContext.BillingFiscalYears on billtxn.FiscalYearId equals fiscalYear.FiscalYearId
+                               where crdItems.PatientId == patientId && crdItems.BillStatus == ENUM_BillingStatus.unpaid //"unpaid"
+                               && (crdItems.IsInsurance == false || crdItems.IsInsurance == null)
+                               select new
+                               {
+                                   TransactionItemId = crdItems.BillingTransactionItemId,
+                                   Date = crdItems.CreatedOn,
+                                   InvoiceNo = fiscalYear.FiscalYearFormatted + "-" + billtxn.InvoiceCode + billtxn.InvoiceNo.ToString(),
+                                   ServiceDepartmentName = srvDept.ServiceDepartmentName,
+                                   ItemName = crdItems.ItemName,
+                                   Amount = crdItems.TotalAmount,
+                                   Quantity = crdItems.Quantity,
+                                   Discount = crdItems.DiscountAmount,
+                                   Tax = crdItems.Tax,
+                                   SubTotal = crdItems.SubTotal,
+
+                               }).OrderByDescending(a => a.Date).ToList();
+
+
+            var returnedItems = (from rtnItems in dbContext.BillInvoiceReturnItems
+                                 join srvDept in dbContext.ServiceDepartment on rtnItems.ServiceDepartmentId equals srvDept.ServiceDepartmentId
+                                 join billRtnTxn in dbContext.BillInvoiceReturns on rtnItems.BillReturnId equals billRtnTxn.BillReturnId
+                                 join fiscalYear in dbContext.BillingFiscalYears on billRtnTxn.FiscalYearId equals fiscalYear.FiscalYearId
+                                 where rtnItems.PatientId == patientId
+                                 && (rtnItems.IsInsurance == false || rtnItems.IsInsurance == null)
+                                 select new
+                                 {
+                                     TransactionItemId = rtnItems.BillingTransactionItemId,
+                                     Date = rtnItems.CreatedOn,
+                                     InvoiceNo = fiscalYear.FiscalYearFormatted + "-" + billRtnTxn.InvoiceCode + billRtnTxn.RefInvoiceNum.ToString(),
+                                     ServiceDepartmentName = srvDept.ServiceDepartmentName,
+                                     ItemName = rtnItems.ItemName,
+                                     Amount = rtnItems.RetTotalAmount,
+                                     Quantity = rtnItems.RetQuantity,
+                                     Discount = rtnItems.RetDiscountAmount,
+                                     Tax = rtnItems.RetTaxAmount,
+                                     SubTotal = rtnItems.RetSubTotal,
+                                     BillStatus = billRtnTxn.BillStatus,
+                                     PaymentMode = billRtnTxn.PaymentMode,
+
+                                 }).OrderByDescending(a => a.Date).ToList();
+
+
+
+            var insuranceItems = (from insrItems in dbContext.BillingTransactionItems
+                                  join srvDept in dbContext.ServiceDepartment on insrItems.ServiceDepartmentId equals srvDept.ServiceDepartmentId
+                                  join billtxn in dbContext.BillingTransactions on insrItems.BillingTransactionId equals billtxn.BillingTransactionId
+                                  join fiscalYear in dbContext.BillingFiscalYears on billtxn.FiscalYearId equals fiscalYear.FiscalYearId
+                                  where insrItems.PatientId == patientId && billtxn.IsInsuranceBilling == true
+                                  select new
+                                  {
+                                      TransactionItemId = insrItems.BillingTransactionItemId,
+                                      Date = insrItems.CreatedOn,
+                                      InvoiceNo = fiscalYear.FiscalYearFormatted + "-" + billtxn.InvoiceCode + billtxn.InvoiceNo.ToString(),
+                                      ServiceDepartmentName = srvDept.ServiceDepartmentName,
+                                      ItemName = insrItems.ItemName,
+                                      Amount = insrItems.TotalAmount,
+                                      Quantity = insrItems.Quantity,
+                                      Discount = insrItems.DiscountAmount,
+                                      Tax = insrItems.Tax,
+                                      SubTotal = insrItems.SubTotal,
+
+                                  }).OrderByDescending(a => a.Date).ToList();
+
+            var settlements = (from settlement in dbContext.BillSettlements
+                               where settlement.PatientId == patientId
+                               select new
+                               {
+                                   SettlementId = settlement.SettlementId,
+                                   SettlementReceipt = "SR" + settlement.SettlementReceiptNo.ToString(),
+                                   SettlementDate = settlement.SettlementDate,
+                                   PaidAmount = settlement.PaidAmount,
+                               }).OrderByDescending(a => a.SettlementDate).ToList();
+            var deposits = (from deposit in dbContext.BillingDeposits
+                            join biltxn in dbContext.BillingTransactions on deposit.BillingTransactionId equals biltxn.BillingTransactionId into biltxnTemp
+                            from billingtxn in biltxnTemp.DefaultIfEmpty()
+                            join settlement in dbContext.BillSettlements on deposit.SettlementId equals settlement.SettlementId into settlementTemp
+                            from billSettlement in settlementTemp.DefaultIfEmpty()
+                            where deposit.PatientId == patientId
+                            select new
+                            {
+                                DepositId = deposit.DepositId,
+                                ReceiptNum = deposit.ReceiptNo, //used only to check whether No exists or not in client side
+                                ReceiptNo = "DR" + deposit.ReceiptNo.ToString(),
+                                Date = deposit.CreatedOn,
+                                Amount = deposit.Amount,
+                                Balance = deposit.DepositBalance,
+                                DepositType = deposit.DepositType,
+                                SettlementInvoice = deposit.SettlementId != null ? "SR " + billSettlement.SettlementReceiptNo.ToString() : null,
+                                ReferenceInvoice = billingtxn.InvoiceCode + billingtxn.InvoiceNo,
+                            }).OrderBy(a => a.Date).ToList();
+
+            var CancelItems = (from cancelItems in dbContext.BillingTransactionItems
+                               join fiscalYear in dbContext.BillingFiscalYears on cancelItems.ProvisionalFiscalYearId equals fiscalYear.FiscalYearId
+                               where cancelItems.PatientId == patientId
+                               && cancelItems.BillStatus == ENUM_BillingStatus.cancel //"cancel"
+                               && (cancelItems.IsInsurance == false || cancelItems.IsInsurance == null)
+                               select new
+                               {
+                                   TransactionItemId = cancelItems.BillingTransactionItemId,
+                                   CreatedDate = cancelItems.CreatedOn,
+                                   CancelledDate = cancelItems.CancelledOn,
+                                   ItemName = cancelItems.ItemName,
+                                   ServiceDepartmentName = cancelItems.ServiceDepartmentName,
+                                   Amount = cancelItems.TotalAmount,
+                                   Quantity = cancelItems.Quantity,
+                                   Discount = cancelItems.DiscountAmount,
+                                   Tax = cancelItems.Tax,
+                                   SubTotal = cancelItems.SubTotal,
+                                   BillStatus = cancelItems.BillStatus,
+                               }).OrderByDescending(a => a.CancelledDate).ToList();
+
+
+            var returnModel = new List<PatientBillsVM>();
+
+            // Create mappedInvoice list outside the loop
+            var mappedInvoice = invoices.Select(p => new InvoiceDetailsModel
+            {
+                Payment_Method = p.PaymentMode,
+                Amount = p.Amount.Value,
+                TransactionId = p.TransactionId.ToString()
+            }).ToList();
+
+            // Create mappedInvoice list outside the loop
+            var mappedTransaction = paidItems.Select(p => new BillingTransactionItemModel
+            {
+                ItemName = p.ItemName,
+                TotalAmount = p.Amount,
+                Quantity = p.Quantity,
+                PaidDate = p.PaidDate
+            }).ToList();
+            ViewBag.BillUser = $"{patResult.FirstName}, {patResult.LastName}";
+            ViewBag.TransactionList = mappedTransaction;
+            foreach (var inv in invoices)
+            {
+                var patientBillVM = new PatientBillsVM
+                {
+                    InvoicesList = mappedInvoice,
+                    PatientId = patientId,
+                    BillingTransactionItems = mappedTransaction,
+
+                    // Set other properties of PatientBillsVM as needed
+                };
+
+                returnModel.Add(patientBillVM); // Add the created item to returnModel
+            }
+
+
+            //foreach (var item in invoices)
+            //{
+
+            //    item.PatientId = patientId;
+
+            //    // Find the corresponding invoice for the current item
+            //    var invItem = invoices.Where(inv => inv.TransactionId == item.BillingTransactionId).ToList();
+
+
+            //    if (invItem.Any())
+            //    {
+            //         returnModel = invoices.Select(p => new PatientBillsVM
+            //         {
+            //            PaymentMode = p.PaymentMode,
+            //            PaidAmount = p.Amount.Value,
+            //            BillingTransactionId = p.TransactionId,
+            //            InvoicesList =
+            //        }).ToList();
+
+            //        var mappedInvoice = invoices.Select(p => new InvoiceDetailsModel
+            //        {
+            //            Payment_Method = p.PaymentMode,
+            //            Amount = p.Amount.Value,
+            //            TransactionId = p.TransactionId.ToString()
+            //        }).ToList();
+
+            //        item.InvoicesList = mappedInvoice;
+
+            //    }
+            //}
+            responseData.Results = new
+            {
+                IsLoaded = true,
+                PatientId = patientId,
+                Invoices = invoices,
+                ProvisionalItems = provisionalItems,
+                Settlements = settlements,
+                PaidItems = paidItems,
+                UnpaidItems = unpaidItems,
+                Deposits = deposits,
+                ReturnedItems = returnedItems,
+                InsuranceItems = insuranceItems,
+                CancelledItems = CancelItems
+
+            };
+
+
+            return View(returnModel);
+        }
 
         [HttpGet]
         public string Get(string reqType,
@@ -72,7 +342,6 @@ namespace ClinicSoft.Controllers
             string search,
             int? invoiceNumber)
         {
-            DanpheHTTPResponse<object> responseData = new DanpheHTTPResponse<object>();
             RbacDbContext rbacDbContext = new RbacDbContext(connString);
             MasterDbContext masterDbContext = new MasterDbContext(connString);
             RbacUser currentUser = HttpContext.Session.Get<RbacUser>("currentuser");

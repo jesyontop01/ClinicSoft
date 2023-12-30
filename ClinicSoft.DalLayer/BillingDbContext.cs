@@ -11,6 +11,8 @@ using ClinicSoft.Security;
 using Audit.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+//using ClinicSoft.DalLayer.Models;
+
 namespace ClinicSoft.DalLayer
 {
     public class BillingDbContext : AuditDbContext
@@ -23,74 +25,74 @@ namespace ClinicSoft.DalLayer
             : base(options)
         {
         }
-        public DbSet<BillingTransactionModel> BillingTransactions { get; set; }
-        public DbSet<ServiceDepartmentModel> ServiceDepartment { get; set; }
+        public DbSet<BillingTransactionModel>? BillingTransactions { get; set; }
+        public DbSet<ServiceDepartmentModel>? ServiceDepartment { get; set; }
 
         //public DbSet<LabTest> LabTests { get; set; }
-        public DbSet<BillItemPrice> BillItemPrice { get; set; }
-        public DbSet<BillItemRequisition> BillItemRequisitions { get; set; }
+        public DbSet<BillItemPrice>? BillItemPrice { get; set; }
+        public DbSet<BillItemRequisition>?   BillItemRequisitions { get; set; }
         //public DbSet<BillReturnRequestModel> BillReturnRequests { get; set; }//removed: sud-1May'21
-        public DbSet<BillingTransactionItemModel> BillingTransactionItems { get; set; }
-        public DbSet<BillingDeposit> BillingDeposits { get; set; }
-        public DbSet<BillingCounter> BillingCounter { get; set; }
-        public DbSet<BillItemPriceHistory> BillItemPriceHistory { get; set; }
-        public DbSet<BillingPackageModel> BillingPackages { get; set; }
-        public DbSet<LabRequisitionModel> LabRequisitions { get; set; }//yub: 3rd Dec '18
-        public DbSet<ImagingRequisitionModel> RadiologyImagingRequisitions { get; set; }//yub: 3rd Dec '18
-        public DbSet<PatientModel> Patient { get; set; }
-        public DbSet<EmployeeModel> Employee { get; set; }
-        public DbSet<VisitModel> Visit { get; set; }
-        public DbSet<PatientMembershipModel> PatientMembership { get; set; }
-        public DbSet<MembershipTypeModel> MembershipType { get; set; }
-        public DbSet<CountrySubDivisionModel> CountrySubdivisions { get; set; }
+        public DbSet<BillingTransactionItemModel>? BillingTransactionItems { get; set; }
+        public DbSet<BillingDeposit>?        BillingDeposits { get; set; }
+        public DbSet<BillingCounter>? BillingCounter { get; set; }
+        public DbSet<BillItemPriceHistory>? BillItemPriceHistory { get; set; }
+        public DbSet<BillingPackageModel>? BillingPackages { get; set; }
+        public DbSet<LabRequisitionModel>? LabRequisitions { get; set; }//yub: 3rd Dec '18
+        public DbSet<ImagingRequisitionModel>? RadiologyImagingRequisitions { get; set; }//yub: 3rd Dec '18
+        public DbSet<PatientModel>?  Patient { get; set; }
+        public DbSet<EmployeeModel>? Employee { get; set; }
+        public DbSet<VisitModel>? Visit { get; set; }
+        public DbSet<PatientMembershipModel>?    PatientMembership { get; set; }
+        public DbSet<MembershipTypeModel>? MembershipType { get; set; }
+        public DbSet<CountrySubDivisionModel>?        CountrySubdivisions { get; set; }
         //start: ashim-5May for fiscalYear
-        public DbSet<BillingFiscalYear> BillingFiscalYears { get; set; }
+        public DbSet<BillingFiscalYear>? BillingFiscalYears { get; set; }
         //end: ashim-5May for fiscalYear
         //start: sud-5May for InvoiceReturn
-        public DbSet<BillInvoiceReturnModel> BillInvoiceReturns { get; set; }
+        public DbSet<BillInvoiceReturnModel>? BillInvoiceReturns { get; set; }
         //end: sud-5May for InvoiceReturn
-        public DbSet<BillSettlementModel> BillSettlements { get; set; }
-        public DbSet<SyncBillingAccountingModel> SyncBillingAccounting { get; set; }
-        public DbSet<AdmissionModel> Admissions { get; set; }//sud: 20Jun'18
-        public DbSet<PatientBedInfo> PatientBedInfos { get; set; }//sud: 20Jun'18
-        public DbSet<DepartmentModel> Departments { get; set; }
-        public DbSet<IRDLogModel> IRDLog { get; set; }
+        public DbSet<BillSettlementModel>? BillSettlements { get; set; }
+        public DbSet<SyncBillingAccountingModel>? SyncBillingAccounting { get; set; }
+        public DbSet<AdmissionModel>? Admissions { get; set; }//sud: 20Jun'18
+        public DbSet<PatientBedInfo>? PatientBedInfos { get; set; }//sud: 20Jun'18
+        public DbSet<DepartmentModel>?   Departments { get; set; }
+        public DbSet<IRDLogModel>?           IRDLog { get; set; }
 
         //dinesh 21st July'19  for provisional list
-        public DbSet<RbacUser> User { get; set; }
+        public DbSet<RbacUser>?  User { get; set; }
 
         //sud: 9Sept'18
-        public DbSet<History_BillingTransactionItem> History_BillingTxnItems { get; set; }
+        public DbSet<History_BillingTransactionItem>? History_BillingTxnItems { get; set; }
 
-        public DbSet<WardModel> Wards { get; set; }
-        public DbSet<BedModel> Beds { get; set; }
-        public DbSet<BedFeature> BedFeatures { get; set; }
-        public DbSet<BedFeaturesMap> BedFeaturesMaps { get; set; }
+        public DbSet<WardModel>? Wards { get; set; }
+        public DbSet<BedModel>? Beds { get; set; }
+        public DbSet<BedFeature>? BedFeatures { get; set; }
+        public DbSet<BedFeaturesMap>? BedFeaturesMaps { get; set; }
 
         //Insurance Part
-        public DbSet<InsuranceModel> Insurances { get; set; }
-        public DbSet<InsuranceProviderModel> InsuranceProviders { get; set; }
-        public DbSet<PatientInsurancePackageTransactionModel> PatientInsurancePackageTransactions { get; set; }
+        public DbSet<InsuranceModel>? Insurances { get; set; }
+        public DbSet<InsuranceProviderModel>? InsuranceProviders { get; set; }
+        public DbSet<PatientInsurancePackageTransactionModel>? PatientInsurancePackageTransactions { get; set; }
 
         //credit Organization --yubraj 19th April 2019
-        public DbSet<CreditOrganizationModel> CreditOrganization { get; set; }
-        public DbSet<BanksModel> Banks { get; set; }
-        public DbSet<BillingHandoverTransactionModel> HandoverTransaction { get; set; }
-        public DbSet<BillingHandoverModel> Handover { get; set; }
-        public DbSet<BillingDenominationModel> Denomination { get; set; }
-        public DbSet<LabTestModel> LabTests { get; set; }
-        public DbSet<AdminParametersModel> AdminParameters { get; set; }
-        public DbSet<EmpCashTransactionModel> EmpCashTransactions { get; set; }
-        public DbSet<EmpDueAmountModel> EmpDueAmounts { get; set; }
-        public DbSet<BillInvoiceReturnItemsModel> BillInvoiceReturnItems { get; set; }//sud-1May'21
-        public DbSet<PrinterSettingsModel> PrinterSettings { get; set; }//pratik:24May'21
-        public DbSet<DynamicReportNameModel> DynamicReportNameModels { get; set; }//aniket:28Jul'21
-        public DbSet<ReportingItemsModel>ReportingItemsModels { get; set; }//aniket:28Jul'21
-        public DbSet<ReportingItemBillingItemMapping> ReportingItemsAndBillingItemMappingModels { get; set; }//aniket:28Jul'21 
+        public DbSet<CreditOrganizationModel>?   CreditOrganization { get; set; }
+        public DbSet<BanksModel>?        Banks { get; set; }
+        public DbSet<BillingHandoverTransactionModel>?   HandoverTransaction { get; set; }
+        public DbSet<BillingHandoverModel>?  Handover { get; set; }
+        public DbSet<BillingDenominationModel>? Denomination { get; set; }
+        public DbSet<LabTestModel>? LabTests { get; set; }
+        public DbSet<AdminParametersModel>? AdminParameters { get; set; }
+        public DbSet<EmpCashTransactionModel>? EmpCashTransactions { get; set; }
+        public DbSet<EmpDueAmountModel>? EmpDueAmounts { get; set; }
+        public DbSet<BillInvoiceReturnItemsModel>?      BillInvoiceReturnItems { get; set; }//sud-1May'21
+        public DbSet<PrinterSettingsModel>? PrinterSettings { get; set; }//pratik:24May'21
+        public DbSet<DynamicReportNameModel>? DynamicReportNameModels { get; set; }//aniket:28Jul'21
+        public DbSet<ReportingItemsModel>? ReportingItemsModels { get; set; }//aniket:28Jul'21
+        public DbSet<ReportingItemBillingItemMapping>? ReportingItemsAndBillingItemMappingModels { get; set; }//aniket:28Jul'21 
 
-        public DbSet<RadiologyImagingTypeModel> RadiologyImagingTypes { get; set; } //Krishna: 2nd'Jan 22
-        public DbSet<RadiologyImagingItemModel> RadiologyImagingItems { get; set; } //Krishna: 2nd'Jan 22
-        public DbSet<LabVendorsModel> LabVendors { get; set; } //Krishna: 2nd'Jan 22
+        public DbSet<RadiologyImagingTypeModel>? RadiologyImagingTypes { get; set; } //Krishna: 2nd'Jan 22
+        public DbSet<RadiologyImagingItemModel>? RadiologyImagingItems { get; set; } //Krishna: 2nd'Jan 22
+        public DbSet<LabVendorsModel>? LabVendors { get; set; } //Krishna: 2nd'Jan 22
 
         public object ReportingItemsModel { get; set; }
         private string connStr = null;
@@ -114,7 +116,7 @@ namespace ClinicSoft.DalLayer
         //    this.AuditDisabled = true;
 
         //}
-        public DbSet<IntegrationModel> IntegrationName { get; set; }
+        public DbSet<IntegrationModel>?  IntegrationName { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -135,6 +137,84 @@ namespace ClinicSoft.DalLayer
             modelBuilder.Entity<ReportingItemBillingItemMapping>().ToTable("BIL_MAP_ReportingItem_BillingItems");
             //Billing mapping
             modelBuilder.Entity<BillingTransactionItemModel>().ToTable("BIL_TXN_BillingTransactionItems");
+
+            modelBuilder.Entity<BillingTransactionModel>(entity =>
+            {
+                entity.HasKey(e => e.BillingTransactionId);
+
+                entity.ToTable("BIL_TXN_BillingTransaction");
+
+                entity.HasIndex(e => e.CreatedOn, "IX_BIL_BillingTransaction_CreatedOn");
+
+                entity.HasIndex(e => e.FiscalYearId, "IX_TblBilTxn_FiscalYearId_InvoiceNo");
+
+                entity.Property(e => e.AdjustmentTotalAmount).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.BillStatus)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedOn)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.InsTransactionDate).HasColumnType("datetime");
+
+                entity.Property(e => e.InsuranceClaimedDate).HasColumnType("datetime");
+
+                entity.Property(e => e.InvoiceCode)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.InvoiceType)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.LabTypeName)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PackageName)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaidDate).HasColumnType("datetime");
+
+                entity.Property(e => e.PaymentDetails)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaymentMode)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PrintedOn).HasColumnType("datetime");
+
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TransactionType)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.CreatedByNavigation)
+                    .WithMany(p => p.BilTxnBillingTransactions)
+                    .HasForeignKey(d => d.CreatedBy)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BIL_TXN_BillingTransaction_EMP_Employee");
+
+                entity.HasOne(d => d.Patient)
+                    .WithMany(p => p.BilTxnBillingTransactions)
+                    .HasForeignKey(d => d.PatientId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_BIL_TXN_BillingTransaction_PAT_Patient");
+
+                entity.HasOne(d => d.Settlement)
+                    .WithMany(p => p.BilTxnBillingTransactions)
+                    .HasForeignKey(d => d.SettlementId)
+                    .HasConstraintName("FK_BIL_TXN_BillingTransaction_Settlements");
+            });
             modelBuilder.Entity<BillingTransactionItemModel>()
                   .HasOne<BillingTransactionModel>(s => s.BillingTransaction) // Address entity requires Patient
                   .WithMany(s => s.BillingTransactionItems) // Patient entity includes many Addresses entities

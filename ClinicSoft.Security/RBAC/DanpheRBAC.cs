@@ -77,9 +77,42 @@ namespace ClinicSoft.Security
             {
                 RbacDbContext dbContext = new RbacDbContext(connStringName);
                 retList = dbContext.Users.ToList();
+
+                // Initialize userRoles outside the loop to collect user roles
+                var userRoles = new List<RbacRole>();
+                var rolesForUser = new List<RbacRole>();
+                foreach (var item in retList)
+                {
+                    var userPermissions = GetAllUserRoleMaps().Where(u => u.UserId == item.UserId);
+
+                    // Collect the user roles from userPermissions and add them to userRoles
+                    var roleId = userPermissions.Select(up => up.RoleId).ToList();
+                    if(roleId != null)
+                    {
+                        foreach(var role in roleId)
+                        {
+                            // Fetch the RbacRole object by roleId (assuming you have a way to do this)
+                            var roles = dbContext.Roles.Where(r => roleId.Contains(r.RoleId)).ToList();
+
+                            if (roles.Any())
+                            {
+                                rolesForUser.AddRange(roles);
+                            }
+                        }
+
+                    }
+                    userRoles.AddRange(rolesForUser);
+
+                    // Assign the roles to the user
+                    item.Roles = rolesForUser;
+                }
+
+                // Cache the result
                 DanpheCache.Add("RBAC-Users-All", retList, cacheExpiryMinutes);
             }
+
             return retList;
+
         }
         //This method returns all Userand Role mapping
         public static List<UserRoleMap> GetAllUserRoleMaps()

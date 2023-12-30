@@ -26,7 +26,7 @@ namespace ClinicSoft.Controllers
 {
 
     [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
-    [Route("api/[controller]")]
+    [Route("ClinicSoft/api/[controller]")]
     public class CoreController : CommonController
     {
         private readonly MyConfiguration _appSettings;

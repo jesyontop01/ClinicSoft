@@ -410,7 +410,7 @@ export class LabsDLService {
     }
   }
   uploadFile<T>(url:any,patient: any, formData: FormData): Observable<T> {
-    var fullUrl = url +'api/LabReport';
+    var fullUrl = url +'/clinicsoft/api/LabReport';
     var reqHeader = new HttpHeaders({ 
       'Authorization': 'Bearer ' + (sessionStorage.getItem('TELEMED_Token'))
    });
@@ -418,7 +418,7 @@ export class LabsDLService {
   }
 
   TeleMedicineLogin(url:any,login:LoginToTelemed){
-    var fullUrl = url + 'api/account/login';
+    var fullUrl = url + '/clinicsoft/api/account/login';
     return this.http.post<any>(fullUrl, JSON.stringify(login),{headers : new HttpHeaders({ 'Content-Type': 'application/json' })});
   }
 

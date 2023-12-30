@@ -1,0 +1,119 @@
+﻿<html lang="en-US" class=" webkit chrome win js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <title>@ViewBag.Title - SEAPDC Management Portal</title>
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- CORE CSS -->
+    <link href="~/css/bootstrap4-elements.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/lib/bootstrap4-duallistbox/bootstrap-duallistbox.min.css" rel="stylesheet" />
+
+
+    <link href="~/lib/mdb-free/css/mdb.lite.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="~/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui/jquery-ui.structure.css" rel="stylesheet" />
+    <!-- THEME CSS -->
+    <link href="~/css/essentials.css" rel="stylesheet" />
+    <link href="~/css/layout.css" rel="stylesheet" />
+    <link href="~/css/color_scheme/green.css" rel="stylesheet" />
+
+    @RenderSection("styles", false)
+    @*<link href="https://code.jquery.com/ui/1.12.1/themes/pepper-grinder/jquery-ui.css" rel="stylesheet" />
+        <link href="https://cdn.rawgit.com/dubrox/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.css" rel="stylesheet" />*@
+    <link href="~/css/custom.css" rel="stylesheet" />
+
+</head>
+<!--
+    .boxed = boxed version
+-->
+<body>
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper">
+
+        <!--
+            ASIDE
+            Keep it outside of #wrapper (responsive purpose)
+        -->
+        <partial name="_SideNavigationAdmin" />
+        <!-- /ASIDE -->
+        <!-- HEADER -->
+        <partial name="_Header" />
+        <!-- /HEADER -->
+        <!--
+            MIDDLE
+        -->
+        <section id="middle">
+
+
+            @RenderBody()
+
+
+
+        </section>
+        <!-- /MIDDLE -->
+
+
+    </div>
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>*@
+
+
+    <!-- JAVASCRIPT FILES -->
+    @*<script src="~/js/modalForm.js"></script>*@
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/mdb-free/js/mdb.min.js"></script>
+
+
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    @*<script type="text/javascript">var plugin_path = 'assets/plugins/';</script>*@
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(function () {
+            $(".ui-tooltip-content").parents('div').remove();
+            $('[data-tooltip="tooltip"]').tooltip();
+        });
+    </script>
+
+
+    @*<script type="text/javascript">var plugin_path = '/lib/';</script>*@
+
+
+
+    <script src="~/js/modalForm.js"></script>
+    @RenderSection("scripts", false)
+    <script src="~/js/app.js"></script>
+    <!--Modal Form-->
+    <div class="modal fade" id="newModal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="dialog">
+            <div class="modal-content" id="myModalContent">
+
+            </div>
+        </div>
+    </div>
+    <!--END Modal Form-->
+
+</body>
+</html>

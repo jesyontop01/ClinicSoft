@@ -43,7 +43,14 @@ namespace ClinicSoft.Controllers.Billing
         public static BillingFiscalYear GetFiscalYear(BillingDbContext billingDbContext)
         {
             DateTime currentDate = DateTime.Now.Date;
-            return billingDbContext.BillingFiscalYears.Where(fsc => fsc.StartYear <= currentDate && fsc.EndYear >= currentDate).FirstOrDefault();
+            var billYear = billingDbContext.BillingFiscalYears.ToList();
+           var result = billYear.Where(fsc => fsc.StartYear <= currentDate && fsc.EndYear >= currentDate).FirstOrDefault();
+            if(result == null)
+            {
+                return null;
+            }
+            return result;
+              //  billingDbContext.BillingFiscalYears.Where(fsc => fsc.StartYear <= currentDate && fsc.EndYear >= currentDate).FirstOrDefault();
         }
 
         //public static int? GetInvoiceNumber(string connString, bool? isInsuranceBIlling)

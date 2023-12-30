@@ -26,7 +26,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    //[Route("api/[controller]")]
+    [Route("clinicsoft/api/[controller]")]
     public class SettingsController : CommonController
     {
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,20 +7,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\HomeNew\**" />
+    <Content Remove="Views\HomeNew\**" />
+    <EmbeddedResource Remove="Views\HomeNew\**" />
+    <None Remove="Views\HomeNew\**" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Home\Privacy.cshtml" />
+  </ItemGroup>-->
+
+  <ItemGroup>
     <Folder Include="Profiles\" />
     <Folder Include="typings\" />
+    <Folder Include="wwwroot\dist\img\waec\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Home\AppMain.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Privacy.cshtml" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
     <PackageReference Include="EPPlus" Version="6.2.8" />
     <PackageReference Include="Google.Apis.Drive.v3" Version="1.61.0.3155" />
     <PackageReference Include="iTextSharp.LGPLv2.Core" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21">
       <PrivateAssets>all</PrivateAssets>
@@ -43,6 +63,21 @@
     <ProjectReference Include="..\ClinicSoft.Security\ClinicSoft.Security.csproj" />
     <ProjectReference Include="..\ClinicSoft.ServerModel\ClinicSoft.ServerModel.csproj" />
     <ProjectReference Include="..\ClinicSoft.Sync\ClinicSoft.Sync.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -7,6 +7,8 @@ import { InsuranceVM } from '../shared/patient-billing-context-vm';
 import { BillItemPriceVM } from './billing-view-models';
 import { CreditOrganization } from '../../settings-new/shared/creditOrganization.model';
 import { PatientLatestVisitContext } from '../../patients/shared/patient-lastvisit-context';
+import { environment } from '../../../environments/environment';
+
 
 @Injectable()
 export class BillingService {
@@ -15,7 +17,7 @@ export class BillingService {
   public taxPercent: number = 0;
   public taxId: number = 0;
   public currencyUnit: string = "";
-  public BillingType: string = "";//for: inpatient, outpatient, etc.. 
+  public BillingType: string = "";//for: inpatient, outpatient, etc..
   public BillingFlow: string = "normal";//normal for normal billing and insurance for insurance billing
   public Insurance: InsuranceVM;
   public isInsuranceBilling: boolean = false;
@@ -24,6 +26,7 @@ export class BillingService {
   public OpdStickerDotMatrixPageDimension: any;
   public EmergencyStickerDotMatrixPageDimension: any;
   public DischargeBillPageDimension: any;
+  private baseURL: string = environment.baseURL;
   //public defaultPrinterName: string = null;
 
   public adtAdditionalBillItms: Array<BillItemPriceVM>;
@@ -33,6 +36,7 @@ export class BillingService {
   constructor(public coreService: CoreService, public msgBoxServ: MessageboxService) {
     this.GetTaxDetails();
     this.GetCurrencyUnit();
+    console.log(`${this.baseURL}/api/auth/mare`)
   }
   public GetTaxDetails() {
     let taxInfo1 = this.coreService.Parameters.find(a => a.ParameterName == 'TaxInfo');
@@ -105,7 +109,7 @@ export class BillingService {
 
   //this creates a duplicate and returns the doctor's list.
   //shouldn't send the same array since we're adding additional fields in the billing components
-  //which will change this shared object.. 
+  //which will change this shared object..
   public GetDoctorsListForBilling(): Array<any> {
     let docListToReturn = [];
     if (this.AllDoctorsListForBilling) {

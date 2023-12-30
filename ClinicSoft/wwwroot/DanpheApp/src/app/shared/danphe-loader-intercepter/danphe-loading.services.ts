@@ -20,7 +20,7 @@ export class DanpheLoadingInterceptor implements HttpInterceptor {
 
     this.requests.push(req);
 
-    //clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance&searchText=sud
+    "/clinicsoft/api/BillInsurance?reqType=all-patients-for-insurance&searchText=sud"
     let urlWithParam = req.url;
     //if & is found in url then substring the url upto &, else take only url (eg: for notification dropdown)
     let urlOnly = urlWithParam.indexOf('&') > -1 ? urlWithParam.substr(0, urlWithParam.indexOf('&')) : urlWithParam;

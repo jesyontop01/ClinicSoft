@@ -1,0 +1,174 @@
+﻿@using Microsoft.AspNetCore.Http;
+@addTagHelper *, Vereyon.Web.FlashMessage
+
+@{
+
+    ViewData["Title"] = "Recommend Examiner For Sanction";
+    string currentDiet;
+    string userId;
+    int userID;
+    string UserGroupID;
+    string UserGroupName= "";
+    string MVCode = string.Empty;
+    //int MVCode = 0;
+    if(ViewBag.CurrentDiet != null) { currentDiet = ViewBag.CurrentDiet;}
+    if(Context.Session.GetString("UserId") != null) { userId = Context.Session.GetString("UserId");}
+    if (Context.Session.GetString("MVCode") != null) { MVCode = Context.Session.GetString("MVCode"); }
+    if(ViewBag.userId != null) {userID = ViewBag.userId;}
+    if(Context.Session.GetString("UserRoleId") != null) {UserGroupID = Context.Session.GetString("UserRoleId");}
+    if (Context.Session.GetString("UserGroupName") != null) { UserGroupName = Context.Session.GetString("UserGroupName"); }
+    //if (ViewBag.MVCode != null) { MVCode = ViewBag.MVCode; }
+    //if (ViewBag.MVCode != null) { MVCode = ViewBag.MVCode; }
+
+
+}
+<aside id="aside">
+    <!--
+        Always open:
+        <li class="active alays-open">
+
+        LABELS:
+            <span class="label label-danger pull-right">1</span>
+            <span class="label label-default pull-right">1</span>
+            <span class="label label-warning pull-right">1</span>
+            <span class="label label-success pull-right">1</span>
+            <span class="label label-info pull-right">1</span>
+    -->
+    <nav id="sideNav">
+        <!-- MAIN MENU -->
+        <ul class="nav nav-list">
+            <li class="el_primary" id="el_0">
+                <!-- dashboard -->
+                <a class="dashboard disabled text-white" href="javascript:void(0)" style="min-height: 100px !important">
+                    <!-- warning - url used by default by ajax (if eneabled) -->
+                    <span class="text-wrap">
+                        STAFF, EXAMINERS' APPOINTMENT, PROMOTION AND DISCIPLINARY COMMITTEE
+                    </span>
+                </a>
+            </li>
+            <li class="el_primary" id="el_0">
+                <!-- dashboard -->
+                <a class="dashboard" asp-controller="Home" asp-action="Index">
+                    <!-- warning - url used by default by ajax (if eneabled) -->
+                    <i class="main-icon fa fa-home"></i> <span>Home</span>
+                </a>
+            </li>
+            <li class="el_primary" id="el_1">
+                <a href="#">
+                    <i class="fa fa-menu-arrow pull-right"></i>
+                    <i class="main-icon fa fa-bolt"></i> <span>Manage Sanctions/Status</span>
+                </a>
+                <ul>
+                    <!-- submenus -->
+                    <li><a asp-action="Manage" asp-controller="ExaminerSanction">Examiner Sanctions/Status</a></li>
+                    <li><a asp-action="Index" asp-controller="StaffSanction">Staff Sanctions</a></li>
+
+                </ul>
+            </li>
+            <li class="el_primary" id="el_2">
+                <a href="#">
+                    <i class="fa fa-menu-arrow pull-right"></i>
+                    <i class="main-icon fa fa-graduation-cap"></i> <span>Manage Examiners</span>
+                </a>
+                <ul>
+                    <!-- submenus -->
+                    <!-- submenus -->
+                    <li><a asp-action="GetFinalList" asp-controller="Examiners" asp-route-mvCode="@MVCode">Load Final List</a></li>
+                    <li><a asp-action="Index" asp-controller="Examiners">Examiners List on ESS</a></li>
+                    <li><a asp-action="ComessAndESSExaminers" asp-controller="Examiners">Old Examiners from Comess Final List</a></li>
+                    <li><a asp-action="GateCrashers" asp-controller="Examiners">Gate Crashers from Marking Venue</a></li>
+                    @*<li><a asp-action="GetExaminersByOffences" asp-controller="Examiners">Sanctioned Examiners</a></li>*@
+                </ul>
+            </li>
+
+
+            @if (UserGroupName != null && UserGroupName.Contains("Admin"))
+            {
+                <li class="el_primary" id="el_3">
+                    <a href="#">
+                        <i class="fa fa-menu-arrow pull-right"></i>
+                        <i class="main-icon fa fa-file-text-o"></i> <span>Reporting</span>
+                    </a>
+                    <ul>
+                        <!-- submenus -->
+                        <li>
+                            @*<a asp-area="" asp-controller="Letter" asp-action="Viewer">Generate Letter</a>*@
+                            <a asp-area="" asp-controller="Letter" asp-action="Index">Examiners' Letters</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="ExaminersAppeal" asp-action="Files">Uploads</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="el_primary" id="el_4">
+                    <a href="#">
+                        <i class="fa fa-menu-arrow pull-right"></i>
+                        <i class="main-icon fa fa-users"></i> <span>User Management</span>
+                    </a>
+                    <ul>
+                        @*<li><a asp-action="UserList" asp-controller="UserManagement">User Management</a></li>*@
+                        <li><a asp-action="Index" asp-controller="Users">Manage Users</a></li>
+                        <li><a asp-action="PreviledgedUsers" asp-controller="Users">Examiner Records Users</a></li>
+
+                    </ul>
+                </li>
+                <li class="el_primary" id="el_4">
+                    <a href="#">
+                        <i class="fa fa-menu-arrow pull-right"></i>
+                        <i class="main-icon fa fa-cog"></i> <span>Settings</span>
+                    </a>
+                    <ul>
+                        <!-- submenus -->
+                        <li><a asp-action="ActiveExam" asp-controller="Settings">Exam Diet Settings</a></li>
+                        <li><a asp-action="Index" asp-controller="Settings">SEAPDC Settings</a></li>
+                        <li><a asp-action="AuthorizedSignatoryDetails" asp-controller="Settings">Authorized Signatory</a></li>
+
+
+
+
+                    </ul>
+                </li>
+            }
+            
+
+            @if (UserGroupName != null && UserGroupName.Contains("SEAPDC"))
+            {
+                <li class="el_primary" id="el_3">
+                    <a href="#">
+                        <i class="fa fa-menu-arrow pull-right"></i>
+                        <i class="main-icon fa fa-file-text-o"></i> <span>Uploads</span>
+                    </a>
+                    <ul>
+                        <!-- submenus -->
+                       
+                        <li>
+                            <a asp-area="" asp-controller="ExaminersAppeal" asp-action="Files">Uploads</a>
+                        </li>
+                    </ul>
+                </li>
+                
+            }
+
+            @if (UserGroupName != null && UserGroupName.Contains("Head-of-Venue"))
+            {
+                <li class="el_primary" id="el_3">
+                    <a href="#">
+                        <i class="fa fa-menu-arrow pull-right"></i>
+                        <i class="main-icon fa fa-file-text-o"></i> <span>Uploads</span>
+                    </a>
+                    <ul>
+                        <!-- submenus -->
+
+                        <li>
+                            <a asp-area="" asp-controller="ExaminersAppeal" asp-action="ExFiles">Examiner Files</a>
+                        </li>
+                    </ul>
+                </li>
+
+            }
+        </ul>
+
+    </nav>
+
+    <span id="asidebg"><!-- aside fixed background --></span>
+</aside>

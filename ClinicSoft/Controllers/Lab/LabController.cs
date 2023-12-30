@@ -30,7 +30,7 @@ using System.Web;
 using Microsoft.Data.SqlClient;
 namespace ClinicSoft.Controllers
 {
-
+    [Route("clinicsoft/api/[controller]")]
     public class LabController : CommonController
     {
         //private bool docPatPortalSync = false;

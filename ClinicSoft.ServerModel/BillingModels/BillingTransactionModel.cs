@@ -16,7 +16,7 @@ namespace ClinicSoft.ServerModel
         public int? PatientVisitId { get; set; }
         public int? CounterId { get; set; }
         public DateTime? PaidDate { get; set; }
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
         public double? TotalQuantity { get; set; }
         public double? SubTotal { get; set; }
         public double? DiscountPercent { get; set; }
@@ -29,7 +29,7 @@ namespace ClinicSoft.ServerModel
         public double? DepositUsed { get; set; }
         public double? DepositReturnAmount { get; set; }
         public double? DepositBalance { get; set; }
-        public string Remarks { get; set; }
+        public string? Remarks { get; set; }
         public double? Tender { get; set; }
         public double? Change { get; set; }
 
@@ -40,27 +40,28 @@ namespace ClinicSoft.ServerModel
         public int? PrintCount { get; set; }
 
         //added below 3fields: sud:4May'18 - for CreditInvoice scenario
-        public string PaymentMode { get; set; }
-        public string PaymentDetails { get; set; }
-        public string BillStatus { get; set; }
+        public string? PaymentMode { get; set; }
+        public string? PaymentDetails { get; set; }
+        public string? BillStatus { get; set; }
         //start: Ashim-5May for FiscalYear and InvoiceNo.
         public int? FiscalYearId { get; set; }
         [NotMapped]
-        public string FiscalYear { get; set; }//added: sud-5May (need to show this in client side)
+        public string? FiscalYear { get; set; }//added: sud-5May (need to show this in client side)
         public int? InvoiceNo { get; set; }
         //end: Ashim-5May for FiscalYear and InvoiceNo.
-        public virtual PatientModel Patient { get; set; }
-        public virtual List<BillingTransactionItemModel> BillingTransactionItems { get; set; }
+        public virtual PatientModel? Patient { get; set; }
+        [NotMapped]
+        public virtual List<BillingTransactionItemModel>? BillingTransactionItems { get; set; }
 
         public bool? ReturnStatus { get; set; }
         //public bool? IsRemoteSynced { get; set; }//added for IRD-sud:6May'18
 
         public int? TaxId { get; set; }
-        public string InvoiceCode { get; set; }
+        public string? InvoiceCode { get; set; }
         public double? TaxableAmount { get; set; }//sud:9May'18
         public bool? IsRemoteSynced { get; set; }
         public bool? IsRealtime { get; set; }//sud: 10May'18
-
+        [NotMapped]
         public int? SettlementId { get; set; }//sud: 13May'18--check with dinesh if it's already added in another branch.
 
         public double? NonTaxableAmount { get; set; }//added: sud: 29May'18
@@ -68,7 +69,7 @@ namespace ClinicSoft.ServerModel
         public int? PaidCounterId { get; set; }//added: sud: 29May'18
 
         public int? PackageId { get; set; }//sud: 10Sept'18-- needs revision
-        public string PackageName { get; set; }//sud: 10Sept'18-- needs revision
+        public string?   PackageName { get; set; }//sud: 10Sept'18-- needs revision
                                                //15July'2018 :Ashim Added for Govt Insurance Billing
         public bool? IsInsuranceBilling { get; set; }
         public bool? IsInsuranceClaimed { get; set; }
@@ -78,7 +79,7 @@ namespace ClinicSoft.ServerModel
         public double? ExchangeRate { get; set; }//Sanjit: 5-17-19 added for foreign exchange
         public int? OrganizationId { get; set; }
         [NotMapped]
-        public string OrganizationName { get; set; }
+        public string? OrganizationName { get; set; }
 
         [NotMapped]//Yubraj 16th Jan '19
         public int? ReceiptNo { get; set; }
@@ -92,15 +93,19 @@ namespace ClinicSoft.ServerModel
         public int? PartialReturnTxnId { get; set; } // Rajesh:7Aug19
         public decimal? AdjustmentTotalAmount { get; set; }
         [NotMapped]
-        public string BillingUserName { get; set; }//Yubaraj:28June'19--needed for Billing receipt to return current logged in user.
+        public string? BillingUserName { get; set; }//Yubaraj:28June'19--needed for Billing receipt to return current logged in user.
 
-        public string InvoiceType { get; set; }// pratik:29April 2020-- needed for partial payment invoice in ipbilling
+        public string? InvoiceType { get; set; }// pratik:29April 2020-- needed for partial payment invoice in ipbilling
 
-        public string LabTypeName { get; set; }//pratik:25Feb2021
+        public string? LabTypeName { get; set; }//pratik:25Feb2021
 
         //sud:1-Oct'21--Changing Claimcode from String to Int64-- to use Incremental logic (max+1)
         //need nullable since ClaimCode is Non-Mandatory for normal visits.
         public Int64? ClaimCode { get; set; }//pramod
+        [NotMapped]
+        public virtual EmployeeModel CreatedByNavigation { get; set; } = null!;
+        [NotMapped]
+        public virtual BillSettlementModel? Settlement { get; set; }
 
         public static BillingTransactionModel GetCloneWithItems(BillingTransactionModel txnToClone)
         {

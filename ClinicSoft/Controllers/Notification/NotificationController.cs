@@ -16,7 +16,7 @@ using ClinicSoft.ServerModel.NotificationModels;
 
 namespace ClinicSoft.Controllers
 {
-
+    [Route("clinicsoft/api/[controller]")]
     public class NotificationController : CommonController
     {
 

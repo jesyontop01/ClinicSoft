@@ -20,5 +20,6 @@ namespace ClinicSoft.Security
         public DateTime? ModifiedOn { get; set; }
         public List<RbacRole>? Roles { get; set; }
         public List<RbacPermission>? Permissions { get; set; }
+
     }
 }

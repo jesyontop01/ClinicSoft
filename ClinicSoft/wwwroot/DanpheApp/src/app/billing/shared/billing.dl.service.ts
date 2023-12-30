@@ -594,13 +594,13 @@ export class BillingDLService {
 
   //sud:13Mar'20--below is copy of the same function from SettingsDlService
   public GetAllReferrerList() {
-    return this.http.get<any>("/clinicsoft/api/EmployeeSettings?reqType=get-all-referrer-list", this.options);
+    return this.http.get<any>("/api/EmployeeSettings?reqType=get-all-referrer-list", this.options);
   }
 
 
   //sud:30Apr'20--Active Employee List for reusablilty
   public GetActiveEmployeesList() {
-    return this.http.get<any>("/clinicsoft/api/Employee?reqType=get-active-employees-info", this.options);
+    return this.http.get<any>("/api/Employee?reqType=get-active-employees-info", this.options);
   }
 
   //Anjana: 19Aug-2020: cancel bill items

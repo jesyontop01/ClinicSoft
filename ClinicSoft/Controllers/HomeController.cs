@@ -9,6 +9,8 @@ using System.Diagnostics;
 
 namespace ClinicSoft.Controllers
 {
+    //[RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    //[Route("~/api/[controller]")]
     public class HomeController : Controller
     {
 

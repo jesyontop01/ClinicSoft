@@ -23,7 +23,9 @@ using System.Xml;
 
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class EmployeeController : CommonController
     {
 

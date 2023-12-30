@@ -63,13 +63,89 @@ namespace ClinicSoft.Security
             modelBuilder.Entity<DanpheRoute>().ToTable("RBAC_RouteConfig");
             modelBuilder.Entity<RbacRole>().ToTable("RBAC_Role");
             modelBuilder.Entity<RolePermissionMap>().ToTable("RBAC_MAP_RolePermission");
-            //modelBuilder.Entity<RbacUser>().ToTable("RBAC_User");
             modelBuilder.Entity<RbacUser>().ToTable("RBAC_User");
+            //modelBuilder.Entity<RbacUser>().ToTable("RBAC_User");
             modelBuilder.Entity<UserRoleMap>().ToTable("RBAC_MAP_UserRole");
             //modelBuilder.Entity<EmployeeModel>().ToTable("EMP_Employee");
             modelBuilder.Entity<PHRMStoreModel>().ToTable("PHRM_MST_Store");
             modelBuilder.Entity<StoreVerificationMapModel>().ToTable("MST_MAP_StoreVerification");
 
+            //modelBuilder.Entity<RbacUser>(entity =>
+            //{
+            //    entity.HasKey(e => e.UserId)
+            //        .HasName("PK__RBAC_Use__1788CC4CBD1007FE");
+
+            //    entity.ToTable("RBAC_User");
+
+            //    entity.HasIndex(e => e.EmployeeId, "UK_RBAC_EmployeeId")
+            //        .IsUnique();
+
+            //    entity.HasIndex(e => e.UserName, "UK_RBAC_User")
+            //        .IsUnique();
+
+            //    entity.HasIndex(e => e.Email, "UK_RBAC_User_Email")
+            //        .IsUnique();
+
+            //    entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+            //    entity.Property(e => e.Email)
+            //        .HasMaxLength(100)
+            //        .IsUnicode(false);
+
+            //    entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+            //    entity.Property(e => e.Password).HasMaxLength(100);
+
+            //    entity.Property(e => e.UserName)
+            //        .HasMaxLength(30)
+            //        .IsUnicode(false);
+
+            //    //entity.HasOne(d => d.Employee)
+            //    //    //.WithOne(p => p.RbacUser)
+            //    //    .HasForeignKey<RbacUser>(d => d.EmployeeId)
+            //    //    .HasConstraintName("FK_RBAC_User_EMP_Employee");
+            //});
+
+            //modelBuilder.Entity<RbacRole>(entity =>
+            //{
+            //    entity.HasKey(e => e.RoleId);
+
+            //    entity.ToTable("RBAC_Role");
+
+            //    entity.HasIndex(e => new { e.ApplicationId, e.RoleName }, "UK_RBAC_Role")
+            //        .IsUnique();
+
+            //    entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+
+            //    entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+
+            //    entity.Property(e => e.IsSysAdmin).HasDefaultValueSql("((0))");
+
+            //    entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+
+            //    entity.Property(e => e.RoleDescription)
+            //        .HasMaxLength(250)
+            //        .IsUnicode(false);
+
+            //    entity.Property(e => e.RoleName)
+            //        .HasMaxLength(50)
+            //        .IsUnicode(false);
+
+            //    entity.Property(e => e.RoleType)
+            //        .HasMaxLength(20)
+            //        .IsUnicode(false)
+            //        .HasDefaultValueSql("('custom')");
+
+            //    entity.HasOne(d => d.Application)
+            //        .WithMany(p => p.Roles)
+            //        .HasForeignKey(d => d.ApplicationId)
+            //        .HasConstraintName("FK__RBAC_Role__Appli__0ABD916C");
+
+            //    entity.HasOne(d => d.Route)
+            //        .WithMany(p => p.Roles)
+            //        .HasForeignKey(d => d.DefaultRouteId)
+            //        .HasConstraintName("FK_RBAC_Role_Rbac_RouteConfig");
+            //});
             modelBuilder.Entity<EmployeeModel>(entity =>
             {
                 entity.HasKey(e => e.EmployeeId)

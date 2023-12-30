@@ -16,12 +16,12 @@ namespace ClinicSoft.ServerModel
         public int? BillingTransactionId { get; set; }
         public int PatientId { get; set; }
         public int? ProviderId { get; set; }
-        public string ProviderName { get; set; }
+        public string? ProviderName { get; set; }
         public int ServiceDepartmentId { get; set; }
-        public string ServiceDepartmentName { get; set; }
-        public string ProcedureCode { get; set; }
+        public string? ServiceDepartmentName { get; set; }
+        public string? ProcedureCode { get; set; }
         public int ItemId { get; set; }
-        public string ItemName { get; set; }
+        public string? ItemName { get; set; }
         public double Price { get; set; }
         public double Quantity { get; set; }
         public double? SubTotal { get; set; }
@@ -30,7 +30,7 @@ namespace ClinicSoft.ServerModel
         public double? DiscountAmount { get; set; }
         public double? Tax { get; set; }
         public double? TotalAmount { get; set; }
-        public string BillStatus { get; set; }
+        public string? BillStatus { get; set; }
         //this requisitionid comes from other modules for Requisition. 
         public Int64? RequisitionId { get; set; }
         public DateTime? RequisitionDate { get; set; }
@@ -42,8 +42,8 @@ namespace ClinicSoft.ServerModel
         //this will be employeeid of the current user--sudarshan:7may'17
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
-        public string Remarks { get; set; }
-        public string CancelRemarks { get; set; }
+        public string? Remarks { get; set; }
+        public string? CancelRemarks { get; set; }
         public double? TaxPercent { get; set; }
         public DateTime? CancelledOn { get; set; }
         //added sudarshan: 27May'17--to track who cancelled the credit item.
@@ -58,7 +58,7 @@ namespace ClinicSoft.ServerModel
         public int? PaymentReceivedBy { get; set; }//added: sud: 29May'18
         public int? PaidCounterId { get; set; }//added: sud: 29May'18       
 
-        public string BillingType { get; set; }//added: sud: 19jun'18
+        public string? BillingType { get; set; }//added: sud: 19jun'18
         public int? RequestingDeptId { get; set; }
         public int? ModifiedBy { get; set; }
         public DateTime? ModifiedOn { get; set; }
@@ -71,17 +71,17 @@ namespace ClinicSoft.ServerModel
         public bool IsInsurancePackage { get; set; }
         public int? PatientInsurancePackageId { get; set; }
 
-        public virtual PatientModel Patient { get; set; }
-        public virtual BillingTransactionModel BillingTransaction { get; set; }
-        public virtual ServiceDepartmentModel ServiceDepartment { get; set; }
+        public virtual PatientModel? Patient { get; set; }
+        public virtual BillingTransactionModel? BillingTransaction { get; set; }
+        public virtual ServiceDepartmentModel? ServiceDepartment { get; set; }
 
 
-        public string VisitType { get; set; }//sud: 28Sept'18--needed for Lab, etc..
+        public string? VisitType { get; set; }//sud: 28Sept'18--needed for Lab, etc..
 
         [NotMapped]
-        public string RequestingUserName { get; set; }//sud:24Sept'18
+        public string? RequestingUserName { get; set; }//sud:24Sept'18
         [NotMapped]
-        public string RequestingUserDept { get; set; }//sud:24Sept'18
+        public string? RequestingUserDept { get; set; }//sud:24Sept'18
 
         public static BillingTransactionItemModel GetClone(BillingTransactionItemModel ipTxnItem)
         {
@@ -98,15 +98,15 @@ namespace ClinicSoft.ServerModel
         [NotMapped]
         public int BalanceQty { get; set; }
         [NotMapped]
-        public string ItemIntegrationName { get; set; }
+        public string? ItemIntegrationName { get; set; }
         [NotMapped]
-        public string SrvDeptIntegrationName { get; set; }
+        public string? SrvDeptIntegrationName { get; set; }
 
         [NotMapped]
-        public string TransactionType { get; set; }
+        public string?   TransactionType { get; set; }
 
         //Price Category includes: Normal, Foreigner, EHS, SAARCCitizen, GovtInsurance, etc.. 
-        public string PriceCategory { get; set; }//sud: 25Feb'19
+        public string? PriceCategory { get; set; }//sud: 25Feb'19
 
         [NotMapped]
         public DateTime? StartedOn { get; set; }
@@ -119,7 +119,7 @@ namespace ClinicSoft.ServerModel
         public int? ProvisionalFiscalYearId { get; set; } //Yubraj 31th may '19
 
         [NotMapped]
-        public string ProvFiscalYear { get; set; }
+        public string? ProvFiscalYear { get; set; }
 
         [NotMapped]
         public bool IsLastBed { get; set; }
@@ -130,10 +130,10 @@ namespace ClinicSoft.ServerModel
         [NotMapped]
         public bool? IsSelected { get; set; } // Rajesh: 7Aug19
         [NotMapped]
-        public string ModifiedByName { get; set; }
+        public string? ModifiedByName { get; set; }
 
-        public string OrderStatus { get; set; }//pratik:7Aug2020
-        public string LabTypeName { get; set; }//pratik:9Feb2021
+        public string? OrderStatus { get; set; }//pratik:7Aug2020
+        public string?       LabTypeName { get; set; }//pratik:9Feb2021
 
     }
 }

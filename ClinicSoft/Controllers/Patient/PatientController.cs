@@ -17,6 +17,8 @@ using System.Data;
 //using System.Data.SqlClient;
 using System.Transactions;
 using Microsoft.Data.SqlClient;
+using Org.BouncyCastle.Asn1.Ocsp;
+using System.Security.Claims;
 //
 
 
@@ -25,6 +27,9 @@ using Microsoft.Data.SqlClient;
 //this is the cotroller
 namespace ClinicSoft.Controllers
 {
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("/clinicsoft/api/[controller]")]
     public class PatientController : CommonController
     {
         //patient code will be incremented by below value.
@@ -90,6 +95,72 @@ namespace ClinicSoft.Controllers
             return dob;
         }
 
+        public ActionResult Register()
+        {
+
+            return View();
+        }
+
+        public ActionResult Index()
+        {
+            RbacUser currentUser = HttpContext.Session.Get<RbacUser>("currentuser");
+            ViewBag.Message = HttpContext.Session.GetString("UserRole");
+            // You can access user properties like this:
+            PatientDbContext patDbContext = new PatientDbContext(connString);
+            var employeeResult = patDbContext.Employee.Where(e => e.EmployeeId == currentUser.EmployeeId).FirstOrDefault();
+            var userName = employeeResult.LastName;
+
+            PatientModel returnPatient = patDbContext.Patients
+                                   .Include(a => a.Addresses)
+                                   .Include(a => a.Guarantor)
+                                   .Include(a => a.Insurances)
+                                   .Include(a => a.KinEmergencyContacts)
+                                   .Include(a => a.CountrySubDivision)
+                                   .Include(p => p.Visits)
+                                   .FirstOrDefault(pat => pat.FirstName == userName);
+           // ViewBag.PatBills;
+            BillingDbContext billingDbContext = new BillingDbContext(connString);
+            var billResult = billingDbContext.BillingTransactions.ToList();
+                //Where(b => b.PatientId == returnPatient.PatientId).ToList();
+            ViewBag.TotalPatBills = billResult.Count;
+            ViewBag.TotalPatVisits = returnPatient.Visits.Count;
+            if (returnPatient != null && returnPatient.Addresses != null && returnPatient.Addresses.Count > 0)
+            {
+                // this is just used to show the name in the client ..
+                foreach (var add in returnPatient.Addresses)
+                {
+                    add.CountryName = patDbContext.Countries.Where(c => c.CountryId == add.CountryId)
+                                      .FirstOrDefault().CountryName;
+                    add.CountrySubDivisionName = patDbContext.CountrySubdivisions.Where(c => c.CountrySubDivisionId == add.CountrySubDivisionId)
+                                      .FirstOrDefault().CountrySubDivisionName;
+
+                }
+
+            }
+
+            if (returnPatient != null && returnPatient.Admissions != null && returnPatient.Admissions.Count > 0)
+            {
+                var activeAdmissions = returnPatient.Admissions.Where(adm => adm.AdmissionStatus != "discharged").ToList();
+                returnPatient.Admissions = activeAdmissions;
+            }
+            var membershipDetails = (from pat in patDbContext.Patients
+                                     join memType in patDbContext.MembershipTypes
+                                     on pat.MembershipTypeId equals memType.MembershipTypeId
+                                     where pat.FirstName == userName
+                                     select new
+                                     {
+                                         memType.MembershipTypeName,
+                                         memType.DiscountPercent
+                                     }).FirstOrDefault();
+
+            returnPatient.MembershipTypeName = membershipDetails.MembershipTypeName;
+            returnPatient.MembershipDiscountPercent = membershipDetails.DiscountPercent;
+
+            //responseData.Results = returnPatient;
+            return View(returnPatient);
+        }
+
+       
         //parameter name has to be same as what we're passing from client side.
         // sir textbox name should have same as the parameter?
         //no the paramter name, querystring parameters are passed as key-value format.

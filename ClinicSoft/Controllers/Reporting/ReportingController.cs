@@ -22,7 +22,9 @@ namespace ClinicSoft.Controllers.Reporting
     //We take it single file for Controller code and ControllerView Code
     //Cannot inherit this from CommonController since commoncontroller requires to be called as: api/Controller url.
     //and we're returning both views as well as data from this controller.
-    [DanpheDataFilter()]
+    //[DanpheDataFilter()]
+    //[DanpheDataFilter()]
+    //[Route("clinicsoft/api/[controller]")]
     public class ReportingController : Controller
     {
         private readonly string connString = null;

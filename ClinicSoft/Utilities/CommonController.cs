@@ -36,10 +36,19 @@ public class CommonController : Controller
     }
     public string ReadPostData()
     {
-        Stream req = Request.Body;
-        req.Seek(0, System.IO.SeekOrigin.Begin);
-        string str = new StreamReader(req).ReadToEnd();
-        return str;
+        string requestBody = "";
+        using (var streamReader = new StreamReader(Request.Body))
+        {
+             requestBody =  streamReader.ReadToEnd();
+            int length = requestBody.Length;
+
+            // Now 'length' contains the length of the data in the stream.
+        }
+
+        //Stream req = Request.Body;
+        //req.Seek(0, System.IO.SeekOrigin.Begin);
+        //string str = new StreamReader(req).ReadToEnd();
+        return requestBody;
     }
     public IFormFileCollection ReadFiles()
     {

@@ -27,6 +27,10 @@ using ClinicSoft.DalLayer.Models;
 using Microsoft.AspNetCore.Hosting;
 using ClinicSoft.Utilities;
 using ClinicSoft.Security.Helpers;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using System.Net;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 IWebHostEnvironment env = builder.Environment;
@@ -42,8 +46,38 @@ builder.Services.Configure<MyConfiguration>(builder.Configuration.GetSection("My
 var connection = builder.Configuration.GetSection("Connectionstringss");
 //var connectionString = new ConnectionString(connection);
 //builder.Services.AddSingleton(connectionString);
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    //options.CheckConsentNeeded = context => true; // consent required
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
 
+// If using Kestrel:
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.AllowSynchronousIO = true;
+});
 
+// If using IIS:
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.AllowSynchronousIO = true;
+});
+builder.Services.AddSession(options =>
+{
+
+    options.IdleTimeout = TimeSpan.FromHours(4);
+
+    //CookieManager = new ChunkingCookieManager();
+    //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    //options.Cookie.SameSite = SameSiteMode.None;
+    //options.Cookie.HttpOnly = true;
+    //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    // Make the session cookie essential if you wish
+    //options.Cookie.IsEssential = true;
+
+});
+builder.Services.AddHttpContextAccessor();
 //builder.Services.Configure<MyConfiguration>(builder.Configuration.GetSection("MyConfiguration"));
 //string connString = builder.Configuration["Connectionstring"];
 //var connStringss = builder.Configuration.GetSection("MyConfiguration");
@@ -94,57 +128,18 @@ builder.Services.AddTransient<ICustomFileUploadService, FileUploadService>();
 builder.Services.AddTransient<ILISService, LISService>();
 builder.Services.AddTransient<IQueueManagementService, QueueManagementService>();
 
+builder.Services.AddAuthentication(sharedOptions =>
+{
+    sharedOptions.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    sharedOptions.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+});
 
-//builder.Services.Configure((RazorViewEngineOptions options) =>
-//{
-//    var previous = options.CompilationCallback;
-//    options.CompilationCallback = (context) =>
-//    {
-//        previous?.Invoke(context);
-
-//        context.Compilation = context.Compilation.
-//                    AddReferences(MetadataReference.CreateFromFile(typeof(
-//                     MasterDbContext).Assembly.Location));
-
-//        context.Compilation = context.Compilation.
-//                   AddReferences(MetadataReference.CreateFromFile(typeof(
-//                   CountryModel).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//                   AddReferences(MetadataReference.CreateFromFile(typeof(
-//                   CountrySubDivisionModel).Assembly.Location));
-
-//        context.Compilation = context.Compilation.
-//                   AddReferences(MetadataReference.CreateFromFile(typeof(
-//                   ICD10CodeModel).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//                   AddReferences(MetadataReference.CreateFromFile(typeof(
-//                   EmployeeModel).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//                  AddReferences(MetadataReference.CreateFromFile(typeof(
-//                  ServiceDepartmentModel).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//                AddReferences(MetadataReference.CreateFromFile(typeof(LoginViewModel).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//               AddReferences(MetadataReference.CreateFromFile(typeof(DanpheRoute).Assembly.Location));
-//        context.Compilation = context.Compilation.
-//             AddReferences(MetadataReference.CreateFromFile(typeof(DanpheCache).Assembly.Location));
-
-//    };
-//});
 
 // Add framework builder.Services.
 builder.Services.AddOptions();
 
 //builder.Services.Configure<MyConfiguration>(Configuration);
-builder.Services.AddSession(options =>
-{
-    //IMPORTANT-- remove the hardcoded value 20 from below
-    //keep short timeout like max 2-3 hours, 
-    //we've to redirect to login once the session expires.
-    options.IdleTimeout = TimeSpan.FromHours(2);
-    options.Cookie.HttpOnly = true;
 
-});
 // Get the connection string from the configuration
 string connStrs = builder.Configuration["Connectionstring"];
 
@@ -184,14 +179,23 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseHttpsRedirection();
+app.UseCookiePolicy();
+
+app.UseSession();
+
 app.UseRouting();
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.UseAuthorization();
-app.UseSession();
+
+app.MapControllers();
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
@@ -220,5 +224,4 @@ defaultoptions.DefaultFileNames.Clear();
 defaultoptions.DefaultFileNames.Add("UI/Main.html");
 app.UseDefaultFiles(defaultoptions);
 //app.UseMiddleware<>
-app.UseStaticFiles();
 app.Run();

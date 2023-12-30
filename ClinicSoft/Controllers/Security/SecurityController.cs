@@ -19,7 +19,8 @@ using ClinicSoft.CommonTypes;
 
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [Route("ClinicSoft/api/[controller]")]
     public class SecurityController : CommonController
     {
 

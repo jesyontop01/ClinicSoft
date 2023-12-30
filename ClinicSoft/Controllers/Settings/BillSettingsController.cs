@@ -22,7 +22,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicSoft.Controllers
 {
-
+    [Route("clinicsoft/api/[controller]")]
     public class BillSettingsController : CommonController
     {
 

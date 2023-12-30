@@ -29,7 +29,7 @@ using ClinicSoft.AccTransfer.Accounting;
 namespace ClinicSoft.Controllers
 {
     [DanpheDataFilter()]
-    [Route("api/[controller]")]
+    [Route("clinicsoft/api/[controller]")]
     public class AccountingReportController : CommonController
     {
 

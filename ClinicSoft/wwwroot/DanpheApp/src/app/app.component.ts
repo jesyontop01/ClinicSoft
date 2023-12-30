@@ -138,11 +138,11 @@ export class AppComponent {
     this.coreService.getCalenderDatePreference().subscribe(res => {
       this.coreService.SetCalenderDatePreference(res);
       if (this.coreService.DatePreference != "") {
-        if (this.coreService.DatePreference == 'np') {
-          this.DatePreferenceData('np');
+        if (this.coreService.DatePreference == 'en') {
+          this.DatePreferenceData('en');
         }
         else {
-          this.DatePreferenceData('en');
+          this.DatePreferenceData('np');
         }
       }
     });

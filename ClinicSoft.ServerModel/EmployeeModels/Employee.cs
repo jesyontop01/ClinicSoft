@@ -61,6 +61,9 @@ namespace ClinicSoft.ServerModel
         public virtual DepartmentModel? Department { get; set; }
         public virtual EmployeeRoleModel? EmployeeRole { get; set; }
         public virtual EmployeeTypeModel? EmployeeType { get; set; }
+        [NotMapped]
+        public virtual ICollection<BillingTransactionModel>? BilTxnBillingTransactions { get; set; }
+
 
         //added: sud:14Jun'18--
         public bool? IsAppointmentApplicable { get; set; }

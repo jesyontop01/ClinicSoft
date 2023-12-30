@@ -28,7 +28,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicSoft.Controllers
 {
-
+    [Route("clinicsoft/api/[controller]")]
     public class EmployeeSettingsController : CommonController
     {
         private readonly IWebHostEnvironment _hostingEnvironment;

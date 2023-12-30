@@ -22,6 +22,8 @@ namespace ClinicSoft.Security
         public bool? IsSecondaryNavInDropdown { get; set; }
         [NotMapped]
         public List<DanpheRoute>? ChildRoutes { get; set; }
+        [NotMapped]
+        public List<RbacRole>? Roles { get; set; }
 
         public string? Css { get; set; }
         public int? DisplaySeq { get; set; }

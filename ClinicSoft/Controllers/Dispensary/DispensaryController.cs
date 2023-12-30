@@ -16,7 +16,7 @@ namespace ClinicSoft.Controllers.Dispensary
 {
     [RequestFormSizeLimit(valueCountLimit: 1000000, Order = 1)]
     [DanpheDataFilter()]
-    [Route("api/[controller]")]
+    [Route("clinicsoft/api/[controller]")]
     public class DispensaryController : Controller
     {
         private IDispensaryService _dispensaryService;

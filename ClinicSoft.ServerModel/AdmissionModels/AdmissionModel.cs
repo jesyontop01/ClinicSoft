@@ -74,7 +74,7 @@ namespace ClinicSoft.ServerModel
         public bool? IsLastClaimCodeUsed { get; set; }//sud:1-Oct'21
 
         public double? ProvisionalDiscPercent { get; set; }
-        public Boolean IsItemDiscountEnabled { get; set; }
+        public bool IsItemDiscountEnabled { get; set; }
 
 
     }

@@ -35,7 +35,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 1000000, Order = 1)]
+    [DanpheDataFilter()]
+    //[Route("api/[controller]")]
+    [Route("clinicsoft/api/[controller]")]
     public class PharmacyController : CommonController
     {
         public static IWebHostEnvironment _environment;

@@ -14,7 +14,7 @@ using ClinicSoft.ServerModel.EmergencyModels;
 namespace ClinicSoft.Controllers
 {
     [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
-    [Route("api/[controller]")]
+    [Route("clinicsoft/api/[controller]")]
     public class MasterController : CommonController
     {
 

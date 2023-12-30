@@ -23,7 +23,7 @@ namespace ClinicSoft.ServerModel
         public int? FiscalYearId { get; set; }
         public int? SettlementReceiptNo { get; set; }
         public DateTime? SettlementDate { get; set; }
-        public string SettlementType { get; set; }
+        public string? SettlementType { get; set; }
         public int PatientId { get; set; }
         public double? PayableAmount { get; set; }
         public double? RefundableAmount { get; set; }
@@ -32,24 +32,27 @@ namespace ClinicSoft.ServerModel
         public double? DepositDeducted { get; set; }
         public double? DueAmount { get; set; }
         public double? DiscountAmount { get; set; }
-        public string PaymentMode { get; set; }
-        public string PaymentDetails { get; set; }
+        public string? PaymentMode { get; set; }
+        public string? PaymentDetails { get; set; }
         public int? CounterId { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedOn { get; set; }
-        public string Remarks { get; set; }
+        public string? Remarks { get; set; }
         public int? PrintCount { get; set; }
         public DateTime? PrintedOn { get; set; } //Yubraj: 13th August'19
         public int? PrintedBy { get; set; } //Yubraj: 13th August'19
         public bool? IsActive { get; set; }
-        public List<BillingTransactionModel> BillingTransactions { get; set; }
-        public PatientModel Patient { get; set; }
         [NotMapped]
-        public string BillingUser { get; set; }
+        public List<BillingTransactionModel>? BillingTransactions { get; set; }
+        public PatientModel? Patient { get; set; }
+        [NotMapped]
+        public string? BillingUser { get; set; }
         public double? CollectionFromReceivable { get; set; }//added: Krishna: 16th Nov, 21
         public double? DiscountReturnAmount { get; set; }//added: Krishna: 16th Nov, 21
+        [NotMapped]
+        public virtual ICollection<BillingTransactionModel>? BilTxnBillingTransactions { get; set; }
 
         [NotMapped]
-        public List<int> BillReturnIdsCSV { get; set; }// added: Krishna: 22nd Nov'21
+        public List<int>? BillReturnIdsCSV { get; set; }// added: Krishna: 22nd Nov'21
     }
 }

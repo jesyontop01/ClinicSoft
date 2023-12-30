@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicSoft.Controllers
 {
+    [Route("clinicsoft/api/[controller]")]
     public class OperationTheatreController : CommonController
     {
         public OperationTheatreController(IOptions<MyConfiguration> _config) : base(_config)

@@ -19,7 +19,9 @@ using ClinicSoft.CommonTypes;
 
 namespace ClinicSoft.Controllers
 {
-
+    [RequestFormSizeLimit(valueCountLimit: 100000, Order = 1)]
+    [DanpheDataFilter()]
+    [Route("api/[controller]")]
     public class EmployeeViewController : Controller
     {
         private readonly string config = null;

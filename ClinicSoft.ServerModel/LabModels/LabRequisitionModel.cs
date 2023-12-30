@@ -13,7 +13,7 @@ namespace ClinicSoft.ServerModel
     {
 
         [Key]
-        public Int64 RequisitionId { get; set; }
+        public long RequisitionId { get; set; }
         public int? PatientVisitId { get; set; }
         public int PatientId { get; set; }
         public int? ProviderId { get; set; }
@@ -59,7 +59,7 @@ namespace ClinicSoft.ServerModel
         //added: ashim : 18Sep2018
         public string? VisitType { get; set; }
         public int? LabReportId { get; set; }
-        public Int64? BarCodeNumber { get; set; }
+        public long? BarCodeNumber { get; set; }
         public string? WardName { get; set; }
 
         public bool? IsVerified { get; set; }
@@ -89,7 +89,7 @@ namespace ClinicSoft.ServerModel
 
     public class LabTestTransactionItemVM
     {
-        public Int64 BillItemPriceId { get; set; }
+        public long BillItemPriceId { get; set; }
         public int ServiceDepartmentId { get; set; }
         public string? ServiceDepartmentName { get; set; }
         public string? ServiceDepartmentShortName { get; set; }
